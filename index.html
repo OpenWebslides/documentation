@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>Open Webslides documentation</title>
 
     <style>
       .highlight table td { padding: 5px; }
@@ -198,9 +198,10 @@
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print.css" rel="stylesheet" media="print" />
       <script src="javascripts/all.js"></script>
+    <link href="images/favicon.ico" rel="icon" type="image/ico" />
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -209,12 +210,6 @@
     </a>
     <div class="tocify-wrapper">
       <img src="images/logo.png" alt="Logo" />
-        <div class="lang-selector">
-              <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
-              <a href="#" data-language-name="python">python</a>
-              <a href="#" data-language-name="javascript">javascript</a>
-        </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
@@ -222,7 +217,6 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
     </div>
@@ -231,17 +225,71 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+<p>Welcome to the Open Webslides documentation! This website documents the installation, use and API of the Open Webslides platform.</p>
 
-<p>We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<h2 id="overview">Overview</h2>
 
-<p>This example API documentation page was created with <a href="https://github.com/tripit/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&rsquo;s documentation.</p>
+<p>The Open Webslides API is based on the JSON-API specification version 1.0. Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files.</p>
 
-<h1 id="authentication">Authentication</h1>
+<h1 id="setup-for-administrators">Setup for administrators</h1>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/OpenWebslides.git
+<span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
+</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose up --build
+</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
+  <span class="s2">"CREATE ROLE openwebslides WITH ENCRYPTED PASSWORD 'openwebslides' LOGIN;"</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
+  <span class="s2">"CREATE DATABASE openwebslides OWNER openwebslides;"</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose restart
+</code></pre>
+<p>The platform is built on the Docker container software, and uses the docker-compose utility to orchestrate the different services within the platform. This allows server administrators to run the platform as a contained package, without interfering with already installed system applications and libraries.</p>
 
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
+<p>The machine-specific data is stored on several Docker volumes, mounted in the relevant containers.</p>
+
+<table><thead>
+<tr>
+<th>Volume</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>data</td>
+<td>Contains the local repositories</td>
+</tr>
+<tr>
+<td>postgres</td>
+<td>Contains the PostgreSQL database</td>
+</tr>
+<tr>
+<td>redis</td>
+<td>Contains the Redis database</td>
+</tr>
+<tr>
+<td><em>public</em></td>
+<td>Contains the publicly served assets (regenerated on every build)</td>
+</tr>
+</tbody></table>
+
+<p>Only the first three volumes contain mission-critical data and should be backed up. The <em>public</em> volume is used by the nginx container to serve the static assets.</p>
+
+<p>The platform can be configured by customizing the <code class="prettyprint">config/openwebslides.yml</code> file.
+All deployment settings (credentials etc.) can be found under the <code class="prettyprint">openwebslides.env.example</code> file. This file should be copied to <code class="prettyprint">openwebslide.env</code> and edited.</p>
+
+<p><strong>Clone the repository</strong></p>
+
+<p>Clone the <a href="https://github.com/OpenWebslides/OpenWebslides">repository</a> to a local directory.</p>
+
+<p><strong>Build and start the Docker containers</strong></p>
+
+<p>Using docker-compose, start the various services.</p>
+
+<p><strong>Create database credentials</strong></p>
+
+<p>On the first run, the database will be empty. Create a user and put it in the <code class="prettyprint">openwebslides.env</code> file.
+Create a database for this user too and put it in the <code class="prettyprint">openwebslides.env</code> file.</p>
+
+<p>Finally, restart all services to use the new <code class="prettyprint">openwebslides.env</code>. The platform is now available on (http://localhost/)[http://localhost/].</p>
+
+<h1 id="authorization">Authorization</h1>
 <pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
 
 <span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
@@ -447,12 +495,6 @@ Remember — a happy kitten is an authenticated kitten!
 
       </div>
       <div class="dark-box">
-          <div class="lang-selector">
-                <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
-                <a href="#" data-language-name="python">python</a>
-                <a href="#" data-language-name="javascript">javascript</a>
-          </div>
       </div>
     </div>
   </body>
