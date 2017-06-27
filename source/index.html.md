@@ -15,9 +15,11 @@ search: true
 
 # Introduction
 
-Welcome to the Open Webslides documentation!
+Welcome to the Open Webslides documentation! This website documents the installation, use and API of the Open Webslides platform.
 
-These documentation pages were created with [Slate](https://github.com/tripit/slate).
+## Overview
+
+The Open Webslides API is based on the JSON-API specification version 1.0. Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files.
 
 # Authentication
 
