@@ -20,6 +20,8 @@ The Open Webslides API is based on the JSON-API specification version 1.0. Under
 
 # Setup for administrators
 
+## Installation
+
 ```shell
 $ git clone https://github.com/OpenWebslides/OpenWebslides.git
 $ cd OpenWebslides
@@ -56,10 +58,6 @@ _public_ | Contains the publicly served assets (regenerated on every build)
 
 Only the first three volumes contain mission-critical data and should be backed up. The _public_ volume is used by the nginx container to serve the static assets.
 
-The platform can be configured by customizing the `config/openwebslides.yml` file.
-All deployment settings (credentials etc.) can be found under the `openwebslides.env.example` file. This file should be copied to `openwebslide.env` and edited.
-
-
 **Clone the repository**
 
 Clone the [repository](https://github.com/OpenWebslides/OpenWebslides) to a local directory.
@@ -74,6 +72,15 @@ On the first run, the database will be empty. Create a user and put it in the `o
 Create a database for this user too and put it in the `openwebslides.env` file.
 
 Finally, restart all services to use the new `openwebslides.env`. The platform is now available on (http://localhost/)[http://localhost/].
+
+## Configuration
+
+```shell
+$ cp openwebslides.env.example openwebslides.env
+```
+
+The platform's features can be configured by customizing the `config/openwebslides.yml` file.
+The deployment can be configured by copying the provided `openwebslides.env.example` to `openwebslides.env` and customizing this file. Docker-compose will then automatically use this file for the relevant containers.
 
 # Authorization
 
