@@ -1,9 +1,6 @@
 ---
 title: Open Webslides documentation
 
-language_tabs:
-  - shell
-
 toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
@@ -21,9 +18,64 @@ Welcome to the Open Webslides documentation! This website documents the installa
 
 The Open Webslides API is based on the JSON-API specification version 1.0. Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files.
 
-# Authentication
+# Setup for administrators
 
-> To authorize, use this code:
+```shell
+$ git clone https://github.com/OpenWebslides/OpenWebslides.git
+$ cd OpenWebslides
+```
+
+```shell
+$ docker-compose up --build
+```
+
+```shell
+$ docker-compose exec postgres psql -U postgres -c \
+  "CREATE ROLE openwebslides WITH ENCRYPTED PASSWORD 'openwebslides' LOGIN;"
+```
+
+```shell
+$ docker-compose exec postgres psql -U postgres -c \
+  "CREATE DATABASE openwebslides OWNER openwebslides;"
+```
+
+```shell
+$ docker-compose restart
+```
+
+The platform is built on the Docker container software, and uses the docker-compose utility to orchestrate the different services within the platform. This allows server administrators to run the platform as a contained package, without interfering with already installed system applications and libraries.
+
+The machine-specific data is stored on several Docker volumes, mounted in the relevant containers.
+
+Volume | Description
+--------- | ------- | -----------
+data | Contains the local repositories
+postgres | Contains the PostgreSQL database
+redis | Contains the Redis database
+_public_ | Contains the publicly served assets (regenerated on every build)
+
+Only the first three volumes contain mission-critical data and should be backed up. The _public_ volume is used by the nginx container to serve the static assets.
+
+The platform can be configured by customizing the `config/openwebslides.yml` file.
+All deployment settings (credentials etc.) can be found under the `openwebslides.env.example` file. This file should be copied to `openwebslide.env` and edited.
+
+
+**Clone the repository**
+
+Clone the [repository](https://github.com/OpenWebslides/OpenWebslides) to a local directory.
+
+**Build and start the Docker containers**
+
+Using docker-compose, start the various services.
+
+**Create database credentials**
+
+On the first run, the database will be empty. Create a user and put it in the `openwebslides.env` file.
+Create a database for this user too and put it in the `openwebslides.env` file.
+
+Finally, restart all services to use the new `openwebslides.env`. The platform is now available on (http://localhost/)[http://localhost/].
+
+# Authorization
 
 ```ruby
 require 'kittn'
