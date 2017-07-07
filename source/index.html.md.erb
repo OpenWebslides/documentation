@@ -9,7 +9,7 @@ includes:
 
 search: true
 
-endpoint: https://api.openwebslides.org/
+endpoint: https://api.openwebslides.org/api/
 ---
 
 # Introduction
@@ -19,6 +19,8 @@ Welcome to the Open Webslides documentation! This website documents the installa
 ## Overview
 
 The Open Webslides API is based on the JSON-API specification version 1.0. Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files.
+
+The platform consists of two components: the backend and the frontend. The backend is written as a monolithic Ruby on Rails application, which exposes a RESTful API to the client. The frontend is written in React and consumes the RESTful API.
 
 # Setup for administrators
 
@@ -73,7 +75,7 @@ Using docker-compose, start the various services.
 On the first run, the database will be empty. Create a user and put it in the `openwebslides.env` file.
 Create a database for this user too and put it in the `openwebslides.env` file.
 
-Finally, restart all services to use the new `openwebslides.env`. The platform is now available on (http://localhost/)[http://localhost/].
+Finally, restart all services to use the new `openwebslides.env`. The platform is now available on <a href="http://localhost/">http://localhost/</a>
 
 ## Configuration
 
@@ -89,20 +91,15 @@ The deployment can be configured by copying the provided `openwebslides.env.exam
 ```ruby
 require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+Persistent critical data is stored in the following systems:
 
-```python
-import kittn
+- PostgreSQL: relational data, deck metadata
+- `data/`: local repositories
 
-api = kittn.authorize('meowmeowmeow')
-```
+Additional non-critical data is stored in the following systems:
 
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+- Redis: conversion queue
+- `tmp/`: temporary runtime data, including uploaded files for conversion queue
 
 ```javascript
 const kittn = require('kittn');
