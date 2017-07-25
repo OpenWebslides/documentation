@@ -1,4 +1,4 @@
-# Users
+# Users API
 
 ## Get all users
 
@@ -62,6 +62,15 @@ Content-Type: application/vnd.api+json
 ```
 
 This endpoint creates a user. A user's email has to be confirmed in order to obtain a token.
+
+**Request parameters**
+
+Parameter | Description
+----------|------------
+`first_name` | <span class="badge badge-danger">required</span> First name
+`last_name` | Last name
+`email` | <span class="badge badge-danger">required</span> Email
+`password` | <span class="badge badge-danger">required</span> Password
 
 <aside class="notice">
   This endpoint does not require authentication.
@@ -151,6 +160,10 @@ Content-Type: application/vnd.api+json
 ```
 
 This endpoint updates a user.
+
+**Request parameters**
+
+See <a href="#create-a-user">Create a user</a>.
 
 ## Delete a user
 
