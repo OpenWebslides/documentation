@@ -27,6 +27,37 @@ The platform consists of two components: the backend and the frontend. The backe
 
 <%= image_tag 'data_model.png' %>
 
+## Permission model
+
+A deck and its assets are protected by the `state` attribute. This attribute can have the following values:
+
+State | Description
+-----------|-----------
+`public` | Visible to everyone both inside and outside of the platform
+`protected` | Only visible to users inside the platform
+`private` | Only visible to owner and collaborators
+
+<aside class="notice">
+  This access model will also be enforced in the backing store, e.g. protected and private decks will be stored in a private repository on GitHub.
+</aside>
+
+**Permission table**
+
+| Deck access level | User access level | Resulting permissions |
+| ----------------- | ----------------- | --------------------- |
+| Public            | Guest             | read                  |
+|                   | Member            | read                  |
+|                   | Collaborator      | read, write           |
+|                   | Owner             | read, write, admin    |
+| Protected         | Guest             |                       |
+|                   | Member            | read                  |
+|                   | Collaborator      | read, write           |
+|                   | Owner             | read, write, admin    |
+| Private           | Guest             |                       |
+|                   | Member            |                       |
+|                   | Collaborator      | read, write           |
+|                   | Owner             | read, write, admin    |
+
 # Setup for administrators
 
 ## Installation
