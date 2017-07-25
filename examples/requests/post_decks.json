@@ -1,0 +1,19 @@
+{
+  "data": {
+    "type": "decks",
+    "attributes": {
+      "name": "Foo",
+      "description": "This is my first deck.",
+      "state": "public_access",
+      "template": "shower-ows"
+    },
+    "relationships": {
+      "owner": {
+        "data": {
+          "id": "1",
+          "type": "users"
+        }
+      }
+    }
+  }
+}

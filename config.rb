@@ -49,11 +49,11 @@ end
 set :port, 4567
 
 helpers do
-  def api_response(name_sym)
-    File.read File.join root, 'examples', 'responses', "#{name_sym.to_s}.json"
+  def api_response(name_sym, ext_sym = :json)
+    File.read File.join root, 'examples', 'responses', "#{name_sym.to_s}.#{ext_sym.to_s}"
   end
 
-  def api_request(name_sym)
-    File.read File.join root, 'examples', 'requests', "#{name_sym.to_s}.json"
+  def api_request(name_sym, ext_sym = :json)
+    File.read File.join root, 'examples', 'requests', "#{name_sym.to_s}.#{ext_sym.to_s}"
   end
 end

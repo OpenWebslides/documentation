@@ -1,0 +1,242 @@
+# Decks API
+
+## Get all decks
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>decks HTTP/1.1
+Accept: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+> Response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_decks %>
+```
+
+This endpoint retrieves all visible decks.
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
+</aside>
+
+## Create a deck
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>decks HTTP/1.1
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_request :post_decks %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_deck %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :post_decks_422 %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :post_decks_400 %>
+```
+
+This endpoint creates a deck.
+
+**Request parameters**
+
+Parameter | Description
+----------|------------
+`name` | <span class="badge badge-danger">required</span> Name of the deck
+`description` | Description of the deck
+`state` | Access level (See <a href="#permission-model">Permission model</a>), defaults to `public_access`
+`template` | Template name used for rendering, defaults to `shower-ows`
+
+<aside class="warning">
+  Always include the <code>owner</code> relationship.
+</aside>
+
+## Get a deck
+
+> JSON Request
+
+```http
+GET <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+Accept: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_deck %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user_404 %>
+```
+
+> HTML Request
+
+```http
+GET <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+Content-Type: text/html
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: text/html
+```
+
+```html
+<%= api_response :get_deck, :html %>
+```
+
+This endpoint retrieves a deck. Response body media type (`Accept` header) determines what kind of data you get: `application/vnd.api+json` retrieves deck metadata, `text/html` retrieves the deck's contents.
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
+</aside>
+
+## Update a deck
+
+> JSON Request
+
+```http
+PATCH <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_request :patch_deck %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_deck %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :patch_deck_400 %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :patch_deck_422 %>
+```
+
+> HTML Request
+
+```http
+PATCH <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+Content-Type: text/html
+```
+
+```html
+<%= api_request :patch_deck, :html %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 204 No Content
+```
+
+This endpoint updates a deck. Request body media type (`Content-Type` header) determines what kind of data you update: `application/vnd.api+json` updates deck metadata, `text/html` updates the deck's contents.
+
+
+**Request parameters**
+
+See <a href="#create-a-deck">Create a deck</a>.
+
+## Delete a deck
+
+> Request
+
+```http
+DELETE <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+```
+
+> Success response
+
+```http
+HTTP/1.1 204 No Content
+Content-Type: application/vnd.api+json
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user_404 %>
+```
+
+This endpoint deletes a deck.
