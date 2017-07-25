@@ -1,0 +1,181 @@
+# Users
+
+## Get all users
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>users HTTP/1.1
+Accept: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+> Response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_users %>
+```
+
+This endpoint retrieves all visible users.
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data.
+</aside>
+
+## Create a user
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>users HTTP/1.1
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_request :post_users %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :post_users_422 %>
+```
+
+This endpoint creates a user. A user's email has to be confirmed in order to obtain a token.
+
+<aside class="notice">
+  This endpoint does not require authentication.
+</aside>
+
+## Get a user
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>users/1 HTTP/1.1
+Accept: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user_404 %>
+```
+
+This endpoint retrieves a user.
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data.
+</aside>
+
+## Update a user
+
+> Request
+
+```http
+PATCH <%= current_page.data.endpoint %>users/1 HTTP/1.1
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_request :patch_user %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 400 Bad Request
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :patch_user_400 %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :patch_user_422 %>
+```
+
+This endpoint updates a user.
+
+## Delete a user
+
+> Request
+
+```http
+DELETE <%= current_page.data.endpoint %>users/1 HTTP/1.1
+```
+
+> Success response
+
+```http
+HTTP/1.1 204 No Content
+Content-Type: application/vnd.api+json
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user_404 %>
+```
+
+This endpoint deletes a user.

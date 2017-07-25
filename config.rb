@@ -47,3 +47,13 @@ end
 # Deploy Configuration
 # If you want Middleman to listen on a different port, you can set that below
 set :port, 4567
+
+helpers do
+  def api_response(name_sym)
+    File.read File.join root, 'examples', 'responses', "#{name_sym.to_s}.json"
+  end
+
+  def api_request(name_sym)
+    File.read File.join root, 'examples', 'requests', "#{name_sym.to_s}.json"
+  end
+end
