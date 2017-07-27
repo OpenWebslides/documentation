@@ -1,0 +1,13 @@
+{
+    "errors": [
+        {
+            "title": "Invalid filename",
+            "detail": "Invalid filename",
+            "code": "106",
+            "status": "422"
+        }
+    ],
+    "error": "Invalid filename",
+    "success": false,
+    "preventRetry": true
+}

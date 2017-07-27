@@ -1,0 +1,94 @@
+# Conversions API
+
+## Create a conversion
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>conversions HTTP/1.1
+Content-Type: multipart/form-data; boundary=---------------------------9051914041544843365972754266
+
+-----------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="qqfilename"
+
+foo.pptx
+-----------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="foo"; filename="foo.pptx"
+Content-Type: text/plain
+
+Content of foo.pptx
+-----------------------------9051914041544843365972754266--
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :post_conversion_201 %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_response :post_conversion_422 %>
+```
+
+This endpoint queues a conversion
+
+**Request parameters**
+
+Parameter | Description
+----------|------------
+`qqfilename` | <span class="badge badge-danger">required</span> Filename from which the deck name will be inferred
+`qqfile` | <span class="badge badge-danger">required</span> Multipart-encoded file
+
+## Get a conversion
+
+> JSON Request
+
+```http
+GET <%= current_page.data.endpoint %>conversions/1 HTTP/1.1
+Accept: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_conversion %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :get_user_404 %>
+```
+
+This endpoint retrieves a conversion.
+
+**Response parameters**
+
+Parameter | Description
+----------|------------
+`createdAt` | Creation date (UNIX timestamp without timezone)
+`name` | Original filename from which the deck name was inferred
+`status` | One of `queued`, `processing`, `success` or `error`
