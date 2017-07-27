@@ -139,6 +139,15 @@ Content-Type: text/html
 
 This endpoint retrieves a deck. Response body media type (`Accept` header) determines what kind of data you get: `application/vnd.api+json` retrieves deck metadata, `text/html` retrieves the deck's contents.
 
+**Response parameters**
+
+Parameter | Description
+----------|------------
+`name` | Deck name
+`state` | Access level, one of `public_access`, `protected_access`, `private_access`
+`description` | Deck description
+`template` | Deck template
+
 <aside class="notice">
   This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
 </aside>
