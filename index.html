@@ -722,6 +722,28 @@ The deployment can be configured by copying the provided <code class="prettyprin
 </span></code></pre>
 <p>This endpoint retrieves a user.</p>
 
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">first_name</code></td>
+<td>First name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">last_name</code></td>
+<td>Last name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">email</code></td>
+<td>Email, omitted when unauthenticated</td>
+</tr>
+</tbody></table>
+
 <aside class="notice">
   This endpoint does not require authentication. However, authenticated requests might receive different data.
 </aside>
@@ -1383,6 +1405,32 @@ The deployment can be configured by copying the provided <code class="prettyprin
 </code></pre>
 <p>This endpoint retrieves a deck. Response body media type (<code class="prettyprint">Accept</code> header) determines what kind of data you get: <code class="prettyprint">application/vnd.api+json</code> retrieves deck metadata, <code class="prettyprint">text/html</code> retrieves the deck&rsquo;s contents.</p>
 
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>Deck name</td>
+</tr>
+<tr>
+<td><code class="prettyprint">state</code></td>
+<td>Access level, one of <code class="prettyprint">public_access</code>, <code class="prettyprint">protected_access</code>, <code class="prettyprint">private_access</code></td>
+</tr>
+<tr>
+<td><code class="prettyprint">description</code></td>
+<td>Deck description</td>
+</tr>
+<tr>
+<td><code class="prettyprint">template</code></td>
+<td>Deck template</td>
+</tr>
+</tbody></table>
+
 <aside class="notice">
   This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
 </aside>
@@ -1543,11 +1591,188 @@ The deployment can be configured by copying the provided <code class="prettyprin
 </span></code></pre>
 <p>This endpoint deletes a deck.</p>
 
+          <h1 id="conversions-api">Conversions API</h1>
+
+<h2 id="create-a-conversion">Create a conversion</h2>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/conversions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data; boundary=---------------------------9051914041544843365972754266</span>
+
+-----------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="qqfilename"
+
+foo.pptx
+-----------------------------9051914041544843365972754266
+Content-Disposition: form-data; name="foo"; filename="foo.pptx"
+Content-Type: text/plain
+
+Content of foo.pptx
+-----------------------------9051914041544843365972754266--
+</code></pre>
+<blockquote>
+<p>Success response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conversions"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queued"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"deck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/deck"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/deck"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Failure response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid filename"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid filename"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid filename"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"preventRetry"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint queues a conversion</p>
+
+<p><strong>Request parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">qqfilename</code></td>
+<td><span class="badge badge-danger">required</span> Filename from which the deck name will be inferred</td>
+</tr>
+<tr>
+<td><code class="prettyprint">qqfile</code></td>
+<td><span class="badge badge-danger">required</span> Multipart-encoded file</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-a-conversion">Get a conversion</h2>
+
+<blockquote>
+<p>JSON Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/conversions/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
+</code></pre>
+<blockquote>
+<p>Success response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conversions"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queued"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"deck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/deck"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/deck"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Failure response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Record not found"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The record identified by 1 could not be found."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint retrieves a conversion.</p>
+
+<p><strong>Response parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">createdAt</code></td>
+<td>Creation date (UNIX timestamp without timezone)</td>
+</tr>
+<tr>
+<td><code class="prettyprint">name</code></td>
+<td>Original filename from which the deck name was inferred</td>
+</tr>
+<tr>
+<td><code class="prettyprint">status</code></td>
+<td>One of <code class="prettyprint">queued</code>, <code class="prettyprint">processing</code>, <code class="prettyprint">success</code> or <code class="prettyprint">error</code></td>
+</tr>
+</tbody></table>
+
           <h1 id="errors">Errors</h1>
 
 <h2 id="http-status-code">HTTP status code</h2>
-
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&lsquo;s frontmatter. Files are included in the order listed.</aside>
 
 <p>The API uses the following HTTP error codes:</p>
 
