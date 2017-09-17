@@ -1,0 +1,21 @@
+# Authentication
+
+```http
+GET <%= current_page.data.endpoint %>users HTTP/1.1
+Accept: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+> Don't forget to replace `TOKEN` with the JWT obtained from the [Token API](#token-api)
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+Content-Length: 138
+```
+
+The Open Webslides API uses [JSON Web Tokens](https://jwt.io/) as authentication mechanism. The API expects the token to be included in all API requests on protected endpoints as an `Authorization` header in the bearer token format. The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an `Authorization` header.
+
+<aside class="notice">
+  You must replace the JWT with a JWT obtained from the <a href="#token-api">Token API</a>.
+</aside>
