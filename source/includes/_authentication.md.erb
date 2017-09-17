@@ -1,4 +1,4 @@
-# Authentication
+# Authentication API
 
 ```http
 GET <%= current_page.data.endpoint %>users HTTP/1.1
@@ -14,8 +14,87 @@ Content-Type: application/vnd.api+json
 Content-Length: 138
 ```
 
-The Open Webslides API uses [JSON Web Tokens](https://jwt.io/) as authentication mechanism. The API expects the token to be included in all API requests on protected endpoints as an `Authorization` header in the bearer token format. The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an `Authorization` header.
+The Open Webslides API uses [JSON Web Tokens](https://jwt.io/) (JWTs) as authentication mechanism. The API expects the token to be included in all API requests on protected endpoints as an `Authorization` header in the bearer token format. The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an `Authorization` header.
 
 <aside class="notice">
   You must replace the JWT with a JWT obtained from the <a href="#token-api">Token API</a>.
 </aside>
+
+# Token API
+
+## Create a token (sign in)
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>token HTTP/1.1
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_request :post_token %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_response :get_user %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 401 Unauthorized
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :post_token_401 %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 403 Forbidden
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :post_token_403 %>
+```
+
+This endpoint creates a token (sign in a user).
+
+## Delete a token (sign out)
+
+> Request
+
+```http
+DELETE <%= current_page.data.endpoint %>token HTTP/1.1
+Authorization: Bearer TOKEN
+```
+
+> Success response
+
+```http
+HTTP/1.1 204 No Content
+```
+
+> Failure response
+
+```http
+HTTP/1.1 401 Unauthorized
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response :delete_token_401 %>
+```
+
+This endpoint deletes a token (sign out a user). After this call, all previously requested tokens are no longer valid.

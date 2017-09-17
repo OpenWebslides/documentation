@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "title": "Create unauthorized",
+      "detail": "You don't have permission to create this token.",
+      "code": "401",
+      "status": "401"
+    }
+  ]
+}

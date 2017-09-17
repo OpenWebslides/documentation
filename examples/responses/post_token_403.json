@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "title": "Account not confirmed",
+      "detail": "Your account has not been confirmed yet.",
+      "code": "403",
+      "status": "403"
+    }
+  ]
+}
