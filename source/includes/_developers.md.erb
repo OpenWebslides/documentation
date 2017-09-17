@@ -1,0 +1,17 @@
+# Information for developers
+
+## Rake tasks
+
+```sh
+$ bundle exec rails db:create       # Create database
+$ bundle exec rails db:migrate      # Migrate database
+$ bundle exec rails db:drop         # Drop database
+$ bundle exec rails db:setup        # Create database and load schema
+$ bundle exec rails db:reset        # Drop and migrate database
+$ bundle exec rails db:clear        # Delete all data in the database
+$ bundle exec rails db:sample       # Generate random sample data
+```
+
+<aside class="notice">
+  Suffix every command with `RAILS_ENV=test` to operate on the test database.
+</aside>

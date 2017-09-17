@@ -5,6 +5,8 @@ toc_footers:
   - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
 
 includes:
+  - administrators
+  - developers
   - users
   - decks
   - conversions
@@ -59,82 +61,6 @@ State | Description
 |                   | Member            |                       |
 |                   | Collaborator      | read, write           |
 |                   | Owner             | read, write, admin    |
-
-# Setup for administrators
-
-## Installation
-
-```shell
-$ git clone https://github.com/OpenWebslides/OpenWebslides.git
-$ cd OpenWebslides
-```
-
-```shell
-$ docker-compose up --build
-```
-
-```shell
-$ docker-compose exec postgres psql -U postgres -c \
-  "CREATE ROLE openwebslides WITH ENCRYPTED PASSWORD 'openwebslides' LOGIN;"
-```
-
-```shell
-$ docker-compose exec postgres psql -U postgres -c \
-  "CREATE DATABASE openwebslides OWNER openwebslides;"
-```
-
-```shell
-$ docker-compose restart
-```
-
-The platform is built on the Docker container software, and uses the docker-compose utility to orchestrate the different services within the platform. This allows server administrators to run the platform as a contained package, without interfering with already installed system applications and libraries.
-
-The machine-specific data is stored on several Docker volumes, mounted in the relevant containers.
-
-Volume | Description
---------- | ------- | -----------
-data | Contains the local repositories
-postgres | Contains the PostgreSQL database
-redis | Contains the Redis database
-_public_ | Contains the publicly served assets (regenerated on every build)
-
-Only the first three volumes contain mission-critical data and should be backed up. The _public_ volume is used by the nginx container to serve the static assets.
-
-**Clone the repository**
-
-Clone the [repository](https://github.com/OpenWebslides/OpenWebslides) to a local directory.
-
-**Build and start the Docker containers**
-
-Using docker-compose, start the various services.
-
-**Create database credentials**
-
-On the first run, the database will be empty. Create a user and put it in the `openwebslides.env` file.
-Create a database for this user too and put it in the `openwebslides.env` file.
-
-Finally, restart all services to use the new `openwebslides.env`. The platform is now available on <a href="http://localhost/">http://localhost/</a>
-
-## Configuration
-
-```shell
-$ cp openwebslides.env.example openwebslides.env
-```
-
-The platform's features can be configured by customizing the `config/openwebslides.yml` file.
-The deployment can be configured by copying the provided `openwebslides.env.example` to `openwebslides.env` and customizing this file. Docker-compose will then automatically use this file for the relevant containers.
-
-## Backup
-
-Persistent critical data is stored in the following systems:
-
-- PostgreSQL: relational data, deck metadata
-- `data/`: local repositories
-
-Additional non-critical data is stored in the following systems:
-
-- Redis: conversion queue
-- `tmp/`: temporary runtime data, including uploaded files for conversion queue
 
 # Authentication
 
