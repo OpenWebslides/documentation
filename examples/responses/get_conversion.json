@@ -21,6 +21,9 @@
           "related": "http://localhost:5000/api/conversions/1/user"
         }
       }
+    },
+    "meta": {
+      "createdAt": "1503308394"
     }
   }
 }
