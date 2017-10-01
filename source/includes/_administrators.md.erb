@@ -52,7 +52,7 @@ Using docker-compose, start the various services.
 On the first run, the database will be empty. Create a user and put it in the `openwebslides.env` file.
 Create a database for this user too and put it in the `openwebslides.env` file.
 
-Finally, restart all services to use the new `openwebslides.env`. The platform is now available on <a href="http://localhost/">http://localhost/</a>
+Finally, restart all services to use the new `openwebslides.env`. The platform is now available on <a href="http://localhost/">http://localhost/</a>.
 
 ## Configuration
 
@@ -62,6 +62,10 @@ $ cp openwebslides.env.example openwebslides.env
 
 The platform's features can be configured by customizing the `config/openwebslides.yml` file.
 The deployment can be configured by copying the provided `openwebslides.env.example` to `openwebslides.env` and customizing this file. Docker-compose will then automatically use this file for the relevant containers.
+
+### TLS
+
+The setup optionally supports using secured communication over TLS. In order to enable this, deploy the application with `docker-compose` including the `docker-compose.prod.yml` override file. This enables an alternative NGINX configuration file using TLS (`nginx/nginx.prod.conf`). Adjust this file to match your domain and certificate locations.
 
 ## Backup
 
