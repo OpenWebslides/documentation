@@ -84,3 +84,15 @@ $ docker build -t openwebslides/openwebslides:latest .
 # ATTENTION: to enable TLS communication, an alternative docker-compose should be specified
 $ docker-compose down; docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 ```
+
+## Tips
+
+```shell
+## Opening a Rails console
+$ docker-compose exec app bundle exec rails console
+
+## Opening a shell to the `data/` directory
+$ docker-compose exec app bash
+# cd data/
+# ls
+```
