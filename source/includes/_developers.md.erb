@@ -1,5 +1,56 @@
 # Information for developers
 
+## Project structure
+
+```shell
+.
+├── app                               # API server code
+│   ├── commands
+│   ├── controllers
+│   ├── errors
+│   ├── formatters
+│   ├── models
+│   ├── policies
+│   ├── resources
+│   ├── services
+│   ├── views
+│   └── workers
+├── bin                               # API server executables
+├── client                            # Web app code
+│   ├── app
+│   │   ├── actions
+│   │   ├── api
+│   │   ├── constants
+│   │   ├── containers
+│   │   ├── presentationals
+│   │   ├── reducers
+│   │   ├── sagas
+│   │   └── selectors
+│   ├── assets
+│   │   ├── files
+│   │   ├── fonts
+│   │   ├── images
+│   │   └── stylesheets
+│   ├── config
+│   ├── lib
+│   │   ├── content-editable
+│   │   ├── content-item-container
+│   │   ├── convert-to-print
+│   │   ├── convert-to-state
+│   │   └── state-traversal
+│   ├── locales
+│   │   └── en
+│   └── specs
+├── config                            # API server configuration
+├── data                              # Deck repositories
+├── db                                # Database configuration
+├── lib                               # API server extra modules
+│   └── assets                          # Conversion tool, deck templates
+├── nginx                             # Web server configuration
+├── spec                              # API server tests
+└── tmp                               # Temporary files
+```
+
 ## Rake tasks
 
 ```sh
