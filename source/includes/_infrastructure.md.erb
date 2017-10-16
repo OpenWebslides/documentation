@@ -1,0 +1,86 @@
+# Infrastructure
+
+The current Open Webslides infrastructure consists of three environments (servers):
+
+## owsdev
+
+This is the development server. Use this server when developing features and fixes. The version of the platform and stability thereof are not guaranteed. The database and repositories may be wiped at any time.
+
+**UGent CAS**: The server should run a version **without** the UGent CAS-functionality, allowing local clients to manipulate the API.
+
+**Access**: All developers should have access to this server using the `openwebslides@owsdev.ugent.be` user and their private key. If this is not the case, contact your system administrator and include your public key.
+
+<aside class="warning">
+  Do not store any important data on this server, as it may be wiped at any moment (usually not without notice)
+</aside>
+
+## owsqas
+
+This is the testing/QA server. Deploy to this server when testing releases before merging. The server should run a stable version.
+
+**UGent CAS**: The server should run a version **with** the UGent CAS-functionality, in order to mirror the production environment.
+
+**Access**: All developers should have access to this server using the `openwebslides@owsqas.ugent.be` user and their private key. If this is not the case, contact your system administrator and include your public key.
+
+<aside class="warning">
+  Do not store any important data on this server, as it will be wiped before testing new releases
+</aside>
+
+## owsprod
+
+This is the production server. Only deploy stable, fully tested releases to this server, and only from the `master`-branch.
+
+**UGent CAS**: The server runs a version **with** the UGent CAS-functionality.
+
+**Access**: Only Rein and Florian have access to this server. Direct your queries to either if you want to deploy a release.
+
+<aside class="notice">
+  Do not use this server for development purposes. Queries to manipulate data manually will be ignored
+</aside>
+
+## Deploying on owsdev/owsqas
+
+```shell
+# SSH into the server
+$ ssh openwebslides@owsdev.ugent.be -i /path/to/keyfile
+
+# You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides
+$ cd OpenWebslides
+
+# This is basically just the cloned git repository. You can now navigate to any branch/commit you want to
+$ git branch
+* (detached from 038655f)
+  master
+  no-cas
+
+$ git fetch --all
+$ git checkout b5c3912
+
+# Build the application image
+$ docker build -t openwebslides/openwebslides:latest .
+
+# Bring down the running application and restart it with the new image
+$ docker-compose down; docker-compose up -d
+```
+
+## Deploying on owsprod
+
+```shell
+# SSH into the server
+$ ssh openwebslides@owsprod.ugent.be -i /path/to/keyfile
+
+# You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides
+$ cd OpenWebslides
+
+# This is again just the cloned git repository, however you should always be on the `master` branch and you should only `git pull`
+$ git pull
+
+# Build the application image
+$ docker build -t openwebslides/openwebslides:latest .
+
+# Before the next step, make sure nobody is using the platform. Preferably drop a message in the relevant slack channels
+
+# Bring down the running application and restart it with the new image
+# ATTENTION: to enable TLS communication, an alternative docker-compose should be specified
+$ docker-compose down; docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+```
