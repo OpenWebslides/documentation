@@ -233,6 +233,10 @@
 
 <p>The platform consists of two components: the backend and the frontend. The backend is written as a monolithic Ruby on Rails application, which exposes a RESTful API to the client. The frontend is written in React and consumes the RESTful API.</p>
 
+<h2 id="application-architecture">Application architecture</h2>
+
+<p><img src="images/architecture.png" alt="Architecture" /></p>
+
 <h2 id="data-model">Data model</h2>
 
 <p><img src="images/data_model.png" alt="Data model" /></p>
@@ -336,7 +340,7 @@
 </tr>
 </tbody></table>
 
-<h1 id="setup-for-administrators">Setup for administrators</h1>
+          <h1 id="setup-for-administrators">Setup for administrators</h1>
 
 <h2 id="installation">Installation</h2>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/OpenWebslides.git
@@ -391,13 +395,17 @@
 <p>On the first run, the database will be empty. Create a user and put it in the <code class="prettyprint">openwebslides.env</code> file.
 Create a database for this user too and put it in the <code class="prettyprint">openwebslides.env</code> file.</p>
 
-<p>Finally, restart all services to use the new <code class="prettyprint">openwebslides.env</code>. The platform is now available on <a href="http://localhost/">http://localhost/</a></p>
+<p>Finally, restart all services to use the new <code class="prettyprint">openwebslides.env</code>. The platform is now available on <a href="http://localhost/">http://localhost/</a>.</p>
 
 <h2 id="configuration">Configuration</h2>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>cp openwebslides.env.example openwebslides.env
 </code></pre>
 <p>The platform&rsquo;s features can be configured by customizing the <code class="prettyprint">config/openwebslides.yml</code> file.
 The deployment can be configured by copying the provided <code class="prettyprint">openwebslides.env.example</code> to <code class="prettyprint">openwebslides.env</code> and customizing this file. Docker-compose will then automatically use this file for the relevant containers.</p>
+
+<h3 id="tls">TLS</h3>
+
+<p>The setup optionally supports using secured communication over TLS. In order to enable this, deploy the application with <code class="prettyprint">docker-compose</code> including the <code class="prettyprint">docker-compose.prod.yml</code> override file. This enables an alternative NGINX configuration file using TLS (<code class="prettyprint">nginx/nginx.prod.conf</code>). Adjust this file to match your domain and certificate locations.</p>
 
 <h2 id="backup">Backup</h2>
 
@@ -415,7 +423,198 @@ The deployment can be configured by copying the provided <code class="prettyprin
 <li><code class="prettyprint">tmp/</code>: temporary runtime data, including uploaded files for conversion queue</li>
 </ul>
 
-<h1 id="authentication">Authentication</h1>
+<h2 id="import">Import</h2>
+
+<p>Importing an existing webslides deck is officially not supported. However, there is functionality available within the platform to do this.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># SSH into the platform</span>
+<span class="gp">$ </span>ssh openwebslides@owsdev.ugent.be
+<span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
+
+<span class="c"># Open up a Rails console</span>
+<span class="gp">$ </span>docker-compose <span class="nb">exec </span>app bundle <span class="nb">exec </span>rails console
+
+<span class="c"># Find the user to which the deck will belong</span>
+<span class="gp">&gt; </span>user <span class="o">=</span> User.find_by :email <span class="o">=</span>&gt; <span class="s1">'foo@bar.com'</span>
+
+<span class="c"># Import the deck</span>
+DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&gt; user, :name <span class="o">=</span>&gt; <span class="s1">'Deck name'</span><span class="o">)</span>.import<span class="o">(</span><span class="s1">'http://path/to/git/repository.git'</span><span class="o">)</span>
+</code></pre>
+<p>If you encounter any errors while importing, the deck will not be created. Those errors usually exist because an asset reference was invalid (see stacktrace and exception message). Fix these references in the repository&rsquo;s index.html and commit these changes before trying again.</p>
+<pre class="highlight ruby tab-ruby"><code><span class="c1"># Snippet for importing all DI decks</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 1 - introduction only'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/Digital-imaging-techniques--part-1-introduction-only.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 1.2 basic principles'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/Digital_imaging_techniques_part_1-2_basic_principles.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 1.3 processing and analysis'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/Digital_imaging_techniques_part_1-3_processing_and_analysis.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.1 SEM intro'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-1_SEM_intro.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.2 SEM principles'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-2_SEM_principles.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.3 ESEM'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-3_ESEM.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.1 CT basic principles'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-1_CT_basic_principles.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.2 source and detector'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-2_source_and_detector.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.3 artifacts and considerations'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-3_artifacts_and_considerations.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.4 applications A'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-4_applications.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.5 applications B'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-5_applications_B.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.6 applications C'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-6_applications_C.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 4.1 NI Eberhard'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_4-1_NI_Eberhard.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 4.2 NI'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_4-2_NI.git'</span><span class="p">)</span>
+<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 4.3 NI euromat'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_4-3_NI_euromat.git'</span><span class="p">)</span>
+</code></pre>
+          <h1 id="infrastructure">Infrastructure</h1>
+
+<p>The current Open Webslides infrastructure consists of three environments (servers):</p>
+
+<h2 id="owsdev">owsdev</h2>
+
+<p>This is the development server. Use this server when developing features and fixes. The version of the platform and stability thereof are not guaranteed. The database and repositories may be wiped at any time.</p>
+
+<p><strong>UGent CAS</strong>: The server should run a version <strong>without</strong> the UGent CAS-functionality, allowing local clients to manipulate the API.</p>
+
+<p><strong>Access</strong>: All developers should have access to this server using the <code class="prettyprint">openwebslides@owsdev.ugent.be</code> user and their private key. If this is not the case, contact your system administrator and include your public key.</p>
+
+<aside class="warning">
+  Do not store any important data on this server, as it may be wiped at any moment (usually not without notice)
+</aside>
+
+<h2 id="owsqas">owsqas</h2>
+
+<p>This is the testing/QA server. Deploy to this server when testing releases before merging. The server should run a stable version.</p>
+
+<p><strong>UGent CAS</strong>: The server should run a version <strong>with</strong> the UGent CAS-functionality, in order to mirror the production environment.</p>
+
+<p><strong>Access</strong>: All developers should have access to this server using the <code class="prettyprint">openwebslides@owsqas.ugent.be</code> user and their private key. If this is not the case, contact your system administrator and include your public key.</p>
+
+<aside class="warning">
+  Do not store any important data on this server, as it will be wiped before testing new releases
+</aside>
+
+<h2 id="owsprod">owsprod</h2>
+
+<p>This is the production server. Only deploy stable, fully tested releases to this server, and only from the <code class="prettyprint">master</code>-branch.</p>
+
+<p><strong>UGent CAS</strong>: The server runs a version <strong>with</strong> the UGent CAS-functionality.</p>
+
+<p><strong>Access</strong>: Only Rein and Florian have access to this server. Direct your queries to either if you want to deploy a release.</p>
+
+<aside class="notice">
+  Do not use this server for development purposes. Queries to manipulate data manually will be ignored
+</aside>
+
+<h2 id="deploying-on-owsdev-owsqas">Deploying on owsdev/owsqas</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
+<span class="gp">$ </span>ssh openwebslides@owsdev.ugent.be -i /path/to/keyfile
+
+<span class="c"># You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides</span>
+<span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
+
+<span class="c"># This is basically just the cloned git repository. You can now navigate to any branch/commit you want to</span>
+<span class="gp">$ </span>git branch
+<span class="k">*</span> <span class="o">(</span>detached from 038655f<span class="o">)</span>
+  master
+  no-cas
+
+<span class="gp">$ </span>git fetch --all
+<span class="gp">$ </span>git checkout b5c3912
+
+<span class="c"># Build the application image</span>
+<span class="gp">$ </span>docker build -t openwebslides/openwebslides:latest .
+
+<span class="c"># Bring down the running application and restart it with the new image</span>
+<span class="gp">$ </span>docker-compose down; docker-compose up -d
+</code></pre>
+<h2 id="deploying-on-owsprod">Deploying on owsprod</h2>
+<pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
+<span class="gp">$ </span>ssh openwebslides@owsprod.ugent.be -i /path/to/keyfile
+
+<span class="c"># You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides</span>
+<span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
+
+<span class="c"># This is again just the cloned git repository, however you should always be on the `master` branch and you should only `git pull`</span>
+<span class="gp">$ </span>git pull
+
+<span class="c"># Build the application image</span>
+<span class="gp">$ </span>docker build -t openwebslides/openwebslides:latest .
+
+<span class="c"># Before the next step, make sure nobody is using the platform. Preferably drop a message in the relevant slack channels</span>
+
+<span class="c"># Bring down the running application and restart it with the new image</span>
+<span class="c"># ATTENTION: to enable TLS communication, an alternative docker-compose should be specified</span>
+<span class="gp">$ </span>docker-compose down; docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+</code></pre>
+<h2 id="tips">Tips</h2>
+<pre class="highlight shell tab-shell"><code><span class="c">## Opening a Rails console</span>
+<span class="gp">$ </span>docker-compose <span class="nb">exec </span>app bundle <span class="nb">exec </span>rails console
+
+<span class="c">## Opening a shell to the `data/` directory</span>
+<span class="gp">$ </span>docker-compose <span class="nb">exec </span>app bash
+<span class="c"># cd data/</span>
+<span class="c"># ls</span>
+</code></pre>
+          <h1 id="information-for-developers">Information for developers</h1>
+
+<h2 id="project-structure">Project structure</h2>
+<pre class="highlight shell tab-shell"><code>.
+├── app                               <span class="c"># API server code</span>
+│   ├── commands
+│   ├── controllers
+│   ├── errors
+│   ├── formatters
+│   ├── models
+│   ├── policies
+│   ├── resources
+│   ├── services
+│   ├── views
+│   └── workers
+├── bin                               <span class="c"># API server executables</span>
+├── client                            <span class="c"># Web app code</span>
+│   ├── app
+│   │   ├── actions
+│   │   ├── api
+│   │   ├── constants
+│   │   ├── containers
+│   │   ├── presentationals
+│   │   ├── reducers
+│   │   ├── sagas
+│   │   └── selectors
+│   ├── assets
+│   │   ├── files
+│   │   ├── fonts
+│   │   ├── images
+│   │   └── stylesheets
+│   ├── config
+│   ├── lib
+│   │   ├── content-editable
+│   │   ├── content-item-container
+│   │   ├── convert-to-print
+│   │   ├── convert-to-state
+│   │   └── state-traversal
+│   ├── locales
+│   │   └── en
+│   └── specs
+├── config                            <span class="c"># API server configuration</span>
+├── data                              <span class="c"># Deck repositories</span>
+├── db                                <span class="c"># Database configuration</span>
+├── lib                               <span class="c"># API server extra modules</span>
+│   └── assets                          <span class="c"># Conversion tool, deck templates</span>
+├── nginx                             <span class="c"># Web server configuration</span>
+├── spec                              <span class="c"># API server tests</span>
+└── tmp                               <span class="c"># Temporary files</span>
+</code></pre>
+<h2 id="frontend-api-endpoint">Frontend API endpoint</h2>
+
+<p>The default API endpoint of the frontend stack is currently set to <code class="prettyprint">http://owsdev.ugent.be/api/</code> in the <code class="prettyprint">client/config/api.js</code> file. This file should almost never be changed. If you need to override the endpoint, copy (don&rsquo;t move) the <code class="prettyprint">client/config/config.js.erb</code> file to <code class="prettyprint">client/config/config.js</code>, and replace the embedded Ruby tag with another endpoint (don&rsquo;t forget the trailing <code class="prettyprint">/api/</code>). This file is ignored by git and should never be included in the repository, as it gets overwritten on every Docker execution.</p>
+
+<h2 id="rake-tasks">Rake tasks</h2>
+<pre class="highlight sh tab-shell"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:create       <span class="c"># Create database</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:migrate      <span class="c"># Migrate database</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:drop         <span class="c"># Drop database</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:setup        <span class="c"># Create database and load schema</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:reset        <span class="c"># Drop and migrate database</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:clear        <span class="c"># Delete all data in the database</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:sample       <span class="c"># Generate random sample data</span>
+</code></pre>
+<aside class="notice">
+  Suffix every command with `RAILS_ENV=test` to operate on the test database.
+</aside>
+
+          <h1 id="authentication-api">Authentication API</h1>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
@@ -427,11 +626,135 @@ The deployment can be configured by copying the provided <code class="prettyprin
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">138</span>
 </code></pre>
-<p>The Open Webslides API uses <a href="https://jwt.io/">JSON Web Tokens</a> as authentication mechanism. The API expects the token to be included in all API requests on protected endpoints as an <code class="prettyprint">Authorization</code> header in the bearer token format. The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an <code class="prettyprint">Authorization</code> header.</p>
+<p>The Open Webslides API uses <a href="https://jwt.io/">JSON Web Tokens</a> (JWTs) as authentication mechanism. The API expects the token to be included in all API requests on protected endpoints as an <code class="prettyprint">Authorization</code> header in the bearer token format. The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an <code class="prettyprint">Authorization</code> header.</p>
 
 <aside class="notice">
   You must replace the JWT with a JWT obtained from the <a href="#token-api">Token API</a>.
 </aside>
+
+<h1 id="token-api">Token API</h1>
+
+<h2 id="create-a-token-sign-in">Create a token (sign in)</h2>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tokens"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"abcd1234"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Success response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/decks"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/decks"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/contributions"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/contributions"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Failure response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Create unauthorized"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You don't have permission to create this token."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Failure response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">403</span> <span class="ne">Forbidden</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Account not confirmed"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Your account has not been confirmed yet."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"403"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"403"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint creates a token (sign in a user).</p>
+
+<h2 id="delete-a-token-sign-out">Delete a token (sign out)</h2>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://api.openwebslides.org/api/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
+</code></pre>
+<blockquote>
+<p>Success response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre>
+<blockquote>
+<p>Failure response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">401</span> <span class="ne">Unauthorized</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Destroy unauthorized"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"You don't have permission to destroy this token."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"401"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<p>This endpoint deletes a token (sign out a user). After this call, all previously requested tokens are no longer valid.</p>
 
           <h1 id="users-api">Users API</h1>
 
@@ -1724,6 +2047,9 @@ Content of foo.pptx
           </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/user"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1503308394"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1757,10 +2083,6 @@ Content of foo.pptx
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">createdAt</code></td>
-<td>Creation date (UNIX timestamp without timezone)</td>
-</tr>
-<tr>
 <td><code class="prettyprint">name</code></td>
 <td>Original filename from which the deck name was inferred</td>
 </tr>
@@ -1769,6 +2091,81 @@ Content of foo.pptx
 <td>One of <code class="prettyprint">queued</code>, <code class="prettyprint">processing</code>, <code class="prettyprint">success</code> or <code class="prettyprint">error</code></td>
 </tr>
 </tbody></table>
+
+<p><strong>Metadata parameters</strong></p>
+
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">createdAt</code></td>
+<td>Creation date (UNIX timestamp without timezone)</td>
+</tr>
+</tbody></table>
+
+          <h1 id="annotations-api">Annotations API</h1>
+
+<p>The annotations API is made up of two distinct entities: conversations and comments. Both have specific properties on top of the common properties (see tables below).
+Annotations are attached to a certain <code class="prettyprint">contentItemId</code>. At the moment, the <code class="prettyprint">contentItemId</code> references a slide number, but in the future this might reflect a unique reference to an object on a slide.</p>
+
+<p>Every deck has a number of conversations attached to it. Comments are (non-recursively) nested under a conversation. The child comments&rsquo; <code class="prettyprint">contentItemId</code> must be equal to the parent conversation.</p>
+
+<p>Conversations are secret by default, they cannot be seen by anyone except the user who created them. It is not possible to add comments to secret conversations.</p>
+
+<h2 id="properties">Properties</h2>
+
+<h3 id="annotation">Annotation</h3>
+
+<p>Common properties</p>
+
+<table><thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">contentItemId</code></td>
+<td>Reference to slide or object</td>
+</tr>
+<tr>
+<td><code class="prettyprint">rating</code></td>
+<td>Aggregated rating count</td>
+</tr>
+<tr>
+<td><code class="prettyprint">rated</code></td>
+<td>Whether or not the current user has rated the annotation</td>
+</tr>
+<tr>
+<td><code class="prettyprint">edited</code></td>
+<td>Whether or not the annotation has been edited after creation*</td>
+</tr>
+<tr>
+<td><code class="prettyprint">flagged</code></td>
+<td>Whether or not the annotation is flagged*</td>
+</tr>
+<tr>
+<td><code class="prettyprint">deleted</code></td>
+<td>Whether or not the annotation is deleted*</td>
+</tr>
+<tr>
+<td><code class="prettyprint">secret</code></td>
+<td>Whether or not the annotation is secret*</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li><code class="prettyprint">edited</code>, <code class="prettyprint">flagged</code>, <code class="prettyprint">deleted</code> and <code class="prettyprint">secret</code> are mutually exclusive</li>
+</ul>
+
+<h2 id="create-a-conversation">Create a conversation</h2>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
 
           <h1 id="errors">Errors</h1>
 
