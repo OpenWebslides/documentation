@@ -2,9 +2,9 @@
   "data": [
     {
       "id": "1",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/1"
+        "self": "http://localhost:5000/api/topics/1"
       },
       "attributes": {
         "name": "natus ut dolorem",
@@ -15,23 +15,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/1/relationships/owner",
-            "related": "http://localhost:5000/api/decks/1/owner"
+            "self": "http://localhost:5000/api/topics/1/relationships/owner",
+            "related": "http://localhost:5000/api/topics/1/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/1/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/1/collaborators"
+            "self": "http://localhost:5000/api/topics/1/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/1/collaborators"
           }
         }
       }
     },
     {
       "id": "3",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/3"
+        "self": "http://localhost:5000/api/topics/3"
       },
       "attributes": {
         "name": "minus qui rerum",
@@ -42,23 +42,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/3/relationships/owner",
-            "related": "http://localhost:5000/api/decks/3/owner"
+            "self": "http://localhost:5000/api/topics/3/relationships/owner",
+            "related": "http://localhost:5000/api/topics/3/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/3/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/3/collaborators"
+            "self": "http://localhost:5000/api/topics/3/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/3/collaborators"
           }
         }
       }
     },
     {
       "id": "4",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/4"
+        "self": "http://localhost:5000/api/topics/4"
       },
       "attributes": {
         "name": "dolorum porro perferendis",
@@ -69,23 +69,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/4/relationships/owner",
-            "related": "http://localhost:5000/api/decks/4/owner"
+            "self": "http://localhost:5000/api/topics/4/relationships/owner",
+            "related": "http://localhost:5000/api/topics/4/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/4/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/4/collaborators"
+            "self": "http://localhost:5000/api/topics/4/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/4/collaborators"
           }
         }
       }
     },
     {
       "id": "10",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/10"
+        "self": "http://localhost:5000/api/topics/10"
       },
       "attributes": {
         "name": "iure deleniti at",
@@ -96,23 +96,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/10/relationships/owner",
-            "related": "http://localhost:5000/api/decks/10/owner"
+            "self": "http://localhost:5000/api/topics/10/relationships/owner",
+            "related": "http://localhost:5000/api/topics/10/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/10/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/10/collaborators"
+            "self": "http://localhost:5000/api/topics/10/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/10/collaborators"
           }
         }
       }
     },
     {
       "id": "14",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/14"
+        "self": "http://localhost:5000/api/topics/14"
       },
       "attributes": {
         "name": "rerum natus quaerat",
@@ -123,23 +123,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/14/relationships/owner",
-            "related": "http://localhost:5000/api/decks/14/owner"
+            "self": "http://localhost:5000/api/topics/14/relationships/owner",
+            "related": "http://localhost:5000/api/topics/14/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/14/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/14/collaborators"
+            "self": "http://localhost:5000/api/topics/14/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/14/collaborators"
           }
         }
       }
     },
     {
       "id": "17",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/17"
+        "self": "http://localhost:5000/api/topics/17"
       },
       "attributes": {
         "name": "quaerat sed recusandae",
@@ -150,23 +150,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/17/relationships/owner",
-            "related": "http://localhost:5000/api/decks/17/owner"
+            "self": "http://localhost:5000/api/topics/17/relationships/owner",
+            "related": "http://localhost:5000/api/topics/17/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/17/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/17/collaborators"
+            "self": "http://localhost:5000/api/topics/17/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/17/collaborators"
           }
         }
       }
     },
     {
       "id": "18",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/18"
+        "self": "http://localhost:5000/api/topics/18"
       },
       "attributes": {
         "name": "et sapiente non",
@@ -177,23 +177,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/18/relationships/owner",
-            "related": "http://localhost:5000/api/decks/18/owner"
+            "self": "http://localhost:5000/api/topics/18/relationships/owner",
+            "related": "http://localhost:5000/api/topics/18/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/18/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/18/collaborators"
+            "self": "http://localhost:5000/api/topics/18/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/18/collaborators"
           }
         }
       }
     },
     {
       "id": "21",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/21"
+        "self": "http://localhost:5000/api/topics/21"
       },
       "attributes": {
         "name": "ex vel non",
@@ -204,23 +204,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/21/relationships/owner",
-            "related": "http://localhost:5000/api/decks/21/owner"
+            "self": "http://localhost:5000/api/topics/21/relationships/owner",
+            "related": "http://localhost:5000/api/topics/21/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/21/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/21/collaborators"
+            "self": "http://localhost:5000/api/topics/21/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/21/collaborators"
           }
         }
       }
     },
     {
       "id": "25",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/25"
+        "self": "http://localhost:5000/api/topics/25"
       },
       "attributes": {
         "name": "repudiandae nam tempora",
@@ -231,23 +231,23 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/25/relationships/owner",
-            "related": "http://localhost:5000/api/decks/25/owner"
+            "self": "http://localhost:5000/api/topics/25/relationships/owner",
+            "related": "http://localhost:5000/api/topics/25/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/25/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/25/collaborators"
+            "self": "http://localhost:5000/api/topics/25/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/25/collaborators"
           }
         }
       }
     },
     {
       "id": "26",
-      "type": "decks",
+      "type": "topics",
       "links": {
-        "self": "http://localhost:5000/api/decks/26"
+        "self": "http://localhost:5000/api/topics/26"
       },
       "attributes": {
         "name": "exercitationem dolores libero",
@@ -258,22 +258,22 @@
       "relationships": {
         "owner": {
           "links": {
-            "self": "http://localhost:5000/api/decks/26/relationships/owner",
-            "related": "http://localhost:5000/api/decks/26/owner"
+            "self": "http://localhost:5000/api/topics/26/relationships/owner",
+            "related": "http://localhost:5000/api/topics/26/owner"
           }
         },
         "collaborators": {
           "links": {
-            "self": "http://localhost:5000/api/decks/26/relationships/collaborators",
-            "related": "http://localhost:5000/api/decks/26/collaborators"
+            "self": "http://localhost:5000/api/topics/26/relationships/collaborators",
+            "related": "http://localhost:5000/api/topics/26/collaborators"
           }
         }
       }
     }
   ],
   "links": {
-    "first": "http://localhost:5000/api/decks?page%5Blimit%5D=10&page%5Boffset%5D=0",
-    "next": "http://localhost:5000/api/decks?page%5Blimit%5D=10&page%5Boffset%5D=10",
-    "last": "http://localhost:5000/api/decks?page%5Blimit%5D=10&page%5Boffset%5D=20"
+    "first": "http://localhost:5000/api/topics?page%5Blimit%5D=10&page%5Boffset%5D=0",
+    "next": "http://localhost:5000/api/topics?page%5Blimit%5D=10&page%5Boffset%5D=10",
+    "last": "http://localhost:5000/api/topics?page%5Blimit%5D=10&page%5Boffset%5D=20"
   }
 }

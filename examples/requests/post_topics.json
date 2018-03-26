@@ -1,9 +1,9 @@
 {
   "data": {
-    "type": "decks",
+    "type": "topics",
     "attributes": {
       "name": "Foo",
-      "description": "This is my first deck.",
+      "description": "This is my first topic.",
       "state": "public_access",
       "template": "shower-ows"
     },

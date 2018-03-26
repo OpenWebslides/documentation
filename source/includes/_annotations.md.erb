@@ -3,7 +3,7 @@
 The annotations API is made up of two distinct entities: conversations and comments. Both have specific properties on top of the common properties (see tables below).
 Annotations are attached to a certain `contentItemId`. At the moment, the `contentItemId` references a slide number, but in the future this might reflect a unique reference to an object on a slide.
 
-Every deck has a number of conversations attached to it. Comments are (non-recursively) nested under a conversation. The child comments' `contentItemId` must be equal to the parent conversation.
+Every topic has a number of conversations attached to it. Comments are (non-recursively) nested under a conversation. The child comments' `contentItemId` must be equal to the parent conversation.
 
 Conversations are secret by default, they cannot be seen by anyone except the user who created them. It is not possible to add comments to secret conversations.
 

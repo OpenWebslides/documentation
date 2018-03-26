@@ -12,10 +12,10 @@
         "lastName": "bar"
       },
       "relationships": {
-        "decks": {
+        "topics": {
           "links": {
-            "self": "http://localhost:5000/api/users/1/relationships/decks",
-            "related": "http://localhost:5000/api/users/1/decks"
+            "self": "http://localhost:5000/api/users/1/relationships/topics",
+            "related": "http://localhost:5000/api/users/1/topics"
           }
         },
         "contributions": {
@@ -38,10 +38,10 @@
         "lastName": "bar"
       },
       "relationships": {
-        "decks": {
+        "topics": {
           "links": {
-            "self": "http://localhost:5000/api/users/2/relationships/decks",
-            "related": "http://localhost:5000/api/users/2/decks"
+            "self": "http://localhost:5000/api/users/2/relationships/topics",
+            "related": "http://localhost:5000/api/users/2/topics"
           }
         },
         "contributions": {
@@ -64,10 +64,10 @@
         "lastName": "bar"
       },
       "relationships": {
-        "decks": {
+        "topics": {
           "links": {
-            "self": "http://localhost:5000/api/users/3/relationships/decks",
-            "related": "http://localhost:5000/api/users/3/decks"
+            "self": "http://localhost:5000/api/users/3/relationships/topics",
+            "related": "http://localhost:5000/api/users/3/topics"
           }
         },
         "contributions": {

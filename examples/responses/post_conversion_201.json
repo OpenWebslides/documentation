@@ -9,10 +9,10 @@
       "status": "queued"
     },
     "relationships": {
-      "deck": {
+      "topic": {
         "links": {
-          "self": "http://localhost:5000/api/conversions/1/relationships/deck",
-          "related": "http://localhost:5000/api/conversions/1/deck"
+          "self": "http://localhost:5000/api/conversions/1/relationships/topic",
+          "related": "http://localhost:5000/api/conversions/1/topic"
         }
       },
       "user": {

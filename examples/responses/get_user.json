@@ -11,10 +11,10 @@
       "lastName": "bar"
     },
     "relationships": {
-      "decks": {
+      "topics": {
         "links": {
-          "self": "http://localhost:5000/api/users/1/relationships/decks",
-          "related": "http://localhost:5000/api/users/1/decks"
+          "self": "http://localhost:5000/api/users/1/relationships/topics",
+          "related": "http://localhost:5000/api/users/1/topics"
         }
       },
       "contributions": {

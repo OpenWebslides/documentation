@@ -10,7 +10,7 @@ includes:
   - developers
   - authentication
   - users
-  - decks
+  - topics
   - conversions
   - annotations
   - errors
@@ -40,7 +40,7 @@ The platform consists of two components: the backend and the frontend. The backe
 
 ## Permission model
 
-A deck and its assets are protected by the `state` attribute. This attribute can have the following values:
+A topic and its assets are protected by the `state` attribute. This attribute can have the following values:
 
 State | Description
 -----------|-----------
@@ -49,12 +49,12 @@ State | Description
 `private` | Only visible to owner and collaborators
 
 <aside class="notice">
-  This access model will also be enforced in the backing store, e.g. protected and private decks will be stored in a private repository on GitHub.
+  This access model will also be enforced in the backing store, e.g. protected and private topics will be stored in a private repository on GitHub.
 </aside>
 
 **Permission table**
 
-| Deck access level | User access level | Resulting permissions |
+| Topic access level | User access level | Resulting permissions |
 | ----------------- | ----------------- | --------------------- |
 | Public            | Guest             | read                  |
 |                   | Member            | read                  |

@@ -1,11 +1,11 @@
-# Decks API
+# topics API
 
-## Get all decks
+## Get all topics
 
 > Request
 
 ```http
-GET <%= current_page.data.endpoint %>decks HTTP/1.1
+GET <%= current_page.data.endpoint %>topics HTTP/1.1
 Accept: application/vnd.api+json
 Authorization: Bearer TOKEN
 ```
@@ -18,26 +18,26 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_decks %>
+<%= api_response :get_topics %>
 ```
 
-This endpoint retrieves all visible decks.
+This endpoint retrieves all visible topics.
 
 <aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
 
-## Create a deck
+## Create a topic
 
 > Request
 
 ```http
-POST <%= current_page.data.endpoint %>decks HTTP/1.1
+POST <%= current_page.data.endpoint %>topics HTTP/1.1
 Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request :post_decks %>
+<%= api_request :post_topics %>
 ```
 
 > Success response
@@ -48,7 +48,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_deck %>
+<%= api_response :get_topic %>
 ```
 
 > Failure response
@@ -59,7 +59,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :post_decks_422 %>
+<%= api_response :post_topics_422 %>
 ```
 
 > Failure response
@@ -70,17 +70,17 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :post_decks_400 %>
+<%= api_response :post_topics_400 %>
 ```
 
-This endpoint creates a deck.
+This endpoint creates a topic.
 
 **Request parameters**
 
 Parameter | Description
 ----------|------------
-`name` | <span class="badge badge-danger">required</span> Name of the deck
-`description` | Description of the deck
+`name` | <span class="badge badge-danger">required</span> Name of the topic
+`description` | Description of the topic
 `state` | Access level (See <a href="#permission-model">Permission model</a>), defaults to `public_access`
 `template` | Template name used for rendering, defaults to `shower-ows`
 
@@ -88,12 +88,12 @@ Parameter | Description
   Always include the <code>owner</code> relationship.
 </aside>
 
-## Get a deck
+## Get a topic
 
 > JSON Request
 
 ```http
-GET <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+GET <%= current_page.data.endpoint %>topics/1 HTTP/1.1
 Accept: application/vnd.api+json
 Authorization: Bearer TOKEN
 ```
@@ -105,7 +105,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_deck %>
+<%= api_response :get_topic %>
 ```
 
 > Failure response
@@ -122,7 +122,7 @@ Content-Type: application/vnd.api+json
 > HTML Request
 
 ```http
-GET <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+GET <%= current_page.data.endpoint %>topics/1 HTTP/1.1
 Content-Type: text/html
 ```
 
@@ -134,35 +134,35 @@ Content-Type: text/html
 ```
 
 ```html
-<%= api_response :get_deck, :html %>
+<%= api_response :get_topic, :html %>
 ```
 
-This endpoint retrieves a deck. Response body media type (`Accept` header) determines what kind of data you get: `application/vnd.api+json` retrieves deck metadata, `text/html` retrieves the deck's contents.
+This endpoint retrieves a topic. Response body media type (`Accept` header) determines what kind of data you get: `application/vnd.api+json` retrieves topic metadata, `text/html` retrieves the topic's contents.
 
 **Response parameters**
 
 Parameter | Description
 ----------|------------
-`name` | Deck name
+`name` | topic name
 `state` | Access level, one of `public_access`, `protected_access`, `private_access`
-`description` | Deck description
-`template` | Deck template
+`description` | topic description
+`template` | topic template
 
 <aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
 
-## Update a deck
+## Update a topic
 
 > JSON Request
 
 ```http
-PATCH <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+PATCH <%= current_page.data.endpoint %>topics/1 HTTP/1.1
 Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request :patch_deck %>
+<%= api_request :patch_topic %>
 ```
 
 > Success response
@@ -173,7 +173,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_deck %>
+<%= api_response :get_topic %>
 ```
 
 > Failure response
@@ -184,7 +184,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :patch_deck_400 %>
+<%= api_response :patch_topic_400 %>
 ```
 
 > Failure response
@@ -195,18 +195,18 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :patch_deck_422 %>
+<%= api_response :patch_topic_422 %>
 ```
 
 > HTML Request
 
 ```http
-PATCH <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+PATCH <%= current_page.data.endpoint %>topics/1 HTTP/1.1
 Content-Type: text/html
 ```
 
 ```html
-<%= api_request :patch_deck, :html %>
+<%= api_request :patch_topic, :html %>
 ```
 
 > Success response
@@ -215,19 +215,19 @@ Content-Type: text/html
 HTTP/1.1 204 No Content
 ```
 
-This endpoint updates a deck. Request body media type (`Content-Type` header) determines what kind of data you update: `application/vnd.api+json` updates deck metadata, `text/html` updates the deck's contents.
+This endpoint updates a topic. Request body media type (`Content-Type` header) determines what kind of data you update: `application/vnd.api+json` updates topic metadata, `text/html` updates the topic's contents.
 
 
 **Request parameters**
 
-See <a href="#create-a-deck">Create a deck</a>.
+See <a href="#create-a-topic">Create a topic</a>.
 
-## Delete a deck
+## Delete a topic
 
 > Request
 
 ```http
-DELETE <%= current_page.data.endpoint %>decks/1 HTTP/1.1
+DELETE <%= current_page.data.endpoint %>topics/1 HTTP/1.1
 ```
 
 > Success response
@@ -248,4 +248,4 @@ Content-Type: application/vnd.api+json
 <%= api_response :get_user_404 %>
 ```
 
-This endpoint deletes a deck.
+This endpoint deletes a topic.
