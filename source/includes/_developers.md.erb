@@ -1,39 +1,52 @@
-# Information for developers
+# Setup for developers
 
-## Project structure
+## Backend
+
+Make sure your machine has a working installation of the Ruby version required by the project.
+This version can be found in the `.ruby-version` file.
+Usage of RVM is recommended to manage different Ruby versions and sets of gems.
 
 ```shell
-.
-├── app                               # API server code
-│   ├── commands
-│   ├── controllers
-│   ├── errors
-│   ├── formatters
-│   ├── models
-│   ├── policies
-│   ├── resources
-│   ├── services
-│   ├── views
-│   └── workers
-├── bin                               # API server executables
-├── config                            # API server configuration
-├── data                              # Topic repositories
-├── db                                # Database configuration
-├── lib                               # API server extra modules
-├── nginx                             # Web server configuration
-├── spec                              # API server tests
-└── tmp                               # Temporary files
+# STEPS FOR INITIAL INSTALLATION
+# Clone the repository
+$ git clone git@github.com:OpenWebslides/openwebslides-backend.git
+$ cd openwebslides-backend
+
+# Use the correct Ruby version
+$ rvm use `cat .ruby-version`@`cat .ruby-gemset` --create
+
+# Install dependencies
+$ gem install bundler
+$ bundle install
+
+# Create repository data path
+$ mkdir data/
+
+# Apply database migrations
+$ bundle exec rails db:migrate
+
+# Start server
+$ bundle exec rails server
 ```
 
-## Frontend API endpoint
+```shell
+# STEPS FOR SUBSEQUENT NEW CODE
+# Update the repository
+$ git pull
 
-The default API endpoint of the frontend stack is currently set to `http://owsdev.ugent.be/api/` in the frontend `app/config/api.js` file.
-If you wish to use an alternative endpoint, you can change the defaults in this file.
-However, changes to this file should never be committed.
+# Update dependencies
+$ bundle install
 
-## Rake tasks
+# Apply database migrations
+$ bundle exec rails db:migrate
 
-```sh
+# Start server
+$ bundle exec rails server
+```
+
+```shell
+# USEFUL RAKE TASKS
+# Suffix every command with `RAILS_ENV=test` to operate on the test database
 $ bundle exec rails db:create       # Create database
 $ bundle exec rails db:migrate      # Migrate database
 $ bundle exec rails db:drop         # Drop database
@@ -43,6 +56,25 @@ $ bundle exec rails db:clear        # Delete all data in the database
 $ bundle exec rails db:sample       # Generate random sample data
 ```
 
+## Frontend
+
+Make sure your machine has a working installation of the Node version required by the project.
+
+```shell
+# STEPS FOR INITIAL INSTALLATION
+# Clone the repository
+$ git clone git@github.com:OpenWebslides/openwebslides-frontend.git
+$ cd openwebslides-frontend
+
+# Install dependencies
+$ yarn
+
+# Start server
+$ yarn run dev-server
+```
+
 <aside class="notice">
-  Suffix every command with `RAILS_ENV=test` to operate on the test database.
+  The default API endpoint of the frontend stack is currently set to <code>http://owsdev.ugent.be/api/</code> in the frontend <code>app/config/api.js</code> file.
+  If you wish to use an alternative endpoint, you can change the defaults in this file.
+  However, changes to this file should never be committed.
 </aside>
