@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -208,14 +209,166 @@
         <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
-    <div class="tocify-wrapper">
-      <img src="images/logo.png" alt="Logo" />
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc">
-      </div>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+                  <li>
+                    <a href="#application-architecture" class="toc-h2 toc-link" data-title="Application architecture">Application architecture</a>
+                  </li>
+                  <li>
+                    <a href="#data-model" class="toc-h2 toc-link" data-title="Data model">Data model</a>
+                  </li>
+                  <li>
+                    <a href="#permission-model" class="toc-h2 toc-link" data-title="Permission model">Permission model</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#setup-for-administrators" class="toc-h1 toc-link" data-title="Setup for administrators">Setup for administrators</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                  </li>
+                  <li>
+                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
+                  </li>
+                  <li>
+                    <a href="#backup" class="toc-h2 toc-link" data-title="Backup">Backup</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#infrastructure" class="toc-h1 toc-link" data-title="Infrastructure">Infrastructure</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#owsdev" class="toc-h2 toc-link" data-title="owsdev">owsdev</a>
+                  </li>
+                  <li>
+                    <a href="#owsqas" class="toc-h2 toc-link" data-title="owsqas">owsqas</a>
+                  </li>
+                  <li>
+                    <a href="#owsprod" class="toc-h2 toc-link" data-title="owsprod">owsprod</a>
+                  </li>
+                  <li>
+                    <a href="#deploying-on-owsdev-owsqas" class="toc-h2 toc-link" data-title="Deploying on owsdev/owsqas">Deploying on owsdev/owsqas</a>
+                  </li>
+                  <li>
+                    <a href="#deploying-on-owsprod" class="toc-h2 toc-link" data-title="Deploying on owsprod">Deploying on owsprod</a>
+                  </li>
+                  <li>
+                    <a href="#tips" class="toc-h2 toc-link" data-title="Tips">Tips</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#setup-for-developers" class="toc-h1 toc-link" data-title="Setup for developers">Setup for developers</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#backend" class="toc-h2 toc-link" data-title="Backend">Backend</a>
+                  </li>
+                  <li>
+                    <a href="#frontend" class="toc-h2 toc-link" data-title="Frontend">Frontend</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#api-overview" class="toc-h1 toc-link" data-title="API overview">API overview</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authentication" class="toc-h2 toc-link" data-title="Authentication">Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#request-headers" class="toc-h2 toc-link" data-title="Request headers">Request headers</a>
+                  </li>
+                  <li>
+                    <a href="#request-body" class="toc-h2 toc-link" data-title="Request body">Request body</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#token-api" class="toc-h1 toc-link" data-title="Token API">Token API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#create-a-token-sign-in" class="toc-h2 toc-link" data-title="Create a token (sign in)">Create a token (sign in)</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-token-sign-out" class="toc-h2 toc-link" data-title="Delete a token (sign out)">Delete a token (sign out)</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#users-api" class="toc-h1 toc-link" data-title="Users API">Users API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-users" class="toc-h2 toc-link" data-title="Get all users">Get all users</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-user" class="toc-h2 toc-link" data-title="Create a user">Create a user</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-user" class="toc-h2 toc-link" data-title="Get a user">Get a user</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-user" class="toc-h2 toc-link" data-title="Update a user">Update a user</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-user" class="toc-h2 toc-link" data-title="Delete a user">Delete a user</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#topics-api" class="toc-h1 toc-link" data-title="topics API">topics API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-topics" class="toc-h2 toc-link" data-title="Get all topics">Get all topics</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-topic" class="toc-h2 toc-link" data-title="Create a topic">Create a topic</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-topic" class="toc-h2 toc-link" data-title="Get a topic">Get a topic</a>
+                  </li>
+                  <li>
+                    <a href="#update-a-topic" class="toc-h2 toc-link" data-title="Update a topic">Update a topic</a>
+                  </li>
+                  <li>
+                    <a href="#delete-a-topic" class="toc-h2 toc-link" data-title="Delete a topic">Delete a topic</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#annotations-api" class="toc-h1 toc-link" data-title="Annotations API">Annotations API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#properties" class="toc-h2 toc-link" data-title="Properties">Properties</a>
+                  </li>
+                  <li>
+                    <a href="#create-a-conversation" class="toc-h2 toc-link" data-title="Create a conversation">Create a conversation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-status-code" class="toc-h2 toc-link" data-title="HTTP status code">HTTP status code</a>
+                  </li>
+                  <li>
+                    <a href="#json-api-error-code" class="toc-h2 toc-link" data-title="JSON API error code">JSON API error code</a>
+                  </li>
+              </ul>
+          </li>
+      </ul>
         <ul class="toc-footer">
             <li><a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a></li>
         </ul>
@@ -223,27 +376,41 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Open Webslides documentation! This website aggregates the documentation for developers and administrators.</p>
+<h2 id='overview'>Overview</h2>
+<p>The Open Webslides platform is split into two components: frontend and backend.
+The frontend is built in React and uses Redux to store application state.
+The backend is built in Ruby on Rails and exposes a REST API to the client.</p>
 
-<p>Welcome to the Open Webslides documentation! This website documents the installation, use and API of the Open Webslides platform.</p>
+<p>The REST API is based on the JSON-API specification version 1.0.
+Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files.
+For more examples and technical documentation, refer to the <a href="http://jsonapi.org/format/1.0/">JSON-API specification</a> and the <a href="http://jsonapi-resources.com/v0.9/guide/index.html">implementation in use</a>.
+All API calls are subject to a predefined format, defined in the JSON-API spec.
+Part of these requirements is that all HTTP requests should use the <code>application/vnd.api+json</code> MIME type to exchange data.</p>
+<h2 id='application-architecture'>Application architecture</h2>
+<p>The entire platform runtime is governed by Docker.
+All components are running in separate containers, from the web server to the database management system.
+The following components are present in a fully configured and running system:</p>
 
-<h2 id="overview">Overview</h2>
+<ul>
+<li>Web server (NGINX)</li>
+<li>Application runtime (API server)</li>
+<li>Application runtime (configurable amount of instances, used for asynchronous processing of tasks)</li>
+<li>Database (PostgreSQL)</li>
+<li>Block storage</li>
+<li>Key-value store (Redis, communication between application runtimes)</li>
+</ul>
 
-<p>The Open Webslides API is based on the JSON-API specification version 1.0. Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files. For more examples and technical documentation, refer to the <a href="http://jsonapi.org/format/1.0/">JSON-API specification</a> and the <a href="http://jsonapi-resources.com/v0.9/guide/index.html">implementation in use</a>. All API calls should use the <code class="prettyprint">application/vnd.api+json</code> MIME type to exchange data.</p>
-
-<p>The platform consists of two components: the backend and the frontend. The backend is written as a monolithic Ruby on Rails application, which exposes a RESTful API to the client. The frontend is written in React and consumes the RESTful API.</p>
-
-<h2 id="application-architecture">Application architecture</h2>
+<p>Various external services are also linked into the platform.
+Depending on configuration, this includes an email provider and an identity (OAuth) provider.</p>
 
 <p><img src="images/architecture.png" alt="Architecture" /></p>
-
-<h2 id="data-model">Data model</h2>
-
+<h2 id='data-model'>Data model</h2>
 <p><img src="images/data_model.png" alt="Data model" /></p>
-
-<h2 id="permission-model">Permission model</h2>
-
-<p>A deck and its assets are protected by the <code class="prettyprint">state</code> attribute. This attribute can have the following values:</p>
+<h2 id='permission-model'>Permission model</h2>
+<p>A topic and its assets are protected by the <code>state</code> attribute.
+This attribute determines in what context a topic is available and can have the following values:</p>
 
 <table><thead>
 <tr>
@@ -252,34 +419,36 @@
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">public</code></td>
-<td>Visible to everyone both inside and outside of the platform</td>
+<td><code>public</code></td>
+<td>Visible to everyone, signin <strong>not required</strong></td>
 </tr>
 <tr>
-<td><code class="prettyprint">protected</code></td>
-<td>Only visible to users inside the platform</td>
+<td><code>protected</code></td>
+<td>Visible to everyone, signin required</td>
 </tr>
 <tr>
-<td><code class="prettyprint">private</code></td>
+<td><code>private</code></td>
 <td>Only visible to owner and collaborators</td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-  This access model will also be enforced in the backing store, e.g. protected and private decks will be stored in a private repository on GitHub.
-</aside>
-
 <p><strong>Permission table</strong></p>
+
+<p>This table demonstrates the permissions given in each context, depending on the access level.
+<em>Guest</em> indicates a user that is not signed in.
+<em>Member</em> indicates a user that is signed in.
+<em>Collaborator</em> indicates a user that is added to the collaborator&#39;s list on the topic.
+<em>Owner</em> indicates the owner/creator of a deck.</p>
 
 <table><thead>
 <tr>
-<th>Deck access level</th>
+<th>Topic access level</th>
 <th>User access level</th>
 <th>Resulting permissions</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>Public</td>
+<td><code>public</code></td>
 <td>Guest</td>
 <td>read</td>
 </tr>
@@ -299,7 +468,7 @@
 <td>read, write, admin</td>
 </tr>
 <tr>
-<td>Protected</td>
+<td><code>protected</code></td>
 <td>Guest</td>
 <td></td>
 </tr>
@@ -319,7 +488,7 @@
 <td>read, write, admin</td>
 </tr>
 <tr>
-<td>Private</td>
+<td><code>private</code></td>
 <td>Guest</td>
 <td></td>
 </tr>
@@ -339,11 +508,7 @@
 <td>read, write, admin</td>
 </tr>
 </tbody></table>
-
-          <h1 id="setup-for-administrators">Setup for administrators</h1>
-
-<h2 id="installation">Installation</h2>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/OpenWebslides.git
+<h1 id='setup-for-administrators'>Setup for administrators</h1><h2 id='installation'>Installation</h2><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/OpenWebslides.git
 <span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
 </code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose up --build
 </code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
@@ -392,121 +557,70 @@
 
 <p><strong>Create database credentials</strong></p>
 
-<p>On the first run, the database will be empty. Create a user and put it in the <code class="prettyprint">openwebslides.env</code> file.
-Create a database for this user too and put it in the <code class="prettyprint">openwebslides.env</code> file.</p>
+<p>On the first run, the database will be empty. Create a user and put it in the <code>openwebslides.env</code> file.
+Create a database for this user too and put it in the <code>openwebslides.env</code> file.</p>
 
-<p>Finally, restart all services to use the new <code class="prettyprint">openwebslides.env</code>. The platform is now available on <a href="http://localhost/">http://localhost/</a>.</p>
-
-<h2 id="configuration">Configuration</h2>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>cp openwebslides.env.example openwebslides.env
+<p>Finally, restart all services to use the new <code>openwebslides.env</code>. The platform is now available on <a href="http://localhost/">http://localhost/</a>.</p>
+<h2 id='configuration'>Configuration</h2><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>cp openwebslides.env.example openwebslides.env
 </code></pre>
-<p>The platform&rsquo;s features can be configured by customizing the <code class="prettyprint">config/openwebslides.yml</code> file.
-The deployment can be configured by copying the provided <code class="prettyprint">openwebslides.env.example</code> to <code class="prettyprint">openwebslides.env</code> and customizing this file. Docker-compose will then automatically use this file for the relevant containers.</p>
-
-<h3 id="tls">TLS</h3>
-
-<p>The setup optionally supports using secured communication over TLS. In order to enable this, deploy the application with <code class="prettyprint">docker-compose</code> including the <code class="prettyprint">docker-compose.prod.yml</code> override file. This enables an alternative NGINX configuration file using TLS (<code class="prettyprint">nginx/nginx.prod.conf</code>). Adjust this file to match your domain and certificate locations.</p>
-
-<h2 id="backup">Backup</h2>
-
+<p>The platform&#39;s features can be configured by customizing the <code>config/openwebslides.yml</code> file.
+The deployment can be configured by copying the provided <code>openwebslides.env.example</code> to <code>openwebslides.env</code> and customizing this file. Docker-compose will then automatically use this file for the relevant containers.</p>
+<h3 id='tls'>TLS</h3>
+<p>The setup optionally supports using secured communication over TLS. In order to enable this, deploy the application with <code>docker-compose</code> including the <code>docker-compose.prod.yml</code> override file. This enables an alternative NGINX configuration file using TLS (<code>nginx/nginx.prod.conf</code>). Adjust this file to match your domain and certificate locations.</p>
+<h2 id='backup'>Backup</h2>
 <p>Persistent critical data is stored in the following systems:</p>
 
 <ul>
-<li>PostgreSQL: relational data, deck metadata</li>
-<li><code class="prettyprint">data/</code>: local repositories</li>
+<li>PostgreSQL: relational data, topic metadata</li>
+<li><code>data/</code>: local repositories</li>
 </ul>
 
 <p>Additional non-critical data is stored in the following systems:</p>
 
 <ul>
-<li>Redis: conversion queue</li>
-<li><code class="prettyprint">tmp/</code>: temporary runtime data, including uploaded files for conversion queue</li>
+<li>Redis</li>
+<li><code>tmp/</code>: temporary runtime data</li>
 </ul>
-
-<h2 id="import">Import</h2>
-
-<p>Importing an existing webslides deck is officially not supported. However, there is functionality available within the platform to do this.</p>
-<pre class="highlight shell tab-shell"><code><span class="c"># SSH into the platform</span>
-<span class="gp">$ </span>ssh openwebslides@owsdev.ugent.be
-<span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
-
-<span class="c"># Open up a Rails console</span>
-<span class="gp">$ </span>docker-compose <span class="nb">exec </span>app bundle <span class="nb">exec </span>rails console
-
-<span class="c"># Find the user to which the deck will belong</span>
-<span class="gp">&gt; </span>user <span class="o">=</span> User.find_by :email <span class="o">=</span>&gt; <span class="s1">'foo@bar.com'</span>
-
-<span class="c"># Import the deck</span>
-DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&gt; user, :name <span class="o">=</span>&gt; <span class="s1">'Deck name'</span><span class="o">)</span>.import<span class="o">(</span><span class="s1">'http://path/to/git/repository.git'</span><span class="o">)</span>
-</code></pre>
-<p>If you encounter any errors while importing, the deck will not be created. Those errors usually exist because an asset reference was invalid (see stacktrace and exception message). Fix these references in the repository&rsquo;s index.html and commit these changes before trying again.</p>
-<pre class="highlight ruby tab-ruby"><code><span class="c1"># Snippet for importing all DI decks</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 1 - introduction only'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/Digital-imaging-techniques--part-1-introduction-only.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 1.2 basic principles'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/Digital_imaging_techniques_part_1-2_basic_principles.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 1.3 processing and analysis'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/Digital_imaging_techniques_part_1-3_processing_and_analysis.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.1 SEM intro'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-1_SEM_intro.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.2 SEM principles'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-2_SEM_principles.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.3 ESEM'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-3_ESEM.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.4 MLA'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-4_MLA.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 2.5 FIB SEM'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_2-5_FIB_SEM.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.1 CT basic principles'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-1_CT_basic_principles.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.2 source and detector'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-2_source_and_detector.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.3 artifacts and considerations'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-3_artifacts_and_considerations.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.4 applications A'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-4_applications.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.5 applications B'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-5_applications_B.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 3.6 applications C'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_3-6_applications_C.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 4.1 NI Eberhard'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_4-1_NI_Eberhard.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 4.2 NI'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_4-2_NI.git'</span><span class="p">)</span>
-<span class="no">DeckService</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">Deck</span><span class="p">.</span><span class="nf">new</span> <span class="ss">:owner</span> <span class="o">=&gt;</span> <span class="n">user</span><span class="p">,</span> <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">'Digital Imaging Techniques 4.3 NI euromat'</span><span class="p">).</span><span class="nf">import</span><span class="p">(</span><span class="s1">'https://github.com/OpenWebslides-Content/DIT_part_4-3_NI_euromat.git'</span><span class="p">)</span>
-</code></pre>
-          <h1 id="infrastructure">Infrastructure</h1>
-
+<h1 id='infrastructure'>Infrastructure</h1>
 <p>The current Open Webslides infrastructure consists of three environments (servers):</p>
-
-<h2 id="owsdev">owsdev</h2>
-
+<h2 id='owsdev'>owsdev</h2>
 <p>This is the development server. Use this server when developing features and fixes. The version of the platform and stability thereof are not guaranteed. The database and repositories may be wiped at any time.</p>
 
 <p><strong>UGent CAS</strong>: The server should run a version <strong>without</strong> the UGent CAS-functionality, allowing local clients to manipulate the API.</p>
 
-<p><strong>Access</strong>: All developers should have access to this server using the <code class="prettyprint">openwebslides@owsdev.ugent.be</code> user and their private key. If this is not the case, contact your system administrator and include your public key.</p>
+<p><strong>Access</strong>: All developers should have access to this server using the <code>openwebslides@owsdev.ugent.be</code> user and their private key. If this is not the case, contact your system administrator and include your public key.</p>
 
 <aside class="warning">
   Do not store any important data on this server, as it may be wiped at any moment (usually not without notice)
 </aside>
-
-<h2 id="owsqas">owsqas</h2>
-
+<h2 id='owsqas'>owsqas</h2>
 <p>This is the testing/QA server. Deploy to this server when testing releases before merging. The server should run a stable version.</p>
 
 <p><strong>UGent CAS</strong>: The server should run a version <strong>with</strong> the UGent CAS-functionality, in order to mirror the production environment.</p>
 
-<p><strong>Access</strong>: All developers should have access to this server using the <code class="prettyprint">openwebslides@owsqas.ugent.be</code> user and their private key. If this is not the case, contact your system administrator and include your public key.</p>
+<p><strong>Access</strong>: All developers should have access to this server using the <code>openwebslides@owsqas.ugent.be</code> user and their private key. If this is not the case, contact your system administrator and include your public key.</p>
 
 <aside class="warning">
   Do not store any important data on this server, as it will be wiped before testing new releases
 </aside>
-
-<h2 id="owsprod">owsprod</h2>
-
-<p>This is the production server. Only deploy stable, fully tested releases to this server, and only from the <code class="prettyprint">master</code>-branch.</p>
+<h2 id='owsprod'>owsprod</h2>
+<p>This is the production server. Only deploy stable, fully tested releases to this server, and only from the <code>master</code>-branch.</p>
 
 <p><strong>UGent CAS</strong>: The server runs a version <strong>with</strong> the UGent CAS-functionality.</p>
 
-<p><strong>Access</strong>: Only Rein and Florian have access to this server. Direct your queries to either if you want to deploy a release.</p>
+<p><strong>Access</strong>: Only your system administrator has access to this server. Direct your queries to your system administrator if you want to deploy a release.</p>
 
 <aside class="notice">
   Do not use this server for development purposes. Queries to manipulate data manually will be ignored
 </aside>
-
-<h2 id="deploying-on-owsdev-owsqas">Deploying on owsdev/owsqas</h2>
-<pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
+<h2 id='deploying-on-owsdev-owsqas'>Deploying on owsdev/owsqas</h2><pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
 <span class="gp">$ </span>ssh openwebslides@owsdev.ugent.be -i /path/to/keyfile
 
 <span class="c"># You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides</span>
 <span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
 
-<span class="c"># This is basically just the cloned git repository. You can now navigate to any branch/commit you want to</span>
+<span class="c"># This folder contains the cloned git repository</span>
+<span class="c"># You can now navigate to any branch/commit you want to</span>
 <span class="gp">$ </span>git branch
 <span class="k">*</span> <span class="o">(</span>detached from 038655f<span class="o">)</span>
   master
@@ -515,129 +629,206 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <span class="gp">$ </span>git fetch --all
 <span class="gp">$ </span>git checkout b5c3912
 
+<span class="c"># The platform configuration should already be present and correct</span>
+<span class="c"># If this is not the case, refer to the Administrator's setup guide</span>
+
 <span class="c"># Build the application image</span>
 <span class="gp">$ </span>docker build -t openwebslides/openwebslides:latest .
 
-<span class="c"># Bring down the running application and restart it with the new image</span>
+<span class="c"># Bring down the running application and restart it in the background with the new image</span>
 <span class="gp">$ </span>docker-compose down; docker-compose up -d
-</code></pre>
-<h2 id="deploying-on-owsprod">Deploying on owsprod</h2>
-<pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
+</code></pre><h2 id='deploying-on-owsprod'>Deploying on owsprod</h2><pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
 <span class="gp">$ </span>ssh openwebslides@owsprod.ugent.be -i /path/to/keyfile
 
 <span class="c"># You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides</span>
 <span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
 
-<span class="c"># This is again just the cloned git repository, however you should always be on the `master` branch and you should only `git pull`</span>
+<span class="c"># This is again just the cloned git repository</span>
+<span class="c"># However it should always be on the `master` branch and only `git pull` should be used</span>
 <span class="gp">$ </span>git pull
 
 <span class="c"># Build the application image</span>
 <span class="gp">$ </span>docker build -t openwebslides/openwebslides:latest .
 
-<span class="c"># Before the next step, make sure nobody is using the platform. Preferably drop a message in the relevant slack channels</span>
+<span class="c"># Before the next step, make sure nobody is using the platform</span>
+<span class="c"># Preferably only restart the application during off-peak times</span>
 
 <span class="c"># Bring down the running application and restart it with the new image</span>
 <span class="c"># ATTENTION: to enable TLS communication, an alternative docker-compose should be specified</span>
 <span class="gp">$ </span>docker-compose down; docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
-</code></pre>
-<h2 id="tips">Tips</h2>
-<pre class="highlight shell tab-shell"><code><span class="c">## Opening a Rails console</span>
+</code></pre><h2 id='tips'>Tips</h2><pre class="highlight shell tab-shell"><code><span class="c">## Opening a Rails console</span>
 <span class="gp">$ </span>docker-compose <span class="nb">exec </span>app bundle <span class="nb">exec </span>rails console
 
 <span class="c">## Opening a shell to the `data/` directory</span>
 <span class="gp">$ </span>docker-compose <span class="nb">exec </span>app bash
 <span class="c"># cd data/</span>
 <span class="c"># ls</span>
-</code></pre>
-          <h1 id="information-for-developers">Information for developers</h1>
+</code></pre><h1 id='setup-for-developers'>Setup for developers</h1><h2 id='backend'>Backend</h2>
+<p>Make sure your machine has a working installation of the Ruby version required by the project.
+This version can be found in the <code>.ruby-version</code> file.
+Usage of RVM is recommended to manage different Ruby versions and sets of gems.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># STEPS FOR INITIAL INSTALLATION</span>
+<span class="c"># Clone the repository</span>
+<span class="gp">$ </span>git clone git@github.com:OpenWebslides/openwebslides-backend.git
+<span class="gp">$ </span><span class="nb">cd </span>openwebslides-backend
 
-<h2 id="project-structure">Project structure</h2>
-<pre class="highlight shell tab-shell"><code>.
-├── app                               <span class="c"># API server code</span>
-│   ├── commands
-│   ├── controllers
-│   ├── errors
-│   ├── formatters
-│   ├── models
-│   ├── policies
-│   ├── resources
-│   ├── services
-│   ├── views
-│   └── workers
-├── bin                               <span class="c"># API server executables</span>
-├── client                            <span class="c"># Web app code</span>
-│   ├── app
-│   │   ├── actions
-│   │   ├── api
-│   │   ├── constants
-│   │   ├── containers
-│   │   ├── presentationals
-│   │   ├── reducers
-│   │   ├── sagas
-│   │   └── selectors
-│   ├── assets
-│   │   ├── files
-│   │   ├── fonts
-│   │   ├── images
-│   │   └── stylesheets
-│   ├── config
-│   ├── lib
-│   │   ├── content-editable
-│   │   ├── content-item-container
-│   │   ├── convert-to-print
-│   │   ├── convert-to-state
-│   │   └── state-traversal
-│   ├── locales
-│   │   └── en
-│   └── specs
-├── config                            <span class="c"># API server configuration</span>
-├── data                              <span class="c"># Deck repositories</span>
-├── db                                <span class="c"># Database configuration</span>
-├── lib                               <span class="c"># API server extra modules</span>
-│   └── assets                          <span class="c"># Conversion tool, deck templates</span>
-├── nginx                             <span class="c"># Web server configuration</span>
-├── spec                              <span class="c"># API server tests</span>
-└── tmp                               <span class="c"># Temporary files</span>
-</code></pre>
-<h2 id="frontend-api-endpoint">Frontend API endpoint</h2>
+<span class="c"># Use the correct Ruby version</span>
+<span class="gp">$ </span>rvm use <span class="sb">`</span>cat .ruby-version<span class="sb">`</span>@<span class="sb">`</span>cat .ruby-gemset<span class="sb">`</span> --create
 
-<p>The default API endpoint of the frontend stack is currently set to <code class="prettyprint">http://owsdev.ugent.be/api/</code> in the <code class="prettyprint">client/config/api.js</code> file. This file should almost never be changed. If you need to override the endpoint, copy (don&rsquo;t move) the <code class="prettyprint">client/config/config.js.erb</code> file to <code class="prettyprint">client/config/config.js</code>, and replace the embedded Ruby tag with another endpoint (don&rsquo;t forget the trailing <code class="prettyprint">/api/</code>). This file is ignored by git and should never be included in the repository, as it gets overwritten on every Docker execution.</p>
+<span class="c"># Install dependencies</span>
+<span class="gp">$ </span>gem install bundler
+<span class="gp">$ </span>bundle install
 
-<h2 id="rake-tasks">Rake tasks</h2>
-<pre class="highlight sh tab-shell"><code><span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:create       <span class="c"># Create database</span>
+<span class="c"># Create repository data path</span>
+<span class="gp">$ </span>mkdir data/
+
+<span class="c"># Apply database migrations</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:migrate
+
+<span class="c"># Start server</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails server
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># STEPS FOR SUBSEQUENT NEW CODE</span>
+<span class="c"># Update the repository</span>
+<span class="gp">$ </span>git pull
+
+<span class="c"># Update dependencies</span>
+<span class="gp">$ </span>bundle install
+
+<span class="c"># Apply database migrations</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:migrate
+
+<span class="c"># Start server</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails server
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># USEFUL RAKE TASKS</span>
+<span class="c"># Suffix every command with `RAILS_ENV=test` to operate on the test database</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:create       <span class="c"># Create database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:migrate      <span class="c"># Migrate database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:drop         <span class="c"># Drop database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:setup        <span class="c"># Create database and load schema</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:reset        <span class="c"># Drop and migrate database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:clear        <span class="c"># Delete all data in the database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:sample       <span class="c"># Generate random sample data</span>
+</code></pre><h2 id='frontend'>Frontend</h2>
+<p>Make sure your machine has a working installation of the Node version required by the project.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># STEPS FOR INITIAL INSTALLATION</span>
+<span class="c"># Clone the repository</span>
+<span class="gp">$ </span>git clone git@github.com:OpenWebslides/openwebslides-frontend.git
+<span class="gp">$ </span><span class="nb">cd </span>openwebslides-frontend
+
+<span class="c"># Install dependencies</span>
+<span class="gp">$ </span>yarn
+
+<span class="c"># Start server</span>
+<span class="gp">$ </span>yarn run dev-server
 </code></pre>
 <aside class="notice">
-  Suffix every command with `RAILS_ENV=test` to operate on the test database.
+  The default API endpoint of the frontend stack is currently set to <code>http://owsdev.ugent.be/api/</code> in the frontend <code>app/config/api.js</code> file.
+  If you wish to use an alternative endpoint, you can change the defaults in this file.
+  However, changes to this file should never be committed.
+</aside>
+<h1 id='api-overview'>API overview</h1>
+<p>The REST API backend is built in a modular way.
+The URL structure is kept as simple as possible, avoiding nesting resources where possible.</p>
+
+<table><thead>
+<tr>
+<th>API endpoint</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>/token</code></td>
+<td>Allows requesting an API token</td>
+</tr>
+<tr>
+<td><code>/password</code></td>
+<td>Allows requesting sending an account reset email</td>
+</tr>
+<tr>
+<td><code>/confirmation</code></td>
+<td>Allows requesting resending the account confirmation email</td>
+</tr>
+<tr>
+<td><code>/users</code></td>
+<td>Allows manipulating users</td>
+</tr>
+<tr>
+<td><code>/topics</code></td>
+<td>Allows manipulating topics</td>
+</tr>
+<tr>
+<td><code>/assets</code></td>
+<td>Allows manipulating assets</td>
+</tr>
+<tr>
+<td><code>/notifications</code></td>
+<td>Allows retrieving feed notifications</td>
+</tr>
+<tr>
+<td><code>/conversations</code></td>
+<td>Allows manipulating conversations (annotations)</td>
+</tr>
+<tr>
+<td><code>/comments</code></td>
+<td>Allows manipulating comments (annotations)</td>
+</tr>
+</tbody></table>
+<h2 id='authentication'>Authentication</h2>
+<p>The REST API uses <a href="https://jwt.io/">JSON Web Tokens</a> (JWTs) as authentication mechanism.
+The API expects the token to be included in all API requests on protected endpoints as an <code>Authorization</code> header in the bearer token format.
+The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an <code>Authorization</code> header.
+This new token should be used for subsequent API calls.</p>
+
+<aside class="notice">
+  <em>Protected</em> endpoints require authentication. <em>Unprotected</em> endpoints can be manipulated without a valid token.
 </aside>
 
-          <h1 id="authentication-api">Authentication API</h1>
+<aside class="notice">
+  You must replace the JWT in the examples with a JWT obtained from the <a href="#token-api">Token API</a>.
+</aside>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
-<p>Don&rsquo;t forget to replace <code class="prettyprint">TOKEN</code> with the JWT obtained from the <a href="#token-api">Token API</a></p>
+<p>Don&#39;t forget to replace <code>TOKEN</code> with the JWT obtained from the <a href="#token-api">Token API</a></p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">138</span>
-</code></pre>
-<p>The Open Webslides API uses <a href="https://jwt.io/">JSON Web Tokens</a> (JWTs) as authentication mechanism. The API expects the token to be included in all API requests on protected endpoints as an <code class="prettyprint">Authorization</code> header in the bearer token format. The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an <code class="prettyprint">Authorization</code> header.</p>
+</code></pre><h2 id='request-headers'>Request headers</h2>
+<p>Since the API adheres to the <a href="http://jsonapi.org/format/1.0/">JSON-API specification</a>, certain headers are required.
+For <em>all</em> requests excluding binary uploads, the <code>application/vnd.api+json</code> should be used as MIME type.
+This means that for all requests expecting data to be returned, the <code>Accept</code> header should be set to this value,
+and for all requests sending data the <code>Content-Type</code> header should be set to this value.
+It is possible for a request to have both headers.
+For protected endpoints, a <code>Authorization</code> header is also required in the correct format as <a href="#authentication">described above</a>.</p>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Token</span><span class="p">:</span> <span class="s">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1YiI6MSwidmVyIjozfQ.1v_SvE8yQE-z9FiKoFhkWRXx9hJ4kQNRxz1uc8zXFjg</span>
 
-<aside class="notice">
-  You must replace the JWT with a JWT obtained from the <a href="#token-api">Token API</a>.
-</aside>
-
-<h1 id="token-api">Token API</h1>
-
-<h2 id="create-a-token-sign-in">Create a token (sign in)</h2>
-
+<span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Deck"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic. It is an awesome topic."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+  </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre><h2 id='request-body'>Request body</h2>
+<p>Refer to the <a href="http://jsonapi.org/format/1.0/">JSON-API specification</a> for a formal definition of request body and the documentation on this website for examples on every API.</p>
+<h1 id='token-api'>Token API</h1><h2 id='create-a-token-sign-in'>Create a token (sign in)</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -673,10 +864,10 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/decks"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/decks"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/topics"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/topics"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -725,9 +916,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 
 </span></code></pre>
 <p>This endpoint creates a token (sign in a user).</p>
-
-<h2 id="delete-a-token-sign-out">Delete a token (sign out)</h2>
-
+<h2 id='delete-a-token-sign-out'>Delete a token (sign out)</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -757,11 +946,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 
 </span></code></pre>
 <p>This endpoint deletes a token (sign out a user). After this call, all previously requested tokens are no longer valid.</p>
-
-          <h1 id="users-api">Users API</h1>
-
-<h2 id="get-all-users">Get all users</h2>
-
+<h1 id='users-api'>Users API</h1><h2 id='get-all-users'>Get all users</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -788,10 +973,10 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/decks"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/decks"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/topics"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/topics"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -814,10 +999,10 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/2/relationships/decks"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/2/decks"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/2/relationships/topics"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/2/topics"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -840,10 +1025,10 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
         </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/3/relationships/decks"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/3/decks"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/3/relationships/topics"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/3/topics"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -867,9 +1052,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <aside class="notice">
   This endpoint does not require authentication. However, authenticated requests might receive different data.
 </aside>
-
-<h2 id="create-a-user">Create a user</h2>
-
+<h2 id='create-a-user'>Create a user</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -906,10 +1089,10 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/decks"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/decks"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/topics"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/topics"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -952,7 +1135,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>This endpoint creates a user. A user&rsquo;s email has to be confirmed in order to obtain a token.</p>
+<p>This endpoint creates a user. A user&#39;s email has to be confirmed in order to obtain a token.</p>
 
 <p><strong>Request parameters</strong></p>
 
@@ -963,19 +1146,19 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">first_name</code></td>
+<td><code>first_name</code></td>
 <td><span class="badge badge-danger">required</span> First name</td>
 </tr>
 <tr>
-<td><code class="prettyprint">last_name</code></td>
+<td><code>last_name</code></td>
 <td>Last name</td>
 </tr>
 <tr>
-<td><code class="prettyprint">email</code></td>
+<td><code>email</code></td>
 <td><span class="badge badge-danger">required</span> Email</td>
 </tr>
 <tr>
-<td><code class="prettyprint">password</code></td>
+<td><code>password</code></td>
 <td><span class="badge badge-danger">required</span> Password</td>
 </tr>
 </tbody></table>
@@ -983,9 +1166,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <aside class="notice">
   This endpoint does not require authentication.
 </aside>
-
-<h2 id="get-a-user">Get a user</h2>
-
+<h2 id='get-a-user'>Get a user</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1011,10 +1192,10 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/decks"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/decks"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/topics"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/topics"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1056,15 +1237,15 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">first_name</code></td>
+<td><code>first_name</code></td>
 <td>First name</td>
 </tr>
 <tr>
-<td><code class="prettyprint">last_name</code></td>
+<td><code>last_name</code></td>
 <td>Last name</td>
 </tr>
 <tr>
-<td><code class="prettyprint">email</code></td>
+<td><code>email</code></td>
 <td>Email, omitted when unauthenticated</td>
 </tr>
 </tbody></table>
@@ -1072,9 +1253,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <aside class="notice">
   This endpoint does not require authentication. However, authenticated requests might receive different data.
 </aside>
-
-<h2 id="update-a-user">Update a user</h2>
-
+<h2 id='update-a-user'>Update a user</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1111,10 +1290,10 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"decks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/decks"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/decks"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/relationships/topics"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/users/1/topics"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1170,9 +1349,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <p><strong>Request parameters</strong></p>
 
 <p>See <a href="#create-a-user">Create a user</a>.</p>
-
-<h2 id="delete-a-user">Delete a user</h2>
-
+<h2 id='delete-a-user'>Delete a user</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1202,15 +1379,11 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 
 </span></code></pre>
 <p>This endpoint deletes a user.</p>
-
-          <h1 id="decks-api">Decks API</h1>
-
-<h2 id="get-all-decks">Get all decks</h2>
-
+<h1 id='topics-api'>topics API</h1><h2 id='get-all-topics'>Get all topics</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/decks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
@@ -1223,9 +1396,9 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"natus ut dolorem"</span><span class="p">,</span><span class="w">
@@ -1236,23 +1409,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/3"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/3"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minus qui rerum"</span><span class="p">,</span><span class="w">
@@ -1263,23 +1436,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/3/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/3/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/3/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/3/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/3/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/3/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/3/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/3/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/4"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/4"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dolorum porro perferendis"</span><span class="p">,</span><span class="w">
@@ -1290,23 +1463,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/4/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/4/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/4/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/4/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/4/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/4/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/4/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/4/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/10"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/10"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iure deleniti at"</span><span class="p">,</span><span class="w">
@@ -1317,23 +1490,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/10/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/10/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/10/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/10/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/10/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/10/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/10/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/10/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/14"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/14"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rerum natus quaerat"</span><span class="p">,</span><span class="w">
@@ -1344,23 +1517,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/14/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/14/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/14/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/14/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/14/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/14/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/14/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/14/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/17"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/17"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quaerat sed recusandae"</span><span class="p">,</span><span class="w">
@@ -1371,23 +1544,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/17/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/17/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/17/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/17/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/17/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/17/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/17/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/17/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/18"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/18"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"et sapiente non"</span><span class="p">,</span><span class="w">
@@ -1398,23 +1571,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/18/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/18/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/18/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/18/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/18/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/18/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/18/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/18/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/21"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/21"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ex vel non"</span><span class="p">,</span><span class="w">
@@ -1425,23 +1598,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/21/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/21/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/21/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/21/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/21/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/21/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/21/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/21/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/25"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/25"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repudiandae nam tempora"</span><span class="p">,</span><span class="w">
@@ -1452,23 +1625,23 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/25/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/25/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/25/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/25/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/25/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/25/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/25/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/25/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/26"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/26"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exercitationem dolores libero"</span><span class="p">,</span><span class="w">
@@ -1479,46 +1652,44 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/26/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/26/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/26/relationships/owner"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/26/owner"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/26/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/26/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/26/relationships/collaborators"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/26/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks?page%5Blimit%5D=10&amp;page%5Boffset%5D=10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks?page%5Blimit%5D=10&amp;page%5Boffset%5D=20"</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics?page%5Blimit%5D=10&amp;page%5Boffset%5D=10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics?page%5Blimit%5D=10&amp;page%5Boffset%5D=20"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>This endpoint retrieves all visible decks.</p>
+<p>This endpoint retrieves all visible topics.</p>
 
 <aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
-
-<h2 id="create-a-deck">Create a deck</h2>
-
+<h2 id='create-a-topic'>Create a topic</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/decks</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first deck."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1542,27 +1713,27 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1"</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first deck."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/owner"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/owner"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/owner"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/collaborators"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/collaborators"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1607,7 +1778,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>This endpoint creates a deck.</p>
+<p>This endpoint creates a topic.</p>
 
 <p><strong>Request parameters</strong></p>
 
@@ -1618,33 +1789,31 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">name</code></td>
-<td><span class="badge badge-danger">required</span> Name of the deck</td>
+<td><code>name</code></td>
+<td><span class="badge badge-danger">required</span> Name of the topic</td>
 </tr>
 <tr>
-<td><code class="prettyprint">description</code></td>
-<td>Description of the deck</td>
+<td><code>description</code></td>
+<td>Description of the topic</td>
 </tr>
 <tr>
-<td><code class="prettyprint">state</code></td>
-<td>Access level (See <a href="#permission-model">Permission model</a>), defaults to <code class="prettyprint">public_access</code></td>
+<td><code>state</code></td>
+<td>Access level (See <a href="#permission-model">Permission model</a>), defaults to <code>public_access</code></td>
 </tr>
 <tr>
-<td><code class="prettyprint">template</code></td>
-<td>Template name used for rendering, defaults to <code class="prettyprint">shower-ows</code></td>
+<td><code>template</code></td>
+<td>Template name used for rendering, defaults to <code>shower-ows</code></td>
 </tr>
 </tbody></table>
 
 <aside class="warning">
   Always include the <code>owner</code> relationship.
 </aside>
-
-<h2 id="get-a-deck">Get a deck</h2>
-
+<h2 id='get-a-topic'>Get a topic</h2>
 <blockquote>
 <p>JSON Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/decks/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
@@ -1656,27 +1825,27 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1"</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first deck."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/owner"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/owner"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/owner"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/collaborators"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/collaborators"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1704,7 +1873,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <blockquote>
 <p>HTML Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/decks/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
 </code></pre>
 <blockquote>
@@ -1720,7 +1889,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
   <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/header&gt;</span>
 <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"slide"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>My First Slidedeck<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>My First Topic<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;/section&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"badge"</span><span class="nt">&gt;</span>
@@ -1728,7 +1897,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <span class="nt">&lt;/footer&gt;</span>
 
 </code></pre>
-<p>This endpoint retrieves a deck. Response body media type (<code class="prettyprint">Accept</code> header) determines what kind of data you get: <code class="prettyprint">application/vnd.api+json</code> retrieves deck metadata, <code class="prettyprint">text/html</code> retrieves the deck&rsquo;s contents.</p>
+<p>This endpoint retrieves a topic. Response body media type (<code>Accept</code> header) determines what kind of data you get: <code>application/vnd.api+json</code> retrieves topic metadata, <code>text/html</code> retrieves the topic&#39;s contents.</p>
 
 <p><strong>Response parameters</strong></p>
 
@@ -1739,41 +1908,39 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">name</code></td>
-<td>Deck name</td>
+<td><code>name</code></td>
+<td>topic name</td>
 </tr>
 <tr>
-<td><code class="prettyprint">state</code></td>
-<td>Access level, one of <code class="prettyprint">public_access</code>, <code class="prettyprint">protected_access</code>, <code class="prettyprint">private_access</code></td>
+<td><code>state</code></td>
+<td>Access level, one of <code>public_access</code>, <code>protected_access</code>, <code>private_access</code></td>
 </tr>
 <tr>
-<td><code class="prettyprint">description</code></td>
-<td>Deck description</td>
+<td><code>description</code></td>
+<td>topic description</td>
 </tr>
 <tr>
-<td><code class="prettyprint">template</code></td>
-<td>Deck template</td>
+<td><code>template</code></td>
+<td>topic template</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on deck visibility.
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
-
-<h2 id="update-a-deck">Update a deck</h2>
-
+<h2 id='update-a-topic'>Update a topic</h2>
 <blockquote>
 <p>JSON Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/decks/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My first slidedeck"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My first topic"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1787,27 +1954,27 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"decks"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1"</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first deck."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/owner"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/owner"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/owner"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/decks/1/collaborators"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/topics/1/collaborators"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1855,7 +2022,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 <blockquote>
 <p>HTML Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/decks/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
 </code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"caption"</span><span class="nt">&gt;</span>
   <span class="nt">&lt;h1&gt;</span>Presentation Title<span class="nt">&lt;/h1&gt;</span>
@@ -1865,7 +2032,7 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
   <span class="nt">&lt;/p&gt;</span>
 <span class="nt">&lt;/header&gt;</span>
 <span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"slide"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>My First Slidedeck<span class="nt">&lt;/h2&gt;</span>
+  <span class="nt">&lt;h2&gt;</span>My First Topic<span class="nt">&lt;/h2&gt;</span>
 <span class="nt">&lt;/section&gt;</span>
 <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;&lt;/div&gt;</span>
 <span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"badge"</span><span class="nt">&gt;</span>
@@ -1878,18 +2045,16 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
 </code></pre>
-<p>This endpoint updates a deck. Request body media type (<code class="prettyprint">Content-Type</code> header) determines what kind of data you update: <code class="prettyprint">application/vnd.api+json</code> updates deck metadata, <code class="prettyprint">text/html</code> updates the deck&rsquo;s contents.</p>
+<p>This endpoint updates a topic. Request body media type (<code>Content-Type</code> header) determines what kind of data you update: <code>application/vnd.api+json</code> updates topic metadata, <code>text/html</code> updates the topic&#39;s contents.</p>
 
 <p><strong>Request parameters</strong></p>
 
-<p>See <a href="#create-a-deck">Create a deck</a>.</p>
-
-<h2 id="delete-a-deck">Delete a deck</h2>
-
+<p>See <a href="#create-a-topic">Create a topic</a>.</p>
+<h2 id='delete-a-topic'>Delete a topic</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://api.openwebslides.org/api/decks/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -1914,217 +2079,19 @@ DeckService.new<span class="o">(</span>Deck.new :owner <span class="o">=</span>&
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre>
-<p>This endpoint deletes a deck.</p>
-
-          <h1 id="conversions-api">Conversions API</h1>
-
-<h2 id="create-a-conversion">Create a conversion</h2>
-
-<blockquote>
-<p>Request</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/conversions</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">multipart/form-data; boundary=---------------------------9051914041544843365972754266</span>
-
------------------------------9051914041544843365972754266
-Content-Disposition: form-data; name="qqfilename"
-
-foo.pptx
------------------------------9051914041544843365972754266
-Content-Disposition: form-data; name="foo"; filename="foo.pptx"
-Content-Type: text/plain
-
-Content of foo.pptx
------------------------------9051914041544843365972754266--
-</code></pre>
-<blockquote>
-<p>Success response</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conversions"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queued"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"deck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/deck"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/deck"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/user"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/user"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<blockquote>
-<p>Failure response</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid filename"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid filename"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">],</span><span class="w">
-    </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid filename"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"success"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"preventRetry"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>This endpoint queues a conversion</p>
-
-<p><strong>Request parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">qqfilename</code></td>
-<td><span class="badge badge-danger">required</span> Filename from which the deck name will be inferred</td>
-</tr>
-<tr>
-<td><code class="prettyprint">qqfile</code></td>
-<td><span class="badge badge-danger">required</span> Multipart-encoded file</td>
-</tr>
-</tbody></table>
-
-<h2 id="get-a-conversion">Get a conversion</h2>
-
-<blockquote>
-<p>JSON Request</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/conversions/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
-</code></pre>
-<blockquote>
-<p>Success response</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"conversions"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"queued"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"deck"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/deck"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/deck"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/relationships/user"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://localhost:5000/api/conversions/1/user"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1503308394"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<blockquote>
-<p>Failure response</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">404</span> <span class="ne">Not Found</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
-</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Record not found"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The record identified by 1 could not be found."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"404"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre>
-<p>This endpoint retrieves a conversion.</p>
-
-<p><strong>Response parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">name</code></td>
-<td>Original filename from which the deck name was inferred</td>
-</tr>
-<tr>
-<td><code class="prettyprint">status</code></td>
-<td>One of <code class="prettyprint">queued</code>, <code class="prettyprint">processing</code>, <code class="prettyprint">success</code> or <code class="prettyprint">error</code></td>
-</tr>
-</tbody></table>
-
-<p><strong>Metadata parameters</strong></p>
-
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code class="prettyprint">createdAt</code></td>
-<td>Creation date (UNIX timestamp without timezone)</td>
-</tr>
-</tbody></table>
-
-          <h1 id="annotations-api">Annotations API</h1>
-
+<p>This endpoint deletes a topic.</p>
+<h1 id='annotations-api'>Annotations API</h1>
 <p>The annotations API is made up of two distinct entities: conversations and comments. Both have specific properties on top of the common properties (see tables below).
-Annotations are attached to a certain <code class="prettyprint">contentItemId</code>. At the moment, the <code class="prettyprint">contentItemId</code> references a slide number, but in the future this might reflect a unique reference to an object on a slide.</p>
+Annotations are attached to a certain <code>contentItemId</code>. At the moment, the <code>contentItemId</code> references a slide number, but in the future this might reflect a unique reference to an object on a slide.</p>
 
-<p>Every deck has a number of conversations attached to it. Comments are (non-recursively) nested under a conversation. The child comments&rsquo; <code class="prettyprint">contentItemId</code> must be equal to the parent conversation.</p>
+<p>Every topic has a number of conversations attached to it. Comments are (non-recursively) nested under a conversation. The child comments&#39; <code>contentItemId</code> must be equal to the parent conversation.</p>
 
 <p>Conversations are secret by default, they cannot be seen by anyone except the user who created them. It is not possible to add comments to secret conversations.</p>
 
 <p>Internally, annotations are powered by a state machine.</p>
 
 <p><img src="images/annotations_state_diagram.png" alt="Annotations state diagram" /></p>
-
-<h2 id="properties">Properties</h2>
-
-<h3 id="annotation">Annotation</h3>
-
+<h2 id='properties'>Properties</h2><h3 id='annotation'>Annotation</h3>
 <p>Common properties</p>
 
 <table><thead>
@@ -2134,49 +2101,43 @@ Annotations are attached to a certain <code class="prettyprint">contentItemId</c
 </tr>
 </thead><tbody>
 <tr>
-<td><code class="prettyprint">contentItemId</code></td>
+<td><code>contentItemId</code></td>
 <td>Reference to slide or object</td>
 </tr>
 <tr>
-<td><code class="prettyprint">rating</code></td>
+<td><code>rating</code></td>
 <td>Aggregated rating count</td>
 </tr>
 <tr>
-<td><code class="prettyprint">rated</code></td>
+<td><code>rated</code></td>
 <td>Whether or not the current user has rated the annotation</td>
 </tr>
 <tr>
-<td><code class="prettyprint">edited</code></td>
+<td><code>edited</code></td>
 <td>Whether or not the annotation has been edited after creation*</td>
 </tr>
 <tr>
-<td><code class="prettyprint">flagged</code></td>
+<td><code>flagged</code></td>
 <td>Whether or not the annotation is flagged*</td>
 </tr>
 <tr>
-<td><code class="prettyprint">deleted</code></td>
+<td><code>deleted</code></td>
 <td>Whether or not the annotation is deleted*</td>
 </tr>
 <tr>
-<td><code class="prettyprint">secret</code></td>
+<td><code>secret</code></td>
 <td>Whether or not the annotation is secret*</td>
 </tr>
 </tbody></table>
 
 <ul>
-<li><code class="prettyprint">edited</code>, <code class="prettyprint">flagged</code>, <code class="prettyprint">deleted</code> and <code class="prettyprint">secret</code> are mutually exclusive</li>
+<li><code>edited</code>, <code>flagged</code>, <code>deleted</code> and <code>secret</code> are mutually exclusive</li>
 </ul>
-
-<h2 id="create-a-conversation">Create a conversation</h2>
-
+<h2 id='create-a-conversation'>Create a conversation</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
-
-          <h1 id="errors">Errors</h1>
-
-<h2 id="http-status-code">HTTP status code</h2>
-
+<h1 id='errors'>Errors</h1><h2 id='http-status-code'>HTTP status code</h2>
 <p>The API uses the following HTTP error codes:</p>
 
 <table><thead>
@@ -2187,15 +2148,15 @@ Annotations are attached to a certain <code class="prettyprint">contentItemId</c
 </thead><tbody>
 <tr>
 <td>400</td>
-<td>Bad Request &ndash; Invalid data or URL</td>
+<td>Bad Request -- Invalid data or URL</td>
 </tr>
 <tr>
 <td>401</td>
-<td>Unauthorized &ndash; Invalid or no API token</td>
+<td>Unauthorized -- Invalid or no API token</td>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden &ndash; Not authorized to perform action</td>
+<td>Forbidden -- Not authorized to perform action</td>
 </tr>
 <tr>
 <td>404</td>
@@ -2207,33 +2168,31 @@ Annotations are attached to a certain <code class="prettyprint">contentItemId</c
 </tr>
 <tr>
 <td>406</td>
-<td>Not Acceptable &ndash; <code class="prettyprint">Content-Type</code> should be <code class="prettyprint">application/vnd.api+json</code></td>
+<td>Not Acceptable -- <code>Content-Type</code> should be <code>application/vnd.api+json</code></td>
 </tr>
 <tr>
 <td>410</td>
-<td>Gone &ndash; Resource has been removed</td>
+<td>Gone -- Resource has been removed</td>
 </tr>
 <tr>
 <td>422</td>
-<td>Unprocessable Entity &ndash; Malformed <code class="prettyprint">data</code> object</td>
+<td>Unprocessable Entity -- Malformed <code>data</code> object</td>
 </tr>
 <tr>
 <td>429</td>
-<td>Too Many Requests &ndash; Rate limiting in effect (to be included in future updates)</td>
+<td>Too Many Requests -- Rate limiting in effect (to be included in future updates)</td>
 </tr>
 <tr>
 <td>500</td>
-<td>Internal Server Error &ndash; The server had a problem. Please try again later.</td>
+<td>Internal Server Error -- The server had a problem. Please try again later.</td>
 </tr>
 <tr>
 <td>503</td>
-<td>Service Unavailable &ndash; Temporarily offline for maintenance. Please try again later.</td>
+<td>Service Unavailable -- Temporarily offline for maintenance. Please try again later.</td>
 </tr>
 </tbody></table>
-
-<h2 id="json-api-error-code">JSON API error code</h2>
-
-<p>Besides HTTP status codes, the API provides additional error codes in the returned <code class="prettyprint">errors</code> object under the <code class="prettyprint">code</code> variable:</p>
+<h2 id='json-api-error-code'>JSON API error code</h2>
+<p>Besides HTTP status codes, the API provides additional error codes in the returned <code>errors</code> object under the <code>code</code> variable:</p>
 
 <table><thead>
 <tr>
