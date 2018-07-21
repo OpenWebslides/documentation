@@ -32,7 +32,7 @@ This is the production server. Only deploy stable, fully tested releases to this
 
 **UGent CAS**: The server runs a version **with** the UGent CAS-functionality.
 
-**Access**: Only Rein and Florian have access to this server. Direct your queries to either if you want to deploy a release.
+**Access**: Only your system administrator has access to this server. Direct your queries to your system administrator if you want to deploy a release.
 
 <aside class="notice">
   Do not use this server for development purposes. Queries to manipulate data manually will be ignored
@@ -47,7 +47,8 @@ $ ssh openwebslides@owsdev.ugent.be -i /path/to/keyfile
 # You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides
 $ cd OpenWebslides
 
-# This is basically just the cloned git repository. You can now navigate to any branch/commit you want to
+# This folder contains the cloned git repository
+# You can now navigate to any branch/commit you want to
 $ git branch
 * (detached from 038655f)
   master
@@ -56,10 +57,13 @@ $ git branch
 $ git fetch --all
 $ git checkout b5c3912
 
+# The platform configuration should already be present and correct
+# If this is not the case, refer to the Administrator's setup guide
+
 # Build the application image
 $ docker build -t openwebslides/openwebslides:latest .
 
-# Bring down the running application and restart it with the new image
+# Bring down the running application and restart it in the background with the new image
 $ docker-compose down; docker-compose up -d
 ```
 
@@ -72,13 +76,15 @@ $ ssh openwebslides@owsprod.ugent.be -i /path/to/keyfile
 # You're now in /opt/openwebslides. The app is located in /opt/openwebslides/OpenWebslides
 $ cd OpenWebslides
 
-# This is again just the cloned git repository, however you should always be on the `master` branch and you should only `git pull`
+# This is again just the cloned git repository
+# However it should always be on the `master` branch and only `git pull` should be used
 $ git pull
 
 # Build the application image
 $ docker build -t openwebslides/openwebslides:latest .
 
-# Before the next step, make sure nobody is using the platform. Preferably drop a message in the relevant slack channels
+# Before the next step, make sure nobody is using the platform
+# Preferably only restart the application during off-peak times
 
 # Bring down the running application and restart it with the new image
 # ATTENTION: to enable TLS communication, an alternative docker-compose should be specified
