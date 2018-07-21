@@ -1,0 +1,85 @@
+# API overview
+
+The REST API backend is built in a modular way.
+The URL structure is kept as simple as possible, avoiding nesting resources where possible.
+
+API endpoint      | Description
+----------------- | ------------
+`/token`          | Allows requesting an API token
+`/password`       | Allows requesting sending an account reset email
+`/confirmation`   | Allows requesting resending the account confirmation email
+`/users`          | Allows manipulating users
+`/topics`         | Allows manipulating topics
+`/assets`         | Allows manipulating assets
+`/notifications`  | Allows retrieving feed notifications
+`/conversations`  | Allows manipulating conversations (annotations)
+`/comments`       | Allows manipulating comments (annotations)
+
+## Authentication
+
+The REST API uses [JSON Web Tokens](https://jwt.io/) (JWTs) as authentication mechanism.
+The API expects the token to be included in all API requests on protected endpoints as an `Authorization` header in the bearer token format.
+The token is only valid for a limited time, but a renewed token is available on every (successfully authenticated) response as an `Authorization` header.
+This new token should be used for subsequent API calls.
+
+<aside class="notice">
+  <em>Protected</em> endpoints require authentication. <em>Unprotected</em> endpoints can be manipulated without a valid token.
+</aside>
+
+<aside class="notice">
+  You must replace the JWT in the examples with a JWT obtained from the <a href="#token-api">Token API</a>.
+</aside>
+
+
+```http
+GET <%= current_page.data.endpoint %>users HTTP/1.1
+Accept: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+> Don't forget to replace `TOKEN` with the JWT obtained from the [Token API](#token-api)
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+Content-Length: 138
+```
+
+## Request headers
+
+Since the API adheres to the [JSON-API specification](http://jsonapi.org/format/1.0/), certain headers are required.
+For _all_ requests excluding binary uploads, the `application/vnd.api+json` should be used as MIME type.
+This means that for all requests expecting data to be returned, the `Accept` header should be set to this value,
+and for all requests sending data the `Content-Type` header should be set to this value.
+It is possible for a request to have both headers.
+For protected endpoints, a `Authorization` header is also required in the correct format as [described above](#authentication).
+
+```http
+POST <%= current_page.data.endpoint %>topics HTTP/1.1
+Content-Type: application/vnd.api+json
+Accept: application/vnd.api+json
+Token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1YiI6MSwidmVyIjozfQ.1v_SvE8yQE-z9FiKoFhkWRXx9hJ4kQNRxz1uc8zXFjg
+
+{
+  "data": {
+    "type": "topics",
+    "attributes": {
+      "name": "My First Deck",
+      "description": "This is my first topic. It is an awesome topic.",
+      "state": "public_access"
+    },
+  "relationships": {
+      "owner": {
+        "data": {
+          "id": "1",
+          "type": "users"
+        }
+      }
+    }
+  }
+}
+```
+
+## Request body
+
+Refer to the [JSON-API specification](http://jsonapi.org/format/1.0/) for a formal definition of request body and the documentation on this website for examples on every API.
