@@ -16,31 +16,6 @@
 │   ├── views
 │   └── workers
 ├── bin                               # API server executables
-├── client                            # Web app code
-│   ├── app
-│   │   ├── actions
-│   │   ├── api
-│   │   ├── constants
-│   │   ├── containers
-│   │   ├── presentationals
-│   │   ├── reducers
-│   │   ├── sagas
-│   │   └── selectors
-│   ├── assets
-│   │   ├── files
-│   │   ├── fonts
-│   │   ├── images
-│   │   └── stylesheets
-│   ├── config
-│   ├── lib
-│   │   ├── content-editable
-│   │   ├── content-item-container
-│   │   ├── convert-to-print
-│   │   ├── convert-to-state
-│   │   └── state-traversal
-│   ├── locales
-│   │   └── en
-│   └── specs
 ├── config                            # API server configuration
 ├── data                              # Topic repositories
 ├── db                                # Database configuration
@@ -52,7 +27,9 @@
 
 ## Frontend API endpoint
 
-The default API endpoint of the frontend stack is currently set to `http://owsdev.ugent.be/api/` in the `client/config/api.js` file. This file should almost never be changed. If you need to override the endpoint, copy (don't move) the `client/config/config.js.erb` file to `client/config/config.js`, and replace the embedded Ruby tag with another endpoint (don't forget the trailing `/api/`). This file is ignored by git and should never be included in the repository, as it gets overwritten on every Docker execution.
+The default API endpoint of the frontend stack is currently set to `http://owsdev.ugent.be/api/` in the frontend `app/config/api.js` file.
+If you wish to use an alternative endpoint, you can change the defaults in this file.
+However, changes to this file should never be committed.
 
 ## Rake tasks
 
