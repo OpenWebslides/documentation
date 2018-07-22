@@ -15,6 +15,8 @@ API endpoint      | Description
 `/conversations`  | Allows manipulating conversations (annotations)
 `/comments`       | Allows manipulating comments (annotations)
 
+For documentation on filtering, sorting, including resources, error responses and other functionality not included on this website, refer to the [JSON-API specification](http://jsonapi.org/format/1.0/).
+
 ## Authentication
 
 The REST API uses [JSON Web Tokens](https://jwt.io/) (JWTs) as authentication mechanism.
@@ -62,7 +64,7 @@ Token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1Y
 ```
 
 ```json
-<%= api_response :get_topic %>
+<%= api_response 'topics/get_topic' %>
 ```
 
 ## Request body
