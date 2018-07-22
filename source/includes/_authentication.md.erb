@@ -2,6 +2,9 @@
 
 ## Create a token (sign in)
 
+This endpoint creates a token (sign in a user).
+The token is returned in the `Authorization` header in the bearer token format.
+
 **Request attributes**
 
 Attribute       |     | Type | Description
@@ -58,10 +61,14 @@ Content-Type: application/vnd.api+json
 <%= api_response 'tokens/post_token_403' %>
 ```
 
-This endpoint creates a token (sign in a user).
-The returned token should be used for subsequent API calls.
-
 ## Delete a token (sign out)
+
+This endpoint deletes a token (sign out a user).
+After a success response, all previously issued tokens for the current user are no longer valid, effectively signing the user out of all sessions.
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
 
 > Request
 
@@ -86,5 +93,3 @@ Content-Type: application/vnd.api+json
 ```json
 <%= api_response 'tokens/delete_token_401' %>
 ```
-
-This endpoint deletes a token (sign out a user). After this call, all previously requested tokens are no longer valid.
