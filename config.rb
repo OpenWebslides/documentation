@@ -56,11 +56,11 @@ set :port, 4567
 helpers do
   require './lib/toc_data.rb'
 
-  def api_response(name_sym, ext_sym = :json)
-    File.read File.join root, 'examples', 'responses', "#{name_sym.to_s}.#{ext_sym.to_s}"
+  def api_request(path, extension = 'json')
+    ERB.new(File.read File.join root, 'examples', 'requests', "#{path}.erb.#{extension}").result binding
   end
 
-  def api_request(name_sym, ext_sym = :json)
-    File.read File.join root, 'examples', 'requests', "#{name_sym.to_s}.#{ext_sym.to_s}"
+  def api_response(path, extension = 'json')
+    ERB.new(File.read File.join root, 'examples', 'responses', "#{path}.erb.#{extension}").result binding
   end
 end
