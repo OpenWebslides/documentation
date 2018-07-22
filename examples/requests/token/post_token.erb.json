@@ -2,7 +2,7 @@
   "data": {
     "type": "tokens",
     "attributes": {
-      "email": "foo@bar",
+      "email": "foo@bar.com",
       "password": "abcd1234"
     }
   }

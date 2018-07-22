@@ -24,7 +24,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request 'tokens/post_token' %>
+<%= api_request 'token/post_token' %>
 ```
 
 > Success response
@@ -36,7 +36,7 @@ Authorization: Bearer TOKEN
 ```
 
 ```json
-<%= api_response 'tokens/post_token' %>
+<%= api_response 'token/post_token' %>
 ```
 
 > Failure response (incorrect email or password)
@@ -47,7 +47,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'tokens/post_token_401' %>
+<%= api_response 'token/post_token_401' %>
 ```
 
 > Failure response (unconfirmed account)
@@ -58,7 +58,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'tokens/post_token_403' %>
+<%= api_response 'token/post_token_403' %>
 ```
 
 ## Delete a token (sign out)
@@ -91,5 +91,5 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'tokens/delete_token_401' %>
+<%= api_response 'token/delete_token_401' %>
 ```
