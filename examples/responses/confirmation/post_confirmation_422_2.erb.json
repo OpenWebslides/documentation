@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "title": "was already confirmed, please try signing in",
+      "detail": "Email was already confirmed, please try signing in",
+      "id": "email#alreadyConfirmed",
+      "code": "100",
+      "status": "422"
+    }
+  ]
+}

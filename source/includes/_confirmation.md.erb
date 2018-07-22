@@ -1,0 +1,60 @@
+# Confirmation API
+
+## Confirm account
+
+This endpoint confirms an account.
+After a success response, the user can sign in.
+
+**Request attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`confirmationToken` | <span class="badge badge-danger">required</span> | String | Opaque token that was included in the email sent to the user
+
+**Response attributes**
+
+See [Get a user](#get-a-user).
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>confirmation HTTP/1.1
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_request 'confirmation/post_confirmation' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'confirmation/post_confirmation' %>
+```
+
+> Failure response (invalid confirmation token)
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'confirmation/post_confirmation_422_1' %>
+```
+
+> Failure response (already confirmed)
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'confirmation/post_confirmation_422_2' %>
+```

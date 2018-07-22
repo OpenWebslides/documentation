@@ -1,0 +1,14 @@
+{
+  "errors": [
+    {
+      "title": "is invalid",
+      "detail": "Confirmation token is invalid",
+      "id": "confirmationToken#invalid",
+      "code": "100",
+      "source": {
+        "pointer": "/data/attributes/confirmationToken"
+      },
+      "status": "422"
+    }
+  ]
+}
