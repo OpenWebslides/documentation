@@ -59,25 +59,10 @@ POST <%= current_page.data.endpoint %>topics HTTP/1.1
 Content-Type: application/vnd.api+json
 Accept: application/vnd.api+json
 Token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1YiI6MSwidmVyIjozfQ.1v_SvE8yQE-z9FiKoFhkWRXx9hJ4kQNRxz1uc8zXFjg
+```
 
-{
-  "data": {
-    "type": "topics",
-    "attributes": {
-      "name": "My First Deck",
-      "description": "This is my first topic. It is an awesome topic.",
-      "state": "public_access"
-    },
-  "relationships": {
-      "owner": {
-        "data": {
-          "id": "1",
-          "type": "users"
-        }
-      }
-    }
-  }
-}
+```json
+<%= api_response :get_topic %>
 ```
 
 ## Request body

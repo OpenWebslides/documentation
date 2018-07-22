@@ -25,7 +25,7 @@ Authorization: Bearer TOKEN
 <%= api_response :get_user %>
 ```
 
-> Failure response
+> Failure response (incorrect email or password)
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -36,7 +36,7 @@ Content-Type: application/vnd.api+json
 <%= api_response :post_token_401 %>
 ```
 
-> Failure response
+> Failure response (unconfirmed account)
 
 ```http
 HTTP/1.1 403 Forbidden
@@ -48,6 +48,7 @@ Content-Type: application/vnd.api+json
 ```
 
 This endpoint creates a token (sign in a user).
+The returned token should be used for subsequent API calls.
 
 ## Delete a token (sign out)
 
