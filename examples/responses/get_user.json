@@ -3,7 +3,7 @@
     "id": "1",
     "type": "users",
     "links": {
-      "self": "http://localhost:5000/api/users/1"
+      "self": "http://localhost:3000/api/users/1"
     },
     "attributes": {
       "email": "foo@bar",
@@ -13,14 +13,14 @@
     "relationships": {
       "topics": {
         "links": {
-          "self": "http://localhost:5000/api/users/1/relationships/topics",
-          "related": "http://localhost:5000/api/users/1/topics"
+          "self": "http://localhost:3000/api/users/1/relationships/topics",
+          "related": "http://localhost:3000/api/users/1/topics"
         }
       },
       "contributions": {
         "links": {
-          "self": "http://localhost:5000/api/users/1/relationships/contributions",
-          "related": "http://localhost:5000/api/users/1/contributions"
+          "self": "http://localhost:3000/api/users/1/relationships/contributions",
+          "related": "http://localhost:3000/api/users/1/contributions"
         }
       }
     }

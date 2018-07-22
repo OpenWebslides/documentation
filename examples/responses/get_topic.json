@@ -3,7 +3,7 @@
     "id": "1",
     "type": "topics",
     "links": {
-      "self": "http://localhost:5000/api/topics/1"
+      "self": "http://localhost:3000/api/topics/1"
     },
     "attributes": {
       "name": "Foo",
@@ -14,14 +14,14 @@
     "relationships": {
       "owner": {
         "links": {
-          "self": "http://localhost:5000/api/topics/1/relationships/owner",
-          "related": "http://localhost:5000/api/topics/1/owner"
+          "self": "http://localhost:3000/api/topics/1/relationships/owner",
+          "related": "http://localhost:3000/api/topics/1/owner"
         }
       },
       "collaborators": {
         "links": {
-          "self": "http://localhost:5000/api/topics/1/relationships/collaborators",
-          "related": "http://localhost:5000/api/topics/1/collaborators"
+          "self": "http://localhost:3000/api/topics/1/relationships/collaborators",
+          "related": "http://localhost:3000/api/topics/1/collaborators"
         }
       }
     }

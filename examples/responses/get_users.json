@@ -4,7 +4,7 @@
       "id": "1",
       "type": "users",
       "links": {
-        "self": "http://localhost:5000/api/users/1"
+        "self": "http://localhost:3000/api/users/1"
       },
       "attributes": {
         "email": "foo1@bar",
@@ -14,14 +14,14 @@
       "relationships": {
         "topics": {
           "links": {
-            "self": "http://localhost:5000/api/users/1/relationships/topics",
-            "related": "http://localhost:5000/api/users/1/topics"
+            "self": "http://localhost:3000/api/users/1/relationships/topics",
+            "related": "http://localhost:3000/api/users/1/topics"
           }
         },
         "contributions": {
           "links": {
-            "self": "http://localhost:5000/api/users/1/relationships/contributions",
-            "related": "http://localhost:5000/api/users/1/contributions"
+            "self": "http://localhost:3000/api/users/1/relationships/contributions",
+            "related": "http://localhost:3000/api/users/1/contributions"
           }
         }
       }
@@ -30,7 +30,7 @@
       "id": "2",
       "type": "users",
       "links": {
-        "self": "http://localhost:5000/api/users/2"
+        "self": "http://localhost:3000/api/users/2"
       },
       "attributes": {
         "email": "foo2@bar",
@@ -40,14 +40,14 @@
       "relationships": {
         "topics": {
           "links": {
-            "self": "http://localhost:5000/api/users/2/relationships/topics",
-            "related": "http://localhost:5000/api/users/2/topics"
+            "self": "http://localhost:3000/api/users/2/relationships/topics",
+            "related": "http://localhost:3000/api/users/2/topics"
           }
         },
         "contributions": {
           "links": {
-            "self": "http://localhost:5000/api/users/2/relationships/contributions",
-            "related": "http://localhost:5000/api/users/2/contributions"
+            "self": "http://localhost:3000/api/users/2/relationships/contributions",
+            "related": "http://localhost:3000/api/users/2/contributions"
           }
         }
       }
@@ -56,7 +56,7 @@
       "id": "3",
       "type": "users",
       "links": {
-        "self": "http://localhost:5000/api/users/3"
+        "self": "http://localhost:3000/api/users/3"
       },
       "attributes": {
         "email": "foo3@bar",
@@ -66,21 +66,21 @@
       "relationships": {
         "topics": {
           "links": {
-            "self": "http://localhost:5000/api/users/3/relationships/topics",
-            "related": "http://localhost:5000/api/users/3/topics"
+            "self": "http://localhost:3000/api/users/3/relationships/topics",
+            "related": "http://localhost:3000/api/users/3/topics"
           }
         },
         "contributions": {
           "links": {
-            "self": "http://localhost:5000/api/users/3/relationships/contributions",
-            "related": "http://localhost:5000/api/users/3/contributions"
+            "self": "http://localhost:3000/api/users/3/relationships/contributions",
+            "related": "http://localhost:3000/api/users/3/contributions"
           }
         }
       }
     }
   ],
   "links": {
-    "first": "http://localhost:5000/api/users?page%5Blimit%5D=10&page%5Boffset%5D=0",
-    "last": "http://localhost:5000/api/users?page%5Blimit%5D=10&page%5Boffset%5D=0"
+    "first": "http://localhost:3000/api/users?page%5Blimit%5D=10&page%5Boffset%5D=0",
+    "last": "http://localhost:3000/api/users?page%5Blimit%5D=10&page%5Boffset%5D=0"
   }
 }
