@@ -1,0 +1,31 @@
+# Notifications API
+
+## Get all notifications
+
+This endpoint retrieves all notifications.
+
+**Response attributes**
+
+Attribute       | Type | Description
+--------------- | ---- | -----------
+`eventType`     | Enum   | Type of event. Can be one of `topic_created`, `topic_updated`
+`userName`      | String | Name of the user that was involved in the event
+`topicTitle`    | String | Name of the topic that was involved in the event
+`createdAt`     | Integer| Timestamp of the event. **This attribute is included in the `meta` section.**
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>notifications HTTP/1.1
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'notifications/get_notifications' %>
+```
