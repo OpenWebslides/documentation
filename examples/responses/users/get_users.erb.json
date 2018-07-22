@@ -1,0 +1,86 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "type": "users",
+      "links": {
+        "self": "<%= current_page.data.endpoint %>users/1"
+      },
+      "attributes": {
+        "email": "foo1@bar",
+        "firstName": "foo1",
+        "lastName": "bar"
+      },
+      "relationships": {
+        "topics": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/1/relationships/topics",
+            "related": "<%= current_page.data.endpoint %>users/1/topics"
+          }
+        },
+        "contributions": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/1/relationships/contributions",
+            "related": "<%= current_page.data.endpoint %>users/1/contributions"
+          }
+        }
+      }
+    },
+    {
+      "id": "2",
+      "type": "users",
+      "links": {
+        "self": "<%= current_page.data.endpoint %>users/2"
+      },
+      "attributes": {
+        "email": "foo2@bar",
+        "firstName": "foo2",
+        "lastName": "bar"
+      },
+      "relationships": {
+        "topics": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/2/relationships/topics",
+            "related": "<%= current_page.data.endpoint %>users/2/topics"
+          }
+        },
+        "contributions": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/2/relationships/contributions",
+            "related": "<%= current_page.data.endpoint %>users/2/contributions"
+          }
+        }
+      }
+    },
+    {
+      "id": "3",
+      "type": "users",
+      "links": {
+        "self": "<%= current_page.data.endpoint %>users/3"
+      },
+      "attributes": {
+        "email": "foo3@bar",
+        "firstName": "foo3",
+        "lastName": "bar"
+      },
+      "relationships": {
+        "topics": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/3/relationships/topics",
+            "related": "<%= current_page.data.endpoint %>users/3/topics"
+          }
+        },
+        "contributions": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/3/relationships/contributions",
+            "related": "<%= current_page.data.endpoint %>users/3/contributions"
+          }
+        }
+      }
+    }
+  ],
+  "links": {
+    "first": "<%= current_page.data.endpoint %>users?page%5Blimit%5D=10&page%5Boffset%5D=0",
+    "last": "<%= current_page.data.endpoint %>users?page%5Blimit%5D=10&page%5Boffset%5D=0"
+  }
+}

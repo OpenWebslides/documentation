@@ -1,0 +1,28 @@
+{
+  "data": {
+    "id": "1",
+    "type": "users",
+    "links": {
+      "self": "<%= current_page.data.endpoint %>users/1"
+    },
+    "attributes": {
+      "email": "foo@bar",
+      "firstName": "foo1",
+      "lastName": "bar"
+    },
+    "relationships": {
+      "topics": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>users/1/relationships/topics",
+          "related": "<%= current_page.data.endpoint %>users/1/topics"
+        }
+      },
+      "contributions": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>users/1/relationships/contributions",
+          "related": "<%= current_page.data.endpoint %>users/1/contributions"
+        }
+      }
+    }
+  }
+}

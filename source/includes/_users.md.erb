@@ -17,7 +17,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_users %>
+<%= api_response 'users/get_users' %>
 ```
 
 This endpoint retrieves all visible users.
@@ -36,7 +36,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request :post_users %>
+<%= api_request 'users/post_users' %>
 ```
 
 > Success response
@@ -47,7 +47,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_user %>
+<%= api_response 'users/get_user' %>
 ```
 
 > Failure response
@@ -58,7 +58,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :post_users_422 %>
+<%= api_response 'users/post_users_422' %>
 ```
 
 This endpoint creates a user. A user's email has to be confirmed in order to obtain a token.
@@ -93,7 +93,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_user %>
+<%= api_response 'users/get_user' %>
 ```
 
 > Failure response
@@ -104,7 +104,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_user_404 %>
+<%= api_response 'users/get_user_404' %>
 ```
 
 This endpoint retrieves a user.
@@ -131,7 +131,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request :patch_user %>
+<%= api_request 'users/patch_user' %>
 ```
 
 > Success response
@@ -142,7 +142,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_user %>
+<%= api_response 'users/get_user' %>
 ```
 
 > Failure response
@@ -153,7 +153,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :patch_user_400 %>
+<%= api_response 'users/patch_user_400' %>
 ```
 
 > Failure response
@@ -164,7 +164,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :patch_user_422 %>
+<%= api_response 'users/patch_user_422' %>
 ```
 
 This endpoint updates a user.
@@ -196,7 +196,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_user_404 %>
+<%= api_response 'users/get_user_404' %>
 ```
 
 This endpoint deletes a user.

@@ -18,7 +18,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_topics %>
+<%= api_response 'topics/get_topics' %>
 ```
 
 This endpoint retrieves all visible topics.
@@ -37,7 +37,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request :post_topics %>
+<%= api_request 'topics/post_topics' %>
 ```
 
 > Success response
@@ -48,7 +48,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_topic %>
+<%= api_response 'topics/get_topic' %>
 ```
 
 > Failure response
@@ -59,7 +59,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :post_topics_422 %>
+<%= api_response 'topics/post_topics_422' %>
 ```
 
 > Failure response
@@ -70,7 +70,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :post_topics_400 %>
+<%= api_response 'topics/post_topics_400' %>
 ```
 
 This endpoint creates a topic.
@@ -105,7 +105,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_topic %>
+<%= api_response 'topics/get_topic' %>
 ```
 
 > Failure response
@@ -116,7 +116,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_user_404 %>
+<%= api_response 'users/get_user_404' %>
 ```
 
 > HTML Request
@@ -134,7 +134,7 @@ Content-Type: text/html
 ```
 
 ```html
-<%= api_response :get_topic, :html %>
+<%= api_response 'topics/get_topic', :html %>
 ```
 
 This endpoint retrieves a topic. Response body media type (`Accept` header) determines what kind of data you get: `application/vnd.api+json` retrieves topic metadata, `text/html` retrieves the topic's contents.
@@ -162,7 +162,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request :patch_topic %>
+<%= api_request 'topics/patch_topic' %>
 ```
 
 > Success response
@@ -173,7 +173,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_topic %>
+<%= api_response 'topics/get_topic' %>
 ```
 
 > Failure response
@@ -184,7 +184,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :patch_topic_400 %>
+<%= api_response 'topics/patch_topic_400' %>
 ```
 
 > Failure response
@@ -195,7 +195,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :patch_topic_422 %>
+<%= api_response 'topics/patch_topic_422' %>
 ```
 
 > HTML Request
@@ -206,7 +206,7 @@ Content-Type: text/html
 ```
 
 ```html
-<%= api_request :patch_topic, :html %>
+<%= api_request 'topics/patch_topic', :html %>
 ```
 
 > Success response
@@ -245,7 +245,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :get_user_404 %>
+<%= api_response 'users/get_user_404' %>
 ```
 
 This endpoint deletes a topic.
