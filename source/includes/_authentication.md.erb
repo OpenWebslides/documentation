@@ -10,7 +10,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_request :post_token %>
+<%= api_request 'tokens/post_token' %>
 ```
 
 > Success response
@@ -22,7 +22,7 @@ Authorization: Bearer TOKEN
 ```
 
 ```json
-<%= api_response :get_user %>
+<%= api_response 'tokens/post_token' %>
 ```
 
 > Failure response (incorrect email or password)
@@ -33,7 +33,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :post_token_401 %>
+<%= api_response 'tokens/post_token_401' %>
 ```
 
 > Failure response (unconfirmed account)
@@ -44,7 +44,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :post_token_403 %>
+<%= api_response 'tokens/post_token_403' %>
 ```
 
 This endpoint creates a token (sign in a user).
@@ -73,7 +73,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response :delete_token_401 %>
+<%= api_response 'tokens/delete_token_401' %>
 ```
 
 This endpoint deletes a token (sign out a user). After this call, all previously requested tokens are no longer valid.
