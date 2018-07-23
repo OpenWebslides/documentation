@@ -126,11 +126,27 @@ Content-Type: application/vnd.api+json
 
 ## Update a user
 
+This endpoint updates a user.
+
+**Request attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`firstName`     | | String | First name
+`lastName`      | | String | Last name
+`locale`        | | String | Locale
+`password`      | | String | Password, must be at least 6 characters
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
 > Request
 
 ```http
 PATCH <%= current_page.data.endpoint %>users/1 HTTP/1.1
 Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
 ```
 
 ```json
@@ -145,7 +161,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'users/get_user' %>
+<%= api_response 'users/patch_user' %>
 ```
 
 > Failure response
@@ -170,18 +186,19 @@ Content-Type: application/vnd.api+json
 <%= api_response 'users/patch_user_422' %>
 ```
 
-This endpoint updates a user.
-
-**Request parameters**
-
-See <a href="#create-a-user">Create a user</a>.
-
 ## Delete a user
+
+This endpoint deletes a user.
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
 
 > Request
 
 ```http
 DELETE <%= current_page.data.endpoint %>users/1 HTTP/1.1
+Authorization: Bearer TOKEN
 ```
 
 > Success response
@@ -201,5 +218,3 @@ Content-Type: application/vnd.api+json
 ```json
 <%= api_response 'users/get_user_404' %>
 ```
-
-This endpoint deletes a user.
