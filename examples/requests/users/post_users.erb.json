@@ -2,10 +2,11 @@
   "data": {
     "type": "users",
     "attributes": {
-      "email": "foo@bar",
-      "firstName": "foo",
-      "lastName": "bar",
-      "password": "P@ssword1"
+      "email": "foo@bar.com",
+      "firstName": "Foo",
+      "lastName": "Bar",
+      "password": "P@ssword1",
+      "tosAccepted": "true"
     }
   }
 }

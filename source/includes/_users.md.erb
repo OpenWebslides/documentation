@@ -37,6 +37,19 @@ Content-Type: application/vnd.api+json
 
 ## Create a user
 
+This endpoint creates a user.
+An account has to be confirmed using the [Confirmation API](#confirmation-api) in order to obtain a token.
+
+**Request attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`email`         | <span class="badge badge-danger">required</span> | String | Email, must not be already taken
+`firstName`     | <span class="badge badge-danger">required</span> | String | First name
+`lastName`      | | String | Last name
+`password`      | <span class="badge badge-danger">required</span> | String | Password, must be at least 6 characters
+`tosAccepted`   | <span class="badge badge-danger">required</span> | String | User has explicitly accepted terms of service, must be `true`
+
 > Request
 
 ```http
@@ -56,7 +69,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'users/get_user' %>
+<%= api_response 'users/post_users' %>
 ```
 
 > Failure response
@@ -69,21 +82,6 @@ Content-Type: application/vnd.api+json
 ```json
 <%= api_response 'users/post_users_422' %>
 ```
-
-This endpoint creates a user. A user's email has to be confirmed in order to obtain a token.
-
-**Request parameters**
-
-Parameter | Description
-----------|------------
-`first_name` | <span class="badge badge-danger">required</span> First name
-`last_name` | Last name
-`email` | <span class="badge badge-danger">required</span> Email
-`password` | <span class="badge badge-danger">required</span> Password
-
-<aside class="notice">
-  This endpoint does not require authentication.
-</aside>
 
 ## Get a user
 
