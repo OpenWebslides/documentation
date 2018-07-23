@@ -2,6 +2,21 @@
 
 ## Get all users
 
+This endpoint retrieves all users.
+
+**Response attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`firstName`     |     | String | First name
+`lastName`      | <span class="badge badge-info">optional</span> | String | Last name
+`email`         | <span class="badge badge-info">optional</span> | String | Email (only visible when the request is authenticated by the user equal to the requested resource)
+`locale`        | <span class="badge badge-info">optional</span> | String | Locale (only visible when the request is authenticated by the user equal to the requested resource)
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data.
+</aside>
+
 > Request
 
 ```http
@@ -19,12 +34,6 @@ Content-Type: application/vnd.api+json
 ```json
 <%= api_response 'users/get_users' %>
 ```
-
-This endpoint retrieves all visible users.
-
-<aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data.
-</aside>
 
 ## Create a user
 

@@ -7,9 +7,9 @@
         "self": "<%= current_page.data.endpoint %>users/1"
       },
       "attributes": {
-        "email": "foo1@bar",
-        "firstName": "foo1",
-        "lastName": "bar"
+        "email": "foo@bar.com",
+        "firstName": "Foo",
+        "lastName": "Bar"
       },
       "relationships": {
         "topics": {
@@ -33,9 +33,8 @@
         "self": "<%= current_page.data.endpoint %>users/2"
       },
       "attributes": {
-        "email": "foo2@bar",
-        "firstName": "foo2",
-        "lastName": "bar"
+        "firstName": "Foo",
+        "lastName": "Bat"
       },
       "relationships": {
         "topics": {
@@ -48,32 +47,6 @@
           "links": {
             "self": "<%= current_page.data.endpoint %>users/2/relationships/contributions",
             "related": "<%= current_page.data.endpoint %>users/2/contributions"
-          }
-        }
-      }
-    },
-    {
-      "id": "3",
-      "type": "users",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>users/3"
-      },
-      "attributes": {
-        "email": "foo3@bar",
-        "firstName": "foo3",
-        "lastName": "bar"
-      },
-      "relationships": {
-        "topics": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>users/3/relationships/topics",
-            "related": "<%= current_page.data.endpoint %>users/3/topics"
-          }
-        },
-        "contributions": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>users/3/relationships/contributions",
-            "related": "<%= current_page.data.endpoint %>users/3/contributions"
           }
         }
       }
