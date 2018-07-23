@@ -1396,6 +1396,16 @@ After a success response, the user can sign in.</p>
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre><h1 id='users-api'>Users API</h1><h2 id='get-all-users'>Get all users</h2>
+<p>This endpoint retrieves all users.</p>
+
+<p><strong>Response attributes</strong></p>
+
+<p>See <a href="#get-a-user">Get a user</a>.</p>
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data.
+</aside>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1417,9 +1427,9 @@ After a success response, the user can sign in.</p>
         </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo1@bar"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo1"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1443,9 +1453,8 @@ After a success response, the user can sign in.</p>
         </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/2"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo2@bar"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo2"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bat"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1461,32 +1470,6 @@ After a success response, the user can sign in.</p>
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/3"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo3@bar"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo3"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/3/relationships/topics"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/3/topics"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"contributions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/3/relationships/contributions"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/3/contributions"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1495,13 +1478,52 @@ After a success response, the user can sign in.</p>
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint retrieves all visible users.</p>
+</span></code></pre><h2 id='create-a-user'>Create a user</h2>
+<p>This endpoint creates a user.
+An account has to be confirmed using the <a href="#confirmation-api">Confirmation API</a> in order to obtain a token.</p>
 
-<aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data.
-</aside>
-<h2 id='create-a-user'>Create a user</h2>
+<p><strong>Request attributes</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>Email, must not be already taken</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>First name</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td></td>
+<td>String</td>
+<td>Last name</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>Password, must be at least 6 characters</td>
+</tr>
+<tr>
+<td><code>tosAccepted</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>User has explicitly accepted terms of service, must be <code>true</code></td>
+</tr>
+</tbody></table>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -1511,10 +1533,11 @@ After a success response, the user can sign in.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P@ssword1"</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P@ssword1"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"tosAccepted"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1533,9 +1556,8 @@ After a success response, the user can sign in.</p>
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1583,45 +1605,54 @@ After a success response, the user can sign in.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint creates a user. A user&#39;s email has to be confirmed in order to obtain a token.</p>
+</span></code></pre><h2 id='get-a-user'>Get a user</h2>
+<p>This endpoint retrieves a user.</p>
 
-<p><strong>Request parameters</strong></p>
+<p><strong>Response attributes</strong></p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th></th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>first_name</code></td>
-<td><span class="badge badge-danger">required</span> First name</td>
+<td><code>firstName</code></td>
+<td></td>
+<td>String</td>
+<td>First name</td>
 </tr>
 <tr>
-<td><code>last_name</code></td>
+<td><code>lastName</code></td>
+<td><span class="badge badge-info">optional</span></td>
+<td>String</td>
 <td>Last name</td>
 </tr>
 <tr>
 <td><code>email</code></td>
-<td><span class="badge badge-danger">required</span> Email</td>
+<td><span class="badge badge-info">optional</span></td>
+<td>String</td>
+<td>Email (only visible when the request is authenticated by the user equal to the requested resource)</td>
 </tr>
 <tr>
-<td><code>password</code></td>
-<td><span class="badge badge-danger">required</span> Password</td>
+<td><code>locale</code></td>
+<td><span class="badge badge-info">optional</span></td>
+<td>String</td>
+<td>Locale (only visible when the request is authenticated by the user equal to the requested resource)</td>
 </tr>
 </tbody></table>
 
 <aside class="notice">
-  This endpoint does not require authentication.
+  This endpoint does not require authentication. However, authenticated requests might receive different data.
 </aside>
-<h2 id='get-a-user'>Get a user</h2>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/users/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -1636,9 +1667,8 @@ After a success response, the user can sign in.</p>
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1674,47 +1704,62 @@ After a success response, the user can sign in.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint retrieves a user.</p>
+</span></code></pre><h2 id='update-a-user'>Update a user</h2>
+<p>This endpoint updates a user.</p>
 
-<p><strong>Response parameters</strong></p>
+<p><strong>Request attributes</strong></p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th></th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>first_name</code></td>
+<td><code>firstName</code></td>
+<td></td>
+<td>String</td>
 <td>First name</td>
 </tr>
 <tr>
-<td><code>last_name</code></td>
+<td><code>lastName</code></td>
+<td></td>
+<td>String</td>
 <td>Last name</td>
 </tr>
 <tr>
-<td><code>email</code></td>
-<td>Email, omitted when unauthenticated</td>
+<td><code>locale</code></td>
+<td></td>
+<td>String</td>
+<td>Locale</td>
+</tr>
+<tr>
+<td><code>password</code></td>
+<td></td>
+<td>String</td>
+<td>Password, must be at least 6 characters</td>
 </tr>
 </tbody></table>
 
-<aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data.
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
 </aside>
-<h2 id='update-a-user'>Update a user</h2>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/users/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"P@ssword1"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
@@ -1734,9 +1779,8 @@ After a success response, the user can sign in.</p>
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/users/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bar"</span><span class="w">
+      </span><span class="s2">"firstName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"lastName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bar"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"topics"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1792,17 +1836,18 @@ After a success response, the user can sign in.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint updates a user.</p>
+</span></code></pre><h2 id='delete-a-user'>Delete a user</h2>
+<p>This endpoint deletes a user.</p>
 
-<p><strong>Request parameters</strong></p>
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
 
-<p>See <a href="#create-a-user">Create a user</a>.</p>
-<h2 id='delete-a-user'>Delete a user</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://api.openwebslides.org/api/users/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -1826,9 +1871,7 @@ After a success response, the user can sign in.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint deletes a user.</p>
-<h1 id='topics-api'>topics API</h1><h2 id='get-all-topics'>Get all topics</h2>
+</span></code></pre><h1 id='topics-api'>topics API</h1><h2 id='get-all-topics'>Get all topics</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
