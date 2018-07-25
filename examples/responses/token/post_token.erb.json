@@ -6,8 +6,7 @@
       "self": "<%= current_page.data.endpoint %>users/1"
     },
     "attributes": {
-      "firstName": "Foo",
-      "lastName": "Bar"
+      "name": "Foo Bar"
     },
     "relationships": {
       "topics": {

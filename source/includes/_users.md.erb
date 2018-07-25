@@ -40,8 +40,7 @@ An account has to be confirmed using the [Confirmation API](#confirmation-api) i
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
 `email`         | <span class="badge badge-danger">required</span> | String | Email, must not be already taken
-`firstName`     | <span class="badge badge-danger">required</span> | String | First name
-`lastName`      | | String | Last name
+`name`          | <span class="badge badge-danger">required</span> | String | Full name
 `password`      | <span class="badge badge-danger">required</span> | String | Password, must be at least 6 characters
 `tosAccepted`   | <span class="badge badge-danger">required</span> | String | User has explicitly accepted terms of service, must be `true`
 
@@ -86,8 +85,7 @@ This endpoint retrieves a user.
 
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
-`firstName`     |     | String | First name
-`lastName`      | <span class="badge badge-info">optional</span> | String | Last name
+`name`          |     | String | Full name
 `email`         | <span class="badge badge-info">optional</span> | String | Email (only visible when the request is authenticated by the user equal to the requested resource)
 `locale`        | <span class="badge badge-info">optional</span> | String | Locale (only visible when the request is authenticated by the user equal to the requested resource)
 
@@ -132,8 +130,7 @@ This endpoint updates a user.
 
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
-`firstName`     | | String | First name
-`lastName`      | | String | Last name
+`name`          | | String | Full name
 `locale`        | | String | Locale
 `password`      | | String | Password, must be at least 6 characters
 

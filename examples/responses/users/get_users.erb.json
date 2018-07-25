@@ -8,8 +8,7 @@
       },
       "attributes": {
         "email": "foo@bar.com",
-        "firstName": "Foo",
-        "lastName": "Bar"
+        "name": "Foo Bar"
       },
       "relationships": {
         "topics": {
@@ -33,8 +32,7 @@
         "self": "<%= current_page.data.endpoint %>users/2"
       },
       "attributes": {
-        "firstName": "Foo",
-        "lastName": "Bat"
+        "name": "Foo Bat"
       },
       "relationships": {
         "topics": {

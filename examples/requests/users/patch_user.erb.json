@@ -3,8 +3,7 @@
     "type": "users",
     "id": "1",
     "attributes": {
-      "firstName": "Foo",
-      "lastName": "Bar",
+      "name": "Foo Bar",
       "password": "P@ssword1"
     }
   }

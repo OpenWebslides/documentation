@@ -3,8 +3,7 @@
     "type": "users",
     "attributes": {
       "email": "foo@bar.com",
-      "firstName": "Foo",
-      "lastName": "Bar",
+      "name": "Foo Bar",
       "password": "P@ssword1",
       "tosAccepted": "true"
     }
