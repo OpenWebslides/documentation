@@ -8,7 +8,8 @@
       },
       "attributes": {
         "email": "foo@bar.com",
-        "name": "Foo Bar"
+        "name": "Foo Bar",
+        "gravatarHash": "f3ada405ce890b6f8204094deb12d8a8"
       },
       "relationships": {
         "topics": {
@@ -32,7 +33,8 @@
         "self": "<%= current_page.data.endpoint %>users/2"
       },
       "attributes": {
-        "name": "Foo Bat"
+        "name": "Foo Bat",
+        "gravatarHash": "18dded38d16aede5a08ca934f1be2ce0"
       },
       "relationships": {
         "topics": {
