@@ -20,6 +20,7 @@ See [Get a user](#get-a-user).
 
 ```http
 POST <%= current_page.data.endpoint %>token HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Content-Type: application/vnd.api+json
 ```
 
@@ -74,6 +75,7 @@ After a success response, all previously issued tokens for the current user are 
 
 ```http
 DELETE <%= current_page.data.endpoint %>token HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Authorization: Bearer TOKEN
 ```
 

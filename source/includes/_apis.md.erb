@@ -35,7 +35,7 @@ This new token should be used for subsequent API calls.
 
 ```http
 GET <%= current_page.data.endpoint %>users HTTP/1.1
-Accept: application/vnd.api+json
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Authorization: Bearer TOKEN
 ```
 
@@ -47,19 +47,34 @@ Content-Type: application/vnd.api+json
 Content-Length: 138
 ```
 
+## Versioning
+
+The API is semantically versioned.
+Every request has to include the API version of the client in the `Accept` header as shown below.
+The server will then determine if the version is satisfiable and proceed as requested.
+If the version cannot be satisfied by the server, it will return a HTTP 406 Not Acceptable error.
+
+The `Accept` header has to contain two MIME types: the JSON API MIME type (`application/vnd.api+json`) and an Open Webslides MIME type (`application/vnd.openwebslides+json`) with a version parameter.
+
+```http
+GET <%= current_page.data.endpoint %>users HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Authorization: Bearer TOKEN
+```
+
 ## Request headers
 
 Since the API adheres to the [JSON-API specification](http://jsonapi.org/format/1.0/), certain headers are required.
 For _all_ requests excluding binary uploads, the `application/vnd.api+json` should be used as MIME type.
-This means that for all requests expecting data to be returned, the `Accept` header should be set to this value,
+This means that for all requests, the `Accept` header should be set to this value (next to the Open Webslides MIME type),
 and for all requests sending data the `Content-Type` header should be set to this value.
-It is possible for a request to have both headers.
 For protected endpoints, a `Authorization` header is also required in the correct format as [described above](#authentication).
 
 ```http
 POST <%= current_page.data.endpoint %>topics HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Content-Type: application/vnd.api+json
-Accept: application/vnd.api+json
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1YiI6MSwidmVyIjozfQ.1v_SvE8yQE-z9FiKoFhkWRXx9hJ4kQNRxz1uc8zXFjg
 ```
 

@@ -17,6 +17,7 @@ Attribute       | Type | Description
 
 ```http
 GET <%= current_page.data.endpoint %>notifications HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 ```
 
 > Success response

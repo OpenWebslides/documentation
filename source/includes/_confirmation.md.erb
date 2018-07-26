@@ -19,6 +19,7 @@ See [Get a user](#get-a-user).
 
 ```http
 POST <%= current_page.data.endpoint %>confirmation HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Content-Type: application/vnd.api+json
 ```
 

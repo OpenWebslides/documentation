@@ -16,7 +16,7 @@ See [Get a user](#get-a-user).
 
 ```http
 GET <%= current_page.data.endpoint %>users HTTP/1.1
-Accept: application/vnd.api+json
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Authorization: Bearer TOKEN
 ```
 > Response
@@ -48,6 +48,7 @@ Attribute       |     | Type | Description
 
 ```http
 POST <%= current_page.data.endpoint %>users HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Content-Type: application/vnd.api+json
 ```
 
@@ -98,7 +99,7 @@ Attribute       |     | Type | Description
 
 ```http
 GET <%= current_page.data.endpoint %>users/1 HTTP/1.1
-Accept: application/vnd.api+json
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 ```
 
 > Success response
@@ -143,6 +144,7 @@ Attribute       |     | Type | Description
 
 ```http
 PATCH <%= current_page.data.endpoint %>users/1 HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
 ```
@@ -196,6 +198,7 @@ This endpoint deletes a user.
 
 ```http
 DELETE <%= current_page.data.endpoint %>users/1 HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Authorization: Bearer TOKEN
 ```
 
