@@ -1,8 +1,9 @@
 {
   "data": {
+    "id": "",
     "type": "confirmations",
     "attributes": {
-      "email": "foo@bar.com"
+      "confirmationToken": "wqBTxueh1yrBoyHiygmK"
     }
   }
 }

@@ -1,19 +1,19 @@
 # Confirmation API
 
-## Confirm account
+## Request resend confirmation instructions
 
-This endpoint confirms an account.
-After a success response, the user can sign in.
+This endpoint requests resending of the confirmation instructions.
+An email containing a link to confirm the account is sent to the user.
 
 **Request attributes**
 
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
-`confirmationToken` | <span class="badge badge-danger">required</span> | String | Opaque token that was included in the email sent to the user
+`email`         | <span class="badge badge-danger">required</span> | String | Account email address
 
-**Response attributes**
-
-See [Get a user](#get-a-user).
+<aside class="notice">
+  This endpoint will always return a success response, to avoid leaking information about existing users
+</aside>
 
 > Request
 
@@ -30,12 +30,49 @@ Content-Type: application/vnd.api+json
 > Success response
 
 ```http
-HTTP/1.1 201 Created
+HTTP/1.1 204 No Content
+```
+
+## Confirm account
+
+This endpoint confirms an account.
+After a success response, the user can sign in.
+
+**Request attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`confirmationToken` | <span class="badge badge-danger">required</span> | String | Opaque token that was included in the email sent to the user
+
+**Response attributes**
+
+See [Get a user](#get-a-user).
+
+<aside class="warning">
+  An empty <code>id</code> field has to be included in the request.
+</aside>
+
+> Request
+
+```http
+PATCH <%= current_page.data.endpoint %>confirmation HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'confirmation/post_confirmation' %>
+<%= api_request 'confirmation/patch_confirmation' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'confirmation/patch_confirmation' %>
 ```
 
 > Failure response (invalid confirmation token)
@@ -46,7 +83,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'confirmation/post_confirmation_422_1' %>
+<%= api_response 'confirmation/patch_confirmation_422_1' %>
 ```
 
 > Failure response (already confirmed)
@@ -57,5 +94,5 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'confirmation/post_confirmation_422_2' %>
+<%= api_response 'confirmation/patch_confirmation_422_2' %>
 ```
