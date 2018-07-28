@@ -324,6 +324,9 @@
             <a href="#confirmation-api" class="toc-h1 toc-link" data-title="Confirmation API">Confirmation API</a>
               <ul class="toc-list-h2">
                   <li>
+                    <a href="#request-resend-confirmation-instructions" class="toc-h2 toc-link" data-title="Request resend confirmation instructions">Request resend confirmation instructions</a>
+                  </li>
+                  <li>
                     <a href="#confirm-account" class="toc-h2 toc-link" data-title="Confirm account">Confirm account</a>
                   </li>
               </ul>
@@ -1208,7 +1211,53 @@ An email containing a link to reset the account password is sent to the user.</p
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h1 id='confirmation-api'>Confirmation API</h1><h2 id='confirm-account'>Confirm account</h2>
+</span></code></pre><h1 id='confirmation-api'>Confirmation API</h1><h2 id='request-resend-confirmation-instructions'>Request resend confirmation instructions</h2>
+<p>This endpoint requests resending of the confirmation instructions.
+An email containing a link to confirm the account is sent to the user.</p>
+
+<p><strong>Request attributes</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>email</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>Account email address</td>
+</tr>
+</tbody></table>
+
+<aside class="notice">
+  This endpoint will always return a success response, to avoid leaking information about existing users
+</aside>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/confirmation</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmations"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo@bar.com"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Success response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
+</code></pre><h2 id='confirm-account'>Confirm account</h2>
 <p>This endpoint confirms an account.
 After a success response, the user can sign in.</p>
 
@@ -1234,14 +1283,19 @@ After a success response, the user can sign in.</p>
 
 <p>See <a href="#get-a-user">Get a user</a>.</p>
 
+<aside class="warning">
+  An empty <code>id</code> field has to be included in the request.
+</aside>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/confirmation</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/confirmation</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"confirmations"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"confirmationToken"</span><span class="p">:</span><span class="w"> </span><span class="s2">"wqBTxueh1yrBoyHiygmK"</span><span class="w">
@@ -1253,7 +1307,7 @@ After a success response, the user can sign in.</p>
 <blockquote>
 <p>Success response</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">201</span> <span class="ne">Created</span>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
