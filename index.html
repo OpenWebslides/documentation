@@ -360,7 +360,7 @@
               </ul>
           </li>
           <li>
-            <a href="#topics-api" class="toc-h1 toc-link" data-title="topics API">topics API</a>
+            <a href="#topics-api" class="toc-h1 toc-link" data-title="Topics API">Topics API</a>
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-all-topics" class="toc-h2 toc-link" data-title="Get all topics">Get all topics</a>
@@ -452,15 +452,15 @@ This attribute determines in what context a topic is available and can have the 
 </tr>
 </thead><tbody>
 <tr>
-<td><code>public</code></td>
+<td><code>public_access</code></td>
 <td>Visible to everyone, signin <strong>not required</strong></td>
 </tr>
 <tr>
-<td><code>protected</code></td>
+<td><code>protected_access</code></td>
 <td>Visible to everyone, signin required</td>
 </tr>
 <tr>
-<td><code>private</code></td>
+<td><code>private_access</code></td>
 <td>Only visible to owner and collaborators</td>
 </tr>
 </tbody></table>
@@ -481,7 +481,7 @@ This attribute determines in what context a topic is available and can have the 
 </tr>
 </thead><tbody>
 <tr>
-<td><code>public</code></td>
+<td><code>public_access</code></td>
 <td>Guest</td>
 <td>read</td>
 </tr>
@@ -501,7 +501,7 @@ This attribute determines in what context a topic is available and can have the 
 <td>read, write, admin</td>
 </tr>
 <tr>
-<td><code>protected</code></td>
+<td><code>protected_access</code></td>
 <td>Guest</td>
 <td></td>
 </tr>
@@ -521,7 +521,7 @@ This attribute determines in what context a topic is available and can have the 
 <td>read, write, admin</td>
 </tr>
 <tr>
-<td><code>private</code></td>
+<td><code>private_access</code></td>
 <td>Guest</td>
 <td></td>
 </tr>
@@ -860,22 +860,39 @@ For protected endpoints, a <code>Authorization</code> header is also required in
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/owner"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/content"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/content"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/collaborators"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/assets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/assets"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/conversations"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/conversations"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1925,13 +1942,22 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h1 id='topics-api'>topics API</h1><h2 id='get-all-topics'>Get all topics</h2>
+</span></code></pre><h1 id='topics-api'>Topics API</h1><h2 id='get-all-topics'>Get all topics</h2>
+<p>This endpoint retrieves all topics.</p>
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
+</aside>
+
+<p><strong>Response attributes</strong></p>
+
+<p>See <a href="#get-a-topic">Get a topic</a>.</p>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -1947,16 +1973,21 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
         </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"natus ut dolorem"</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"magnam et enim in repellat libero suscipit nulla occaecati dolores"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/user"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/user"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/content"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/content"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1964,248 +1995,17 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
             </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/collaborators"</span><span class="w">
           </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/3"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"minus qui rerum"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ut consequatur possimus eligendi consequatur aut fuga in omnis ducimus"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/3/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/3/owner"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/assets"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/assets"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/3/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/3/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/4"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dolorum porro perferendis"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/4/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/4/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/4/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/4/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"10"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/10"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"iure deleniti at"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/10/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/10/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/10/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/10/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"14"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/14"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rerum natus quaerat"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"praesentium possimus consequatur et impedit ut repellendus natus corrupti eum"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/14/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/14/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/14/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/14/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"17"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/17"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quaerat sed recusandae"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quae sed molestiae sit aspernatur qui non rerum minima atque"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/17/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/17/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/17/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/17/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/18"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"et sapiente non"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cupiditate velit illum necessitatibus eligendi molestiae minima tenetur est iste"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/18/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/18/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/18/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/18/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"21"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/21"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ex vel non"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"quos deserunt sit qui distinctio ut sunt cumque possimus nostrum"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/21/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/21/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/21/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/21/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"25"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/25"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"repudiandae nam tempora"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"voluptatum est tempora rem consectetur ad commodi voluptas cum delectus"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/25/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/25/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/25/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/25/collaborators"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-      </span><span class="p">}</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"26"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/26"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"exercitationem dolores libero"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"autem amet minima impedit et beatae corrupti aut quo cumque"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
-      </span><span class="p">},</span><span class="w">
-      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/26/relationships/owner"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/26/owner"</span><span class="w">
-          </span><span class="p">}</span><span class="w">
-        </span><span class="p">},</span><span class="w">
-        </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/26/relationships/collaborators"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/26/collaborators"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/conversations"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/conversations"</span><span class="w">
           </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
@@ -2213,35 +2013,68 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics?page%5Blimit%5D=10&amp;page%5Boffset%5D=10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics?page%5Blimit%5D=10&amp;page%5Boffset%5D=20"</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint retrieves all visible topics.</p>
+</span></code></pre><h2 id='create-a-topic'>Create a topic</h2>
+<p>This endpoint creates a topic.</p>
 
-<aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
+<p><strong>Request attributes</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>title</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>Name of the topic, does not have to be unique</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td></td>
+<td>String</td>
+<td>Description of the topic</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td></td>
+<td>String</td>
+<td>Access level (See <a href="#permission-model">Permission model</a>), defaults to <code>public_access</code></td>
+</tr>
+</tbody></table>
+
+<aside class="warning">
+  Always include the <code>user</code> relationship, or you will get a HTTP 403 Forbidden response.
 </aside>
-<h2 id='create-a-topic'>Create a topic</h2>
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://api.openwebslides.org/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="w">
@@ -2265,22 +2098,39 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/owner"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/content"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/content"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/collaborators"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/assets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/assets"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/conversations"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/conversations"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2297,10 +2147,10 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"can't be blank"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"owner - can't be blank"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"user - can't be blank"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/relationships/owner"</span><span class="w">
+        </span><span class="s2">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/relationships/user"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2314,55 +2164,58 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">400</span> <span class="ne">Bad Request</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-    </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-        </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid field value"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo is not a valid value for state."</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="w">
-        </span><span class="p">}</span><span class="w">
-    </span><span class="p">]</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid field value"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo is not a valid value for state."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"103"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"400"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint creates a topic.</p>
+</span></code></pre><h2 id='get-a-topic'>Get a topic</h2>
+<p>This endpoint retrieves a topic.</p>
 
-<p><strong>Request parameters</strong></p>
+<p><strong>Response attributes</strong></p>
 
 <table><thead>
 <tr>
-<th>Parameter</th>
+<th>Attribute</th>
+<th></th>
+<th>Type</th>
 <th>Description</th>
 </tr>
 </thead><tbody>
 <tr>
-<td><code>name</code></td>
-<td><span class="badge badge-danger">required</span> Name of the topic</td>
-</tr>
-<tr>
-<td><code>description</code></td>
-<td>Description of the topic</td>
+<td><code>title</code></td>
+<td></td>
+<td>String</td>
+<td>Topic name</td>
 </tr>
 <tr>
 <td><code>state</code></td>
-<td>Access level (See <a href="#permission-model">Permission model</a>), defaults to <code>public_access</code></td>
+<td></td>
+<td>String</td>
+<td>Access level, see <a href="#permission-model">Permission model</a> for more information</td>
 </tr>
 <tr>
-<td><code>template</code></td>
-<td>Template name used for rendering, defaults to <code>shower-ows</code></td>
+<td><code>description</code></td>
+<td><span class="badge badge-info">optional</span></td>
+<td>String</td>
+<td>Topic description</td>
 </tr>
 </tbody></table>
 
-<aside class="warning">
-  Always include the <code>owner</code> relationship.
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
-<h2 id='get-a-topic'>Get a topic</h2>
+
 <blockquote>
 <p>JSON Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
-<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -2377,22 +2230,39 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/owner"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/content"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/content"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/collaborators"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/assets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/assets"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/conversations"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/conversations"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2416,79 +2286,31 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<blockquote>
-<p>HTML Request</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
-</code></pre>
-<blockquote>
-<p>Success response</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"caption"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1&gt;</span>Presentation Title<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;p&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>Author<span class="nt">&lt;/a&gt;</span>,
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://openwebslides.ugent.be/"</span><span class="nt">&gt;</span>Open Webslides<span class="nt">&lt;/a&gt;</span>.
-  <span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"slide"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>My First Topic<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"badge"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/OpenWebSlides/OpenWebslides"</span><span class="nt">&gt;</span>Fork me on GitHub<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/footer&gt;</span>
+</span></code></pre><h2 id='update-a-topic'>Update a topic</h2>
+<p>This endpoint updates a topic.</p>
 
-</code></pre>
-<p>This endpoint retrieves a topic. Response body media type (<code>Accept</code> header) determines what kind of data you get: <code>application/vnd.api+json</code> retrieves topic metadata, <code>text/html</code> retrieves the topic&#39;s contents.</p>
+<p><strong>Request attributes</strong></p>
 
-<p><strong>Response parameters</strong></p>
+<p>See <a href="#create-a-topic">Create a topic</a>.</p>
 
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>name</code></td>
-<td>topic name</td>
-</tr>
-<tr>
-<td><code>state</code></td>
-<td>Access level, one of <code>public_access</code>, <code>protected_access</code>, <code>private_access</code></td>
-</tr>
-<tr>
-<td><code>description</code></td>
-<td>topic description</td>
-</tr>
-<tr>
-<td><code>template</code></td>
-<td>topic template</td>
-</tr>
-</tbody></table>
-
-<aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
 </aside>
-<h2 id='update-a-topic'>Update a topic</h2>
+
 <blockquote>
 <p>JSON Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"foo"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My first topic"</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Second Topic"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my second topic."</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -2507,22 +2329,39 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
       </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Foo"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Second Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"template"</span><span class="p">:</span><span class="w"> </span><span class="s2">"shower-ows"</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my second topic."</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="s2">"owner"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/owner"</span><span class="p">,</span><span class="w">
-          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/owner"</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"content"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/content"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/content"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"collaborators"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/collaborators"</span><span class="p">,</span><span class="w">
           </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/collaborators"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"assets"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/assets"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/assets"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"conversations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/relationships/conversations"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/topics/1/conversations"</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2556,10 +2395,10 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"can't be blank"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"name - can't be blank"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"title - can't be blank"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/attributes/name"</span><span class="w">
+        </span><span class="s2">"pointer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/data/attributes/title"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2568,43 +2407,22 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 
 </span></code></pre>
 <blockquote>
-<p>HTML Request</p>
-</blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">text/html</span>
-</code></pre><pre class="highlight html tab-html"><code><span class="nt">&lt;header</span> <span class="na">class=</span><span class="s">"caption"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h1&gt;</span>Presentation Title<span class="nt">&lt;/h1&gt;</span>
-  <span class="nt">&lt;p&gt;</span>
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">""</span><span class="nt">&gt;</span>Author<span class="nt">&lt;/a&gt;</span>,
-    <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://openwebslides.ugent.be/"</span><span class="nt">&gt;</span>Open Webslides<span class="nt">&lt;/a&gt;</span>.
-  <span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;/header&gt;</span>
-<span class="nt">&lt;section</span> <span class="na">class=</span><span class="s">"slide"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;h2&gt;</span>My First Topic<span class="nt">&lt;/h2&gt;</span>
-<span class="nt">&lt;/section&gt;</span>
-<span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"progress"</span><span class="nt">&gt;&lt;/div&gt;</span>
-<span class="nt">&lt;footer</span> <span class="na">class=</span><span class="s">"badge"</span><span class="nt">&gt;</span>
-  <span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"https://github.com/OpenWebSlides/OpenWebslides"</span><span class="nt">&gt;</span>Fork me on GitHub<span class="nt">&lt;/a&gt;</span>
-<span class="nt">&lt;/footer&gt;</span>
-
-</code></pre>
-<blockquote>
 <p>Success response</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">204</span> <span class="ne">No Content</span>
-</code></pre>
-<p>This endpoint updates a topic. Request body media type (<code>Content-Type</code> header) determines what kind of data you update: <code>application/vnd.api+json</code> updates topic metadata, <code>text/html</code> updates the topic&#39;s contents.</p>
+</code></pre><h2 id='delete-a-topic'>Delete a topic</h2>
+<p>This endpoint deletes a user.</p>
 
-<p><strong>Request parameters</strong></p>
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
 
-<p>See <a href="#create-a-topic">Create a topic</a>.</p>
-<h2 id='delete-a-topic'>Delete a topic</h2>
 <blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://api.openwebslides.org/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -2628,9 +2446,7 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre>
-<p>This endpoint deletes a topic.</p>
-<h1 id='annotations-api'>Annotations API</h1>
+</span></code></pre><h1 id='annotations-api'>Annotations API</h1>
 <p>The annotations API is made up of two distinct entities: conversations and comments. Both have specific properties on top of the common properties (see tables below).
 Annotations are attached to a certain <code>contentItemId</code>. At the moment, the <code>contentItemId</code> references a slide number, but in the future this might reflect a unique reference to an object on a slide.</p>
 
