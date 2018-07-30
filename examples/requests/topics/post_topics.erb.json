@@ -2,13 +2,12 @@
   "data": {
     "type": "topics",
     "attributes": {
-      "name": "Foo",
+      "title": "My First Topic",
       "description": "This is my first topic.",
       "state": "public_access",
-      "template": "shower-ows"
     },
     "relationships": {
-      "owner": {
+      "user": {
         "data": {
           "id": "1",
           "type": "users"

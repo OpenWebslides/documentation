@@ -7,16 +7,21 @@
         "self": "<%= current_page.data.endpoint %>topics/1"
       },
       "attributes": {
-        "name": "natus ut dolorem",
+        "title": "My First Topic",
         "state": "public_access",
-        "description": "magnam et enim in repellat libero suscipit nulla occaecati dolores",
-        "template": "shower-ows"
+        "description": "This is my first topic."
       },
       "relationships": {
-        "owner": {
+        "user": {
           "links": {
-            "self": "<%= current_page.data.endpoint %>topics/1/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/1/owner"
+            "self": "<%= current_page.data.endpoint %>topics/1/relationships/user",
+            "related": "<%= current_page.data.endpoint %>topics/1/user"
+          }
+        },
+        "content": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>topics/1/relationships/content",
+            "related": "<%= current_page.data.endpoint %>topics/1/content"
           }
         },
         "collaborators": {
@@ -24,248 +29,17 @@
             "self": "<%= current_page.data.endpoint %>topics/1/relationships/collaborators",
             "related": "<%= current_page.data.endpoint %>topics/1/collaborators"
           }
-        }
-      }
-    },
-    {
-      "id": "3",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/3"
-      },
-      "attributes": {
-        "name": "minus qui rerum",
-        "state": "public_access",
-        "description": "ut consequatur possimus eligendi consequatur aut fuga in omnis ducimus",
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
+        },
+        "assets": {
           "links": {
-            "self": "<%= current_page.data.endpoint %>topics/3/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/3/owner"
+            "self": "<%= current_page.data.endpoint %>topics/1/relationships/assets",
+            "related": "<%= current_page.data.endpoint %>topics/1/assets"
           }
         },
-        "collaborators": {
+        "conversations": {
           "links": {
-            "self": "<%= current_page.data.endpoint %>topics/3/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/3/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "4",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/4"
-      },
-      "attributes": {
-        "name": "dolorum porro perferendis",
-        "state": "public_access",
-        "description": null,
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/4/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/4/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/4/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/4/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "10",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/10"
-      },
-      "attributes": {
-        "name": "iure deleniti at",
-        "state": "public_access",
-        "description": null,
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/10/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/10/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/10/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/10/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "14",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/14"
-      },
-      "attributes": {
-        "name": "rerum natus quaerat",
-        "state": "public_access",
-        "description": "praesentium possimus consequatur et impedit ut repellendus natus corrupti eum",
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/14/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/14/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/14/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/14/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "17",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/17"
-      },
-      "attributes": {
-        "name": "quaerat sed recusandae",
-        "state": "public_access",
-        "description": "quae sed molestiae sit aspernatur qui non rerum minima atque",
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/17/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/17/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/17/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/17/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "18",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/18"
-      },
-      "attributes": {
-        "name": "et sapiente non",
-        "state": "public_access",
-        "description": "cupiditate velit illum necessitatibus eligendi molestiae minima tenetur est iste",
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/18/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/18/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/18/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/18/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "21",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/21"
-      },
-      "attributes": {
-        "name": "ex vel non",
-        "state": "public_access",
-        "description": "quos deserunt sit qui distinctio ut sunt cumque possimus nostrum",
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/21/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/21/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/21/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/21/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "25",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/25"
-      },
-      "attributes": {
-        "name": "repudiandae nam tempora",
-        "state": "public_access",
-        "description": "voluptatum est tempora rem consectetur ad commodi voluptas cum delectus",
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/25/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/25/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/25/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/25/collaborators"
-          }
-        }
-      }
-    },
-    {
-      "id": "26",
-      "type": "topics",
-      "links": {
-        "self": "<%= current_page.data.endpoint %>topics/26"
-      },
-      "attributes": {
-        "name": "exercitationem dolores libero",
-        "state": "public_access",
-        "description": "autem amet minima impedit et beatae corrupti aut quo cumque",
-        "template": "shower-ows"
-      },
-      "relationships": {
-        "owner": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/26/relationships/owner",
-            "related": "<%= current_page.data.endpoint %>topics/26/owner"
-          }
-        },
-        "collaborators": {
-          "links": {
-            "self": "<%= current_page.data.endpoint %>topics/26/relationships/collaborators",
-            "related": "<%= current_page.data.endpoint %>topics/26/collaborators"
+            "self": "<%= current_page.data.endpoint %>topics/1/relationships/conversations",
+            "related": "<%= current_page.data.endpoint %>topics/1/conversations"
           }
         }
       }
@@ -273,7 +47,6 @@
   ],
   "links": {
     "first": "<%= current_page.data.endpoint %>topics?page%5Blimit%5D=10&page%5Boffset%5D=0",
-    "next": "<%= current_page.data.endpoint %>topics?page%5Blimit%5D=10&page%5Boffset%5D=10",
-    "last": "<%= current_page.data.endpoint %>topics?page%5Blimit%5D=10&page%5Boffset%5D=20"
+    "last": "<%= current_page.data.endpoint %>topics?page%5Blimit%5D=10&page%5Boffset%5D=0"
   }
 }

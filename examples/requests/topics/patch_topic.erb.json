@@ -3,8 +3,8 @@
     "type": "topics",
     "id": "1",
     "attributes" : {
-      "name": "foo",
-      "description": "My first topic"
+      "title": "My Second Topic",
+      "description": "This is my second topic."
     }
   }
 }

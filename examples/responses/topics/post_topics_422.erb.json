@@ -2,10 +2,10 @@
   "errors": [
     {
       "title": "can't be blank",
-      "detail": "owner - can't be blank",
+      "detail": "user - can't be blank",
       "code": "100",
       "source": {
-        "pointer": "/data/relationships/owner"
+        "pointer": "/data/relationships/user"
       },
       "status": "422"
     }

@@ -1,10 +1,10 @@
 {
-    "errors": [
-        {
-            "title": "Invalid field value",
-            "detail": "foo is not a valid value for state.",
-            "code": "103",
-            "status": "400"
-        }
-    ]
+  "errors": [
+    {
+      "title": "Invalid field value",
+      "detail": "foo is not a valid value for state.",
+      "code": "103",
+      "status": "400"
+    }
+  ]
 }

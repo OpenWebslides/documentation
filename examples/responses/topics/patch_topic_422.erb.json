@@ -2,10 +2,10 @@
   "errors": [
     {
       "title": "can't be blank",
-      "detail": "name - can't be blank",
+      "detail": "title - can't be blank",
       "code": "100",
       "source": {
-        "pointer": "/data/attributes/name"
+        "pointer": "/data/attributes/title"
       },
       "status": "422"
     }

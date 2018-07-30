@@ -6,9 +6,9 @@
       "self": "<%= current_page.data.endpoint %>topics/1"
     },
     "attributes": {
-      "title": "My First Topic",
+      "title": "My Second Topic",
       "state": "public_access",
-      "description": "This is my first topic."
+      "description": "This is my second topic."
     },
     "relationships": {
       "user": {
