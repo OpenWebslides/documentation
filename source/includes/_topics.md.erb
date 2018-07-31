@@ -237,3 +237,79 @@ Content-Type: application/vnd.api+json
 ```json
 <%= api_response 'users/get_user_404' %>
 ```
+
+## Get topic content
+
+This endpoint retrieves a topic's content structure.
+
+**Response attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`content`       |     | String | Topic content structure
+
+> JSON Request
+
+```http
+GET <%= current_page.data.endpoint %>topics/1/content HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'topics/get_topic_content' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'topics/get_topic_content_404' %>
+```
+
+## Update topic content
+
+This endpoint updates a topic's content structure.
+
+**Request attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`content`       | <span class="badge badge-danger">required</span> | String | Topic content structure
+
+<aside class="warning">
+  Updating a topic's content structure replaces the entire contents. Partial updates are not yet implemented.
+</aside>
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>topics/1/content HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_request 'topics/patch_topic_content' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 204 OK
+Content-Type: application/vnd.api+json
+```
