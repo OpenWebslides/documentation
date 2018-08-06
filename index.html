@@ -240,10 +240,7 @@
                     <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
                   </li>
                   <li>
-                    <a href="#configuration" class="toc-h2 toc-link" data-title="Configuration">Configuration</a>
-                  </li>
-                  <li>
-                    <a href="#backup" class="toc-h2 toc-link" data-title="Backup">Backup</a>
+                    <a href="#data-storage" class="toc-h2 toc-link" data-title="Data storage">Data storage</a>
                   </li>
               </ul>
           </li>
@@ -547,17 +544,43 @@ This attribute determines in what context a topic is available and can have the 
 <td>read, write, admin</td>
 </tr>
 </tbody></table>
-<h1 id='setup-for-administrators'>Setup for administrators</h1><h2 id='installation'>Installation</h2><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/OpenWebslides.git
-<span class="gp">$ </span><span class="nb">cd </span>OpenWebslides
-</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose up --build
-</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
+<h1 id='setup-for-administrators'>Setup for administrators</h1><h2 id='installation'>Installation</h2>
+<p>The platform uses Docker and docker-compose to allow it to be installed and ran on any platform, independent of operating system or distribution.</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/openwebslides-backend.git
+<span class="gp">$ </span><span class="nb">cd </span>openwebslides-backend
+</code></pre>
+<p>Initialize the frontend code and update it to the latest version</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git submodule init
+<span class="gp">$ </span>git submodule update
+<span class="gp">$ </span><span class="nb">cd </span>web <span class="o">&amp;&amp;</span> git pull origin master
+</code></pre>
+<p>Configure the platform</p>
+<pre class="highlight plaintext"><code>$ cp openwebslides.env.example openwebslides.env
+$ nano openwebslides.env
+</code></pre>
+<p>Before bringing up the web server, run the CertBot container to request and retrieve certificates from Let&#39;s Encrypt</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>./certbot.sh my.domain.com
+</code></pre>
+<p>Add this command to a monthly crontab to ensure the certificates (valid for 3 months) will be refreshed in time</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>/app/openwebslides-backend/certbot.sh my.domain.com
+</code></pre>
+<p>Configure the web server by editing the files in <code>nginx/sites-available</code>, and symlinking the sites that are enabled on the machine from <code>nginx/sites-enabled</code></p>
+
+<p>Bring up the platform</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose up --build
+</code></pre>
+<p>The Postgres user and database are not automatically created</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
   <span class="s2">"CREATE ROLE openwebslides WITH ENCRYPTED PASSWORD 'openwebslides' LOGIN;"</span>
 </code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
   <span class="s2">"CREATE DATABASE openwebslides OWNER openwebslides;"</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose restart
 </code></pre>
-<p>The platform is built on the Docker container software, and uses the docker-compose utility to orchestrate the different services within the platform. This allows server administrators to run the platform as a contained package, without interfering with already installed system applications and libraries.</p>
-
+<p>Restart the application container to run database migrations.
+Migrations are automatically ran on every application container start.</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose restart
+</code></pre>
+<p>A small script to make subsequent deployments easier is provided in <code>deploy.sh</code>.</p>
+<h2 id='data-storage'>Data storage</h2>
 <p>The machine-specific data is stored on several Docker volumes, mounted in the relevant containers.</p>
 
 <table><thead>
@@ -567,60 +590,36 @@ This attribute determines in what context a topic is available and can have the 
 </tr>
 </thead><tbody>
 <tr>
-<td>data</td>
+<td><code>data</code></td>
 <td>Contains the local repositories</td>
 </tr>
 <tr>
-<td>postgres</td>
+<td><code>postgres</code></td>
 <td>Contains the PostgreSQL database</td>
 </tr>
 <tr>
-<td>redis</td>
+<td><code>redis</code></td>
 <td>Contains the Redis database</td>
 </tr>
 <tr>
-<td><em>public</em></td>
-<td>Contains the publicly served assets (regenerated on every build)</td>
+<td><code>public</code></td>
+<td>Contains the compiled frontend code (regenerated on every build)</td>
+</tr>
+<tr>
+<td><code>upload</code></td>
+<td>Contains temporary uploaded files (cleaned on every startup)</td>
 </tr>
 </tbody></table>
 
-<p>Only the first three volumes contain mission-critical data and should be backed up. The <em>public</em> volume is used by the nginx container to serve the static assets.</p>
-
-<p><strong>Clone the repository</strong></p>
-
-<p>Clone the <a href="https://github.com/OpenWebslides/OpenWebslides">repository</a> to a local directory.</p>
-
-<p><strong>Build and start the Docker containers</strong></p>
-
-<p>Using docker-compose, start the various services.</p>
-
-<p><strong>Create database credentials</strong></p>
-
-<p>On the first run, the database will be empty. Create a user and put it in the <code>openwebslides.env</code> file.
-Create a database for this user too and put it in the <code>openwebslides.env</code> file.</p>
-
-<p>Finally, restart all services to use the new <code>openwebslides.env</code>. The platform is now available on <a href="http://localhost/">http://localhost/</a>.</p>
-<h2 id='configuration'>Configuration</h2><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>cp openwebslides.env.example openwebslides.env
-</code></pre>
-<p>The platform&#39;s features can be configured by customizing the <code>config/openwebslides.yml</code> file.
-The deployment can be configured by copying the provided <code>openwebslides.env.example</code> to <code>openwebslides.env</code> and customizing this file. Docker-compose will then automatically use this file for the relevant containers.</p>
+<p>Only the first two volumes contain critical data and should be backed up.
+The <code>public</code> volume is used by the nginx container to serve the static assets.
+The <code>upload</code> volume is used by the application container to store temporary uploaded data.</p>
 <h3 id='tls'>TLS</h3>
-<p>The setup optionally supports using secured communication over TLS. In order to enable this, deploy the application with <code>docker-compose</code> including the <code>docker-compose.prod.yml</code> override file. This enables an alternative NGINX configuration file using TLS (<code>nginx/nginx.prod.conf</code>). Adjust this file to match your domain and certificate locations.</p>
-<h2 id='backup'>Backup</h2>
-<p>Persistent critical data is stored in the following systems:</p>
-
-<ul>
-<li>PostgreSQL: relational data, topic metadata</li>
-<li><code>data/</code>: local repositories</li>
-</ul>
-
-<p>Additional non-critical data is stored in the following systems:</p>
-
-<ul>
-<li>Redis</li>
-<li><code>tmp/</code>: temporary runtime data</li>
-</ul>
-<h1 id='infrastructure'>Infrastructure</h1>
+<p>The setup optionally supports using secured communication over TLS.
+In order to enable this, deploy the application with <code>docker-compose</code> including the <code>docker-compose.prod.yml</code> override file.
+Using this file will include the <code>nginx/sites-prod</code> directory for site configuration, instead of <code>nginx/sites</code>.</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+</code></pre><h1 id='infrastructure'>Infrastructure</h1>
 <p>The current Open Webslides infrastructure consists of three environments (servers):</p>
 <h2 id='owsdev'>owsdev</h2>
 <p>This is the development server. Use this server when developing features and fixes. The version of the platform and stability thereof are not guaranteed. The database and repositories may be wiped at any time.</p>
