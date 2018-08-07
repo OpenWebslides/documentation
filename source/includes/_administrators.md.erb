@@ -25,24 +25,11 @@ $ cp openwebslides.env.example openwebslides.env
 $ nano openwebslides.env
 ```
 
-Before bringing up the web server, run the CertBot container to request and retrieve certificates from Let's Encrypt
-
-```shell
-$ ./certbot.sh my.domain.com
-```
-
-Add this command to a monthly crontab to ensure the certificates (valid for 3 months) will be refreshed in time
-
-```shell
-$ /app/openwebslides-backend/certbot.sh my.domain.com
-```
-
-Configure the web server by editing the files in `nginx/sites-available`, and symlinking the sites that are enabled on the machine from `nginx/sites-enabled`
-
 Bring up the platform
 
 ```shell
-$ docker-compose up --build
+$ docker build -t openwebslides/openwebslides:latest .
+$ docker-compose up -d
 ```
 
 The Postgres user and database are not automatically created
@@ -63,6 +50,20 @@ Migrations are automatically ran on every application container start.
 ```shell
 $ docker-compose restart
 ```
+
+After bringing up the HTTP server, run the CertBot container to request and retrieve certificates from Let's Encrypt
+
+```shell
+$ ./certbot.sh my.domain.com
+```
+
+Add this command to a monthly crontab to ensure the certificates (valid for 3 months) will be refreshed in time
+
+```shell
+$ /app/openwebslides-backend/certbot.sh my.domain.com
+```
+
+Configure the web server by editing the files in `nginx/sites-available`, and symlinking the sites that are enabled on the machine from `nginx/sites-enabled`
 
 A small script to make subsequent deployments easier is provided in `deploy.sh`.
 
