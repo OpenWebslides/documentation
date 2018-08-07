@@ -558,16 +558,9 @@ This attribute determines in what context a topic is available and can have the 
 <pre class="highlight plaintext"><code>$ cp openwebslides.env.example openwebslides.env
 $ nano openwebslides.env
 </code></pre>
-<p>Before bringing up the web server, run the CertBot container to request and retrieve certificates from Let&#39;s Encrypt</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>./certbot.sh my.domain.com
-</code></pre>
-<p>Add this command to a monthly crontab to ensure the certificates (valid for 3 months) will be refreshed in time</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>/app/openwebslides-backend/certbot.sh my.domain.com
-</code></pre>
-<p>Configure the web server by editing the files in <code>nginx/sites-available</code>, and symlinking the sites that are enabled on the machine from <code>nginx/sites-enabled</code></p>
-
 <p>Bring up the platform</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose up --build
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker build -t openwebslides/openwebslides:latest .
+<span class="gp">$ </span>docker-compose up -d
 </code></pre>
 <p>The Postgres user and database are not automatically created</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
@@ -579,6 +572,14 @@ $ nano openwebslides.env
 Migrations are automatically ran on every application container start.</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose restart
 </code></pre>
+<p>After bringing up the HTTP server, run the CertBot container to request and retrieve certificates from Let&#39;s Encrypt</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>./certbot.sh my.domain.com
+</code></pre>
+<p>Add this command to a monthly crontab to ensure the certificates (valid for 3 months) will be refreshed in time</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>/app/openwebslides-backend/certbot.sh my.domain.com
+</code></pre>
+<p>Configure the web server by editing the files in <code>nginx/sites-available</code>, and symlinking the sites that are enabled on the machine from <code>nginx/sites-enabled</code></p>
+
 <p>A small script to make subsequent deployments easier is provided in <code>deploy.sh</code>.</p>
 <h2 id='data-storage'>Data storage</h2>
 <p>The machine-specific data is stored on several Docker volumes, mounted in the relevant containers.</p>
