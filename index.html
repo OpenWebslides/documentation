@@ -868,7 +868,8 @@ For protected endpoints, a <code>Authorization</code> header is also required in
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rootContentItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qyrgv0bcd6"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1979,7 +1980,8 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
         </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
+        </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"rootContentItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qyrgv0bcd6"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2041,6 +2043,12 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <td>Name of the topic, does not have to be unique</td>
 </tr>
 <tr>
+<td><code>rootContentItemId</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>Root content item identifier</td>
+</tr>
+<tr>
 <td><code>description</code></td>
 <td></td>
 <td>String</td>
@@ -2062,6 +2070,11 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
 </aside>
 
+<aside class="notice">
+  The <code>rootContentItemId</code> has to be provided upon creation. This attribute cannot be changed later. Every time a topic
+  's <a href="#update-topic-content">content is updated</a>, the root content item identifier in the content payload is validated against the <code>rootContentItemId</code> in the database.
+</aside>
+
 <blockquote>
 <p>Request</p>
 </blockquote>
@@ -2076,6 +2089,7 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rootContentItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qyrgv0bcd6"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2104,7 +2118,8 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rootContentItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qyrgv0bcd6"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2204,6 +2219,12 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <td>Access level, see <a href="#permission-model">Permission model</a> for more information</td>
 </tr>
 <tr>
+<td><code>rootContentItemId</code></td>
+<td></td>
+<td>String</td>
+<td>Root content item identifier</td>
+</tr>
+<tr>
 <td><code>description</code></td>
 <td><span class="badge badge-info">optional</span></td>
 <td>String</td>
@@ -2236,7 +2257,8 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My First Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my first topic."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rootContentItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qyrgv0bcd6"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2301,6 +2323,10 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
 </aside>
 
+<aside class="notice">
+  The <code>rootContentItemId</code> is immutable and cannot be updated.
+</aside>
+
 <blockquote>
 <p>JSON Request</p>
 </blockquote>
@@ -2335,7 +2361,8 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
     </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Second Topic"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"public_access"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my second topic."</span><span class="w">
+      </span><span class="s2">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is my second topic."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"rootContentItemId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"qyrgv0bcd6"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
       </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
