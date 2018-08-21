@@ -8,7 +8,8 @@
     "attributes": {
       "title": "My First Topic",
       "state": "public_access",
-      "description": "This is my first topic."
+      "description": "This is my first topic.",
+      "rootContentItemId": "qyrgv0bcd6"
     },
     "relationships": {
       "user": {

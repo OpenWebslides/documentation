@@ -39,6 +39,7 @@ This endpoint creates a topic.
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
 `title`         | <span class="badge badge-danger">required</span> | String | Name of the topic, does not have to be unique
+`rootContentItemId` | <span class="badge badge-danger">required</span> | String | Root content item identifier
 `description`   | | String | Description of the topic
 `state`         | | String | Access level (See [Permission model](#permission-model)), defaults to `public_access`
 
@@ -47,6 +48,10 @@ Attribute       |     | Type | Description
 </aside>
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+<aside class="notice">
+  The <code>rootContentItemId</code> has to be provided upon creation. This attribute cannot be changed later. Every time a topic
+  's <a href="#update-topic-content">content is updated</a>, the root content item identifier in the content payload is validated against the <code>rootContentItemId</code> in the database.
 </aside>
 
 > Request
@@ -105,6 +110,7 @@ Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
 `title`         |     | String | Topic name
 `state`         |     | String | Access level, see [Permission model](#permission-model) for more information
+`rootContentItemId` | | String | Root content item identifier
 `description`   | <span class="badge badge-info">optional</span> | String | Topic description
 
 <aside class="notice">
@@ -150,6 +156,9 @@ See [Create a topic](#create-a-topic).
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+<aside class="notice">
+  The <code>rootContentItemId</code> is immutable and cannot be updated.
 </aside>
 
 > JSON Request

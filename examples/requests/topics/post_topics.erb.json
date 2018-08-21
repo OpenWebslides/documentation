@@ -5,6 +5,7 @@
       "title": "My First Topic",
       "description": "This is my first topic.",
       "state": "public_access",
+      "rootContentItemId": "qyrgv0bcd6"
     },
     "relationships": {
       "user": {

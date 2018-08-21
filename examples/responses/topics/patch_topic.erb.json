@@ -8,7 +8,8 @@
     "attributes": {
       "title": "My Second Topic",
       "state": "public_access",
-      "description": "This is my second topic."
+      "description": "This is my second topic.",
+      "rootContentItemId": "qyrgv0bcd6"
     },
     "relationships": {
       "user": {
