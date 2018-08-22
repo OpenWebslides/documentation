@@ -329,10 +329,10 @@
               </ul>
           </li>
           <li>
-            <a href="#notifications-api" class="toc-h1 toc-link" data-title="Notifications API">Notifications API</a>
+            <a href="#feed-items-api" class="toc-h1 toc-link" data-title="Feed Items API">Feed Items API</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-notifications" class="toc-h2 toc-link" data-title="Get all notifications">Get all notifications</a>
+                    <a href="#get-all-feed-items" class="toc-h2 toc-link" data-title="Get all feed items">Get all feed items</a>
                   </li>
               </ul>
           </li>
@@ -800,8 +800,8 @@ The URL structure is kept as simple as possible, avoiding nesting resources wher
 <td>Allows manipulating assets</td>
 </tr>
 <tr>
-<td><code>/notifications</code></td>
-<td>Allows retrieving feed notifications</td>
+<td><code>/feedItems</code></td>
+<td>Allows retrieving Recent Activity feed items</td>
 </tr>
 <tr>
 <td><code>/conversations</code></td>
@@ -1390,8 +1390,8 @@ After a success response, the user can sign in.</p>
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
-</span></code></pre><h1 id='notifications-api'>Notifications API</h1><h2 id='get-all-notifications'>Get all notifications</h2>
-<p>This endpoint retrieves all notifications.</p>
+</span></code></pre><h1 id='feed-items-api'>Feed Items API</h1><h2 id='get-all-feed-items'>Get all feed items</h2>
+<p>This endpoint retrieves all Recent Activity feed items.</p>
 
 <p><strong>Response attributes</strong></p>
 
@@ -1427,7 +1427,7 @@ After a success response, the user can sign in.</p>
 <blockquote>
 <p>Request</p>
 </blockquote>
-<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/notifications</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://api.openwebslides.org/api/feedItems</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
 <span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=2.0.0</span>
 </code></pre>
 <blockquote>
@@ -1439,9 +1439,9 @@ After a success response, the user can sign in.</p>
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"notifications"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedItems"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications/1"</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems/1"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"eventType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topic_created"</span><span class="p">,</span><span class="w">
@@ -1451,8 +1451,8 @@ After a success response, the user can sign in.</p>
       </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications/1/relationships/user"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications/1/user"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems/1/relationships/user"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems/1/user"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"users"</span><span class="p">,</span><span class="w">
@@ -1461,8 +1461,8 @@ After a success response, the user can sign in.</p>
         </span><span class="p">},</span><span class="w">
         </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
           </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications/1/relationships/topic"</span><span class="p">,</span><span class="w">
-            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications/1/topic"</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems/1/relationships/topic"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems/1/topic"</span><span class="w">
           </span><span class="p">},</span><span class="w">
           </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
             </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"topics"</span><span class="p">,</span><span class="w">
@@ -1476,9 +1476,9 @@ After a success response, the user can sign in.</p>
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications?page%5Blimit%5D=10&amp;page%5Boffset%5D=10"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/notifications?page%5Blimit%5D=10&amp;page%5Boffset%5D=1"</span><span class="w">
+    </span><span class="s2">"first"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems?page%5Blimit%5D=10&amp;page%5Boffset%5D=0"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"next"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems?page%5Blimit%5D=10&amp;page%5Boffset%5D=10"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"last"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://api.openwebslides.org/api/feedItems?page%5Blimit%5D=10&amp;page%5Boffset%5D=1"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 
