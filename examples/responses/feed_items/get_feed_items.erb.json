@@ -1,0 +1,46 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "type": "feedItems",
+      "links": {
+        "self": "<%= current_page.data.endpoint %>feedItems/1"
+      },
+      "attributes": {
+        "eventType": "topic_created",
+        "userName": "Foo",
+        "topicTitle": "My First Topic"
+      },
+      "relationships": {
+        "user": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>feedItems/1/relationships/user",
+            "related": "<%= current_page.data.endpoint %>feedItems/1/user"
+          },
+          "data": {
+            "type": "users",
+            "id": "1"
+          }
+        },
+        "topic": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>feedItems/1/relationships/topic",
+            "related": "<%= current_page.data.endpoint %>feedItems/1/topic"
+          },
+          "data": {
+            "type": "topics",
+            "id": "1"
+          }
+        }
+      },
+      "meta": {
+        "createdAt": "1525700605"
+      }
+    }
+  ],
+  "links": {
+    "first": "<%= current_page.data.endpoint %>feedItems?page%5Blimit%5D=10&page%5Boffset%5D=0",
+    "next": "<%= current_page.data.endpoint %>feedItems?page%5Blimit%5D=10&page%5Boffset%5D=10",
+    "last": "<%= current_page.data.endpoint %>feedItems?page%5Blimit%5D=10&page%5Boffset%5D=1"
+  }
+}
