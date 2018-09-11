@@ -302,6 +302,9 @@ Attribute       |     | Type | Description
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
 </aside>
+<aside class="notice">
+  The root content item's identifier has to match the <code>rootContentItemId</code> in the database, provided when <a href="#create-a-topic">creating a topic</a>.
+</aside>
 
 > Request
 
@@ -321,4 +324,15 @@ Authorization: Bearer TOKEN
 ```http
 HTTP/1.1 204 OK
 Content-Type: application/vnd.api+json
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'topics/patch_topic_content_422' %>
 ```

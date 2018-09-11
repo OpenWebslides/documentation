@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "title": "Invalid root content item",
+      "detail": "The identifier of the root content item must match the root content item of the topic.",
+      "code": "100",
+      "status": "422"
+    }
+  ]
+}
