@@ -1,0 +1,42 @@
+# Changelog
+
+<!-- When updating the changelog, don't forget to update the API version number in `index.html.erb` as well -->
+
+The changelog contains a quick summary of changes made in a major API release.
+The change list should also include a list of endpoints that were modified.
+Minor and patch release changelogs are available in the git tags and corresponding commit messages.
+
+## API v4
+
+- Rename Notifications API to Feed Items API
+  - [All Notifications API endpoints](#feed-items-api)
+- Added required, immutable `rootContentItemId` attribute to Topic resource
+  - [`GET /topics/:id`](#get-a-topic): add `rootContentItemId` attribute
+  - [`POST /topics`](#create-a-topic): add `rootContentItemId` attribute
+- Enforced root content item id equal to resource root content item id when updating topic content
+  - [`PATCH /topics/:id/content`](#update-topic-content): add validation error response
+- Removed dummy identifier constraints for certain endpoints
+  - [`PATCH /topics/:id/content`](#update-topic-content): remove `id` attribute
+  - [`DELETE /ratings/:id`](#delete-rating): remove `id` attribute
+  - [`PATCH /confirmation`](#confirm-account): remove `id` attribute
+  - [`DELETE /token`](#delete-a-token-sign-out): remove `id` attribute
+  - [`PATCH /password`](#reset-password): remove `id` attribute
+- Removed unnecessary Notifications API endpoints
+  - Removed relationship endpoints (undocumented)
+- Enabled OAuth2 authentication
+  - Add redirect and callback endpoints (undocumented)
+
+## API v3
+
+- Added missing confirmation API route
+  - [`POST /confirmation`](#request-resend-confirmation-instructions): change behaviour
+  - [`PATCH /confirmation`](#confirm-account): add endpoint
+
+## API v2
+
+- Enforced all requests to include an API version
+  - All endpoints: see [versioning](#versioning)
+
+## API v1
+
+- Initial release
