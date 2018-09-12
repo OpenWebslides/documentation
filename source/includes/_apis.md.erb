@@ -53,6 +53,7 @@ The API is semantically versioned.
 Every request has to include the API version of the client in the `Accept` header as shown below.
 The server will then determine if the version is satisfiable and proceed as requested.
 If the version cannot be satisfied by the server, it will return a HTTP 406 Not Acceptable error.
+Every response by the server also includes a `Content-Type` header containing the server's version.
 
 The `Accept` header has to contain two MIME types: the JSON API MIME type (`application/vnd.api+json`) and an Open Webslides MIME type (`application/vnd.openwebslides+json`) with a version parameter.
 
@@ -60,6 +61,37 @@ The `Accept` header has to contain two MIME types: the JSON API MIME type (`appl
 GET <%= current_page.data.endpoint %>users HTTP/1.1
 Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Authorization: Bearer TOKEN
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+```
+
+```json
+{...}
+```
+
+> Failure response
+
+```http
+HTTP/1.1 406 Not Acceptable
+Content-Type: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+```
+
+```json
+{
+  "errors": [
+    {
+      "title": "Unacceptable version",
+      "detail": "The request cannot be fulfilled due to mismatching API version. The API version is '<%= current_page.data.version %>'. This request specified 'some version'.",
+      "code": "406",
+      "status": "406"
+    }
+  ]
+}
 ```
 
 ## Request headers
