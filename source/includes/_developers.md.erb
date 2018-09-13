@@ -19,8 +19,15 @@ $ rvm use `cat .ruby-version`@`cat .ruby-gemset` --create
 $ gem install bundler
 $ bundle install
 
-# Create repository data path
-$ mkdir data/
+# Create repository data and temporary files path
+$ mkdir -p data/ tmp/uploads/
+
+# Configure environment variables
+$ cp openwebslides.env.example openwebslides.env
+$ nano openwebslides.env
+
+# Source environment variables
+$ . ./openwebslides.env
 
 # Apply database migrations
 $ bundle exec rails db:migrate
