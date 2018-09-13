@@ -636,7 +636,7 @@ Minor and patch release changelogs are available in the git tags and correspondi
 <span class="gp">$ </span>git submodule update
 <span class="gp">$ </span><span class="nb">cd </span>web <span class="o">&amp;&amp;</span> git pull origin master
 </code></pre>
-<p>Configure the platform</p>
+<p>Configure environment variables</p>
 <pre class="highlight plaintext"><code>$ cp openwebslides.env.example openwebslides.env
 $ nano openwebslides.env
 </code></pre>
@@ -800,8 +800,15 @@ Usage of RVM is recommended to manage different Ruby versions and sets of gems.<
 <span class="gp">$ </span>gem install bundler
 <span class="gp">$ </span>bundle install
 
-<span class="c"># Create repository data path</span>
-<span class="gp">$ </span>mkdir data/
+<span class="c"># Create repository data and temporary files path</span>
+<span class="gp">$ </span>mkdir -p data/ tmp/uploads/
+
+<span class="c"># Configure environment variables</span>
+<span class="gp">$ </span>cp openwebslides.env.example openwebslides.env
+<span class="gp">$ </span>nano openwebslides.env
+
+<span class="c"># Source environment variables</span>
+<span class="gp">$ </span>. ./openwebslides.env
 
 <span class="c"># Apply database migrations</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:migrate
