@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "title": "cannot be a fork",
+      "detail": "Upstream cannot be a fork",
+      "id": "upstream#cannotBeAFork",
+      "code": "100",
+      "status": "422"
+    }
+  ]
+}

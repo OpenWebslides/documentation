@@ -320,7 +320,7 @@ Attribute       |     | Type | Description
 > Request
 
 ```http
-POST <%= current_page.data.endpoint %>topics/1/content HTTP/1.1
+PATCH <%= current_page.data.endpoint %>topics/1/content HTTP/1.1
 Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
@@ -346,4 +346,42 @@ Content-Type: application/vnd.api+json
 
 ```json
 <%= api_response 'topics/patch_topic_content_422' %>
+```
+
+## Fork a topic
+
+This endpoint creates a duplicate of the topic, **under the current user's account**
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>topics/1/fork HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Authorization: Bearer TOKEN
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'topics/post_topic_fork' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'topics/post_topic_fork_422' %>
 ```
