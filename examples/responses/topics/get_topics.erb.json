@@ -19,10 +19,22 @@
             "related": "<%= current_page.data.endpoint %>topics/1/user"
           }
         },
+        "upstream": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>topics/1/relationships/upstream",
+            "related": "<%= current_page.data.endpoint %>topics/1/upstream"
+          }
+        },
         "content": {
           "links": {
             "self": "<%= current_page.data.endpoint %>topics/1/relationships/content",
             "related": "<%= current_page.data.endpoint %>topics/1/content"
+          }
+        },
+        "forks": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>topics/1/relationships/forks",
+            "related": "<%= current_page.data.endpoint %>topics/1/forks"
           }
         },
         "collaborators": {

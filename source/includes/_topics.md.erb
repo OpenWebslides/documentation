@@ -113,6 +113,17 @@ Attribute       |     | Type | Description
 `rootContentItemId` | | String | Root content item identifier
 `description`   | <span class="badge badge-info">optional</span> | String | Topic description
 
+**Response relationships**
+
+Relationship    |     | Type | Plurality | Description
+--------------- | --- | ---- | ---- | -----------
+`upstream`      | <span class="badge badge-info">optional</span> | <code>Topic</code> | 0..1 | Upstream (original) topic
+`forks`         | <span class="badge badge-info">optional</span> | <code>Topic</code> | 0..n | Downstream forks (personal copies)
+
+<aside class="notice">
+  When the <code>upstream</code> relationship is non-empty, the topic is forked from another topic. Topics can never be forked from forks, implying that <code>upstream</code> relationships will never lead to topics with non-empty <code>upstream</code> relationships. Additionally, the <code>forks</code> relationship will <strong>always</strong> be empty in forked topics. See also <a href="#fork-a-topic">Forking a topic</a>
+</aside>
+
 <aside class="notice">
   This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
