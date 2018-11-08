@@ -1,0 +1,37 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "type": "alerts",
+      "links": {
+        "self": "<%= current_page.data.endpoint %>alerts/1"
+      },
+      "attributes": {
+        "read": false,
+        "alertType": "topic_updated",
+        "count": 1
+      },
+      "relationships": {
+        "user": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/1/relationships/user",
+            "related": "<%= current_page.data.endpoint %>alerts/1/user"
+          }
+        },
+        "topic": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/1/relationships/topic",
+            "related": "<%= current_page.data.endpoint %>alerts/1/topic"
+          }
+        }
+      },
+      "meta": {
+        "createdAt": "1541668600"
+      }
+    }
+  ],
+  "links": {
+    "first": "<%= current_page.data.endpoint %>alerts?page%5Blimit%5D=10&page%5Boffset%5D=0",
+    "last": "<%= current_page.data.endpoint %>alerts?page%5Blimit%5D=10&page%5Boffset%5D=0"
+  }
+}

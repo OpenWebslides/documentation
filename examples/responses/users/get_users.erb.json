@@ -18,10 +18,16 @@
             "related": "<%= current_page.data.endpoint %>users/1/topics"
           }
         },
-        "contributions": {
+        "collaborations": {
           "links": {
-            "self": "<%= current_page.data.endpoint %>users/1/relationships/contributions",
-            "related": "<%= current_page.data.endpoint %>users/1/contributions"
+            "self": "<%= current_page.data.endpoint %>users/1/relationships/collaborations",
+            "related": "<%= current_page.data.endpoint %>users/1/collaborations"
+          }
+        },
+        "alerts": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/1/relationships/alerts",
+            "related": "<%= current_page.data.endpoint %>users/1/alerts"
           }
         }
       }
@@ -43,10 +49,16 @@
             "related": "<%= current_page.data.endpoint %>users/2/topics"
           }
         },
-        "contributions": {
+        "collaborations": {
           "links": {
-            "self": "<%= current_page.data.endpoint %>users/2/relationships/contributions",
-            "related": "<%= current_page.data.endpoint %>users/2/contributions"
+            "self": "<%= current_page.data.endpoint %>users/2/relationships/collaborations",
+            "related": "<%= current_page.data.endpoint %>users/2/collaborations"
+          }
+        },
+        "alerts": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>users/2/relationships/alerts",
+            "related": "<%= current_page.data.endpoint %>users/2/alerts"
           }
         }
       }

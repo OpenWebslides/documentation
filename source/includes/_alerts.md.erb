@@ -1,0 +1,44 @@
+# Alerts API
+
+## Get all user alerts
+
+This endpoint retrieves all alerts for a given user. Please note that it is only allowed to retrieve alerts for the current user.
+
+**Response attributes**
+
+Attribute       | Type | Description
+--------------- | ---- | -----------
+`alertType`     | Enum   | Type of alert. Currently can only be `topic_updated`
+`read`          | Boolean| Whether or not the alert was read by the user. Currently always `false`, cannot be modified
+`createdAt`     | Integer| Timestamp of the event. **This attribute is included in the `meta` section.**
+`count`         | Integer| Number of updates available on the topic (only when type is `topic_updated`)
+
+**Response relationships**
+
+Attribute       | Resource | Description
+--------------- | -------- | -----------
+`user`          | User     | The user for which the alert was generated. Always equal to the current user
+`topic`         | Topic    | The topic for which updates are available (only when type is `topic_updated`)
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>users/1/alerts HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Authorization: Bearer TOKEN
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'alerts/get_user_alerts' %>
+```
