@@ -37,12 +37,12 @@ An account has to be confirmed using the [Confirmation API](#confirmation-api) i
 
 **Request attributes**
 
-Attribute       |     | Type | Description
---------------- | --- | ---- | -----------
-`email`         | <span class="badge badge-danger">required</span> | String | Email, must not be already taken
-`name`          | <span class="badge badge-danger">required</span> | String | Full name
-`password`      | <span class="badge badge-danger">required</span> | String | Password, must be at least 6 characters
-`tosAccepted`   | <span class="badge badge-danger">required</span> | String | User has explicitly accepted terms of service, must be `true`
+Attribute       |                 | Type   | Description
+--------------- | --------------- | ------ | -----------
+`email`         | <%= required %> | String | Email, must not be already taken
+`name`          | <%= required %> | String | Full name
+`password`      | <%= required %> | String | Password, must be at least 6 characters
+`tosAccepted`   | <%= required %> | String | User has explicitly accepted terms of service, must be `true`
 
 > Request
 
@@ -84,12 +84,12 @@ This endpoint retrieves a user.
 
 **Response attributes**
 
-Attribute       |     | Type | Description
---------------- | --- | ---- | -----------
-`name`          |     | String | Full name
-`email`         | <span class="badge badge-info">optional</span> | String | Email (only visible when the request is authenticated by the user equal to the requested resource)
-`gravatarHash`  |     | String | MD5 hash for Gravatar service
-`locale`        | <span class="badge badge-info">optional</span> | String | Locale (only visible when the request is authenticated by the user equal to the requested resource)
+Attribute       |                 | Type   | Description
+--------------- | --------------- | ------ | -----------
+`name`          |                 | String | Full name
+`email`         | <%= optional %> | String | Email (only visible when the request is authenticated by the user equal to the requested resource)
+`gravatarHash`  |                 | String | MD5 hash for Gravatar service
+`locale`        | <%= optional %> | String | Locale (only visible when the request is authenticated by the user equal to the requested resource)
 
 <aside class="notice">
   This endpoint does not require authentication. However, authenticated requests might receive different data.
@@ -130,11 +130,11 @@ This endpoint updates a user.
 
 **Request attributes**
 
-Attribute       |     | Type | Description
---------------- | --- | ---- | -----------
-`name`          | | String | Full name
-`locale`        | | String | Locale
-`password`      | | String | Password, must be at least 6 characters
+Attribute       |                 | Type   | Description
+--------------- | --------------- | ------ | -----------
+`name`          |                 | String | Full name
+`locale`        |                 | String | Locale
+`password`      |                 | String | Password, must be at least 6 characters
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.

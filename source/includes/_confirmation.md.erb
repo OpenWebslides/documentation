@@ -7,9 +7,9 @@ An email containing a link to confirm the account is sent to the user.
 
 **Request attributes**
 
-Attribute       |     | Type | Description
---------------- | --- | ---- | -----------
-`email`         | <span class="badge badge-danger">required</span> | String | Account email address
+Attribute       |                 | Type   | Description
+--------------- | --------------- | ------ | -----------
+`email`         | <%= required %> | String | Account email address
 
 <aside class="notice">
   This endpoint will always return a success response, to avoid leaking information about existing users
@@ -40,9 +40,9 @@ After a success response, the user can sign in.
 
 **Request attributes**
 
-Attribute       |     | Type | Description
---------------- | --- | ---- | -----------
-`confirmationToken` | <span class="badge badge-danger">required</span> | String | Opaque token that was included in the email sent to the user
+Attribute       |                     | Type   | Description
+--------------- | ---------------     | ------ | -----------
+`confirmationToken` | <%= required %> | String | Opaque token that was included in the email sent to the user
 
 **Response attributes**
 

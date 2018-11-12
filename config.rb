@@ -63,4 +63,12 @@ helpers do
   def api_response(path, extension = 'json')
     ERB.new(File.read File.join root, 'examples', 'responses', "#{path}.erb.#{extension}").result binding
   end
+
+  def optional
+    '<span class="badge badge-info">optional</span>'
+  end
+
+  def required
+    '<span class="badge badge-danger">required</span>'
+  end
 end

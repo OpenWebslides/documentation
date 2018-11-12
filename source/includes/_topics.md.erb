@@ -38,8 +38,8 @@ This endpoint creates a topic.
 
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
-`title`         | <span class="badge badge-danger">required</span> | String | Name of the topic, does not have to be unique
-`rootContentItemId` | <span class="badge badge-danger">required</span> | String | Root content item identifier
+`title`         | <%= required %> | String | Name of the topic, does not have to be unique
+`rootContentItemId` | <%= required %> | String | Root content item identifier
 `description`   | | String | Description of the topic
 `state`         | | String | Access level (See [Permission model](#permission-model)), defaults to `public_access`
 
@@ -106,19 +106,19 @@ This endpoint retrieves a topic.
 
 **Response attributes**
 
-Attribute       |     | Type | Description
---------------- | --- | ---- | -----------
-`title`         |     | String | Topic name
-`state`         |     | String | Access level, see [Permission model](#permission-model) for more information
-`rootContentItemId` | | String | Root content item identifier
-`description`   | <span class="badge badge-info">optional</span> | String | Topic description
+Attribute       |                 | Type   | Description
+--------------- | --------------- | ------ | -----------
+`title`         |                 | String | Topic name
+`state`         |                 | String | Access level, see [Permission model](#permission-model) for more information
+`rootContentItemId` |             | String | Root content item identifier
+`description`   | <%= optional %> | String | Topic description
 
 **Response relationships**
 
-Relationship    |     | Type | Plurality | Description
---------------- | --- | ---- | ---- | -----------
-`upstream`      | <span class="badge badge-info">optional</span> | <code>Topic</code> | 0..1 | Upstream (original) topic
-`forks`         | <span class="badge badge-info">optional</span> | <code>Topic</code> | 0..n | Downstream forks (personal copies)
+Relationship    |                        | Type                     | Plurality | Description
+--------------- | ---------------------- | ------------------------ | --------- | -----------
+`upstream`      | <%= optional %>        | <code>Topic</code>       | 0..1      | Upstream (original) topic
+`forks`         | <%= optional %>        | <code>Topic</code>       | 0..n      | Downstream forks (personal copies)
 
 <aside class="notice">
   When the <code>upstream</code> relationship is non-empty, the topic is forked from another topic. Topics can never be forked from forks, implying that <code>upstream</code> relationships will never lead to topics with non-empty <code>upstream</code> relationships. Additionally, the <code>forks</code> relationship will <strong>always</strong> be empty in forked topics. See also <a href="#fork-a-topic">Forking a topic</a>
@@ -305,7 +305,7 @@ This endpoint updates a topic's content structure.
 
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
-`content`       | <span class="badge badge-danger">required</span> | String | Topic content structure
+`content`       | <%= required %> | String | Topic content structure
 
 <aside class="warning">
   Updating a topic's content structure replaces the entire contents. Partial updates are not yet implemented.
