@@ -5,16 +5,17 @@ The URL structure is kept as simple as possible, avoiding nesting resources wher
 
 API endpoint      | Description
 ----------------- | ------------
-`/alerts`         | Allows retrieving user alerts
-`/token`          | Allows requesting an API token
-`/password`       | Allows requesting sending an account reset email
-`/confirmation`   | Allows requesting resending the account confirmation email
-`/users`          | Allows manipulating users
-`/topics`         | Allows manipulating topics
-`/assets`         | Allows manipulating assets
-`/feedItems`      | Allows retrieving Recent Activity feed items
-`/conversations`  | Allows manipulating conversations (annotations)
-`/comments`       | Allows manipulating comments (annotations)
+`/alerts`         | [User alerts API](#alerts-api)
+`/assets`         | [Topic assets API](#assets-api)
+`/comments`       | [Annotations API](#annotations-api): comments
+`/confirmation`   | [Authentication API](#confirmation-api): email confirmation
+`/conversations`  | [Annotations API](#annotations-api): conversations
+`/feedItems`      | [Recent Activity feed API](#feed-items-api)
+`/oauth`          | OAuth endpoints; not part of the REST API
+`/password`       | [Authentication API](#password-api): password reset
+`/token`          | [Authentication API](#token-api): authentication token
+`/topics`         | [Topics API](#topics-api)
+`/users`          | [Users API](#users-api)
 
 For documentation on filtering, sorting, including resources, error responses and other functionality not included on this website, refer to the [JSON-API specification](http://jsonapi.org/format/1.0/).
 
@@ -26,7 +27,7 @@ The token is only valid for a limited time, but a renewed token is available on 
 This new token should be used for subsequent API calls.
 
 <aside class="notice">
-  <em>Protected</em> endpoints require authentication. <em>Unprotected</em> endpoints can be manipulated without a valid token.
+  <em>Protected</em> endpoints require authentication. <em>Unprotected</em> endpoints can be manipulated without a valid token. However, performing a request on an unprotected endpoint with a token can yield different results than without a token. For example, retrieving the list of topics with a token will also return <code>protected</code> and <code>private</code> topics, where the equivalent request without token will only return <code>public</code> topics.
 </aside>
 
 <aside class="notice">
@@ -118,3 +119,57 @@ Token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1Y
 ## Request body
 
 Refer to the [JSON-API specification](http://jsonapi.org/format/1.0/) for a formal definition of request body and the documentation on this website for examples on every API.
+
+## HTTP status codes
+
+The API uses the following HTTP error codes:
+
+
+Status code | Description
+---------- | -------
+400 | Bad Request -- Invalid data or URL
+401 | Unauthorized -- Invalid or no API token
+403 | Forbidden -- Not authorized to perform action
+404 | Not Found
+405 | Method Not Allowed
+406 | Not Acceptable -- `Content-Type` should be `application/vnd.api+json`
+410 | Gone -- Resource has been removed
+422 | Unprocessable Entity -- Malformed `data` object
+429 | Too Many Requests -- Rate limiting in effect (to be included in future updates)
+500 | Internal Server Error -- The server had a problem. Please try again later.
+503 | Service Unavailable -- Temporarily offline for maintenance. Please try again later.
+
+## JSON API error codes
+
+Besides HTTP status codes, the API provides additional error codes in the returned `errors` object under the `code` variable:
+
+Error code | Description
+---------- | -------
+100 | Validation error
+101 | Invalid resource
+102 | Filter not allowed
+103 | Invalid field value
+104 | Invalid field
+105 | Param not allowed
+106 | Param missing
+107 | Invalid filter value
+109 | Key order mismatch
+110 | Key not included in URL
+112 | Invalid include
+113 | Relation exists
+114 | Invalid sort criteria
+115 | Invalid links object
+116 | Type mismatch
+117 | Invalid page object
+118 | Invalid page value
+119 | Invalid field format
+120 | Invalid filters syntax
+121 | Save failed
+122 | Invalid data format
+400 | Bad request
+403 | Forbidden
+404 | Record not found
+406 | Not acceptable
+415 | Unsupported media type
+423 | Locked
+500 | Internal server error
