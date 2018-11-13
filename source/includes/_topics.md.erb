@@ -119,9 +119,15 @@ Relationship    |                        | Type                     | Plurality 
 --------------- | ---------------------- | ------------------------ | --------- | -----------
 `upstream`      | <%= optional %>        | <code>Topic</code>       | 0..1      | Upstream (original) topic
 `forks`         | <%= optional %>        | <code>Topic</code>       | 0..n      | Downstream forks (personal copies)
+`incomingPullRequests` | <%= optional %> | <code>PullRequest</code> | 0..n      | Incoming pull requests (topic is target)
+`outgoingPullRequests` | <%= optional %> | <code>PullRequest</code> | 0..n      | Outgoing pull requests (topic is source, upstream must be non-empty)
 
 <aside class="notice">
   When the <code>upstream</code> relationship is non-empty, the topic is forked from another topic. Topics can never be forked from forks, implying that <code>upstream</code> relationships will never lead to topics with non-empty <code>upstream</code> relationships. Additionally, the <code>forks</code> relationship will <strong>always</strong> be empty in forked topics. See also <a href="#fork-a-topic">Forking a topic</a>
+</aside>
+
+<aside class="notice">
+  Every topic has both incoming and outgoing pull requests. However, only one of these relationships can be non-empty. If the topic is a fork, only the <code>outgoingPullRequests</code> can be non-empty, if the topic is an upstream only the <code>incomingPullRequests</code> can be non-empty. At most one of the outgoing pull requests can have the state of <code>open</code>, the others must be either <code>accepted</code> or <code>rejected</code>.
 </aside>
 
 <aside class="notice">

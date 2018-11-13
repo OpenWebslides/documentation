@@ -1,0 +1,14 @@
+{
+  "errors": [
+    {
+      "title": "must have target as upstream",
+      "detail": "Source must have target as upstream",
+      "id": "source#mustHaveTargetAsUpstream",
+      "code": "100",
+      "source": {
+        "pointer": "/data/relationships/source"
+      },
+      "status": "422"
+    }
+  ]
+}

@@ -1,0 +1,137 @@
+# Pull Requests API
+
+## Create a pull request
+
+This endpoint creates a pull request.
+
+**Request attributes**
+
+Attribute       |                 | Type     | Description
+--------------- | --------------- | -------- | -----------
+`message`       | <%= required %> | String   | Message from the user submitting the pull request
+
+**Request relationships**
+
+Relationship    |                 | Type     | Plurality | Description
+--------------- | --------------- | -------- | --------- | -----------
+`user`          | <%= required %> | User     | 1         | The user submitting the pull request
+`source`        | <%= required %> | Topic    | 1         | The topic which is being merged
+`target`        | <%= required %> | Topic    | 1         | The topic being merged into
+
+<aside class="info">
+  The <code>user</code> relationship must always refer to the current user, otherwise a permission error will be returned.
+</aside>
+
+<aside class="info">
+  The <code>source</code> topic must always have the <code>target</code> topic as upstream topic, otherwise a validation error will be returned. Furthermore, any given topic (as <code>source</code>) can only have one open outgoing pull request at the same time.
+</aside>
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>pullRequests HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_request 'pull_requests/post_pull_requests' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/post_pull_requests' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/post_pull_requests_422_1' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/post_pull_requests_422_2' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/post_pull_requests_422_3' %>
+```
+
+## Get a pull request
+
+This endpoint retrieves a pull request.
+
+**Response attributes**
+
+Attribute       |         | Type     | Description
+--------------- | ------- | -------- | -----------
+`message`       |         | String   | Message from user submitting the pull request
+`state`         |         | Enum     | Status of the pull request, can be `open`, `accepted` or `rejected`, defaults to `open`
+`createdAt`     |         | Integer  | Timestamp of the event. **This attribute is included in the `meta` section.**
+
+**Response relationships**
+
+Relationship    |          | Type     | Plurality | Description
+--------------- | -------- | -------- | --------- | -----------
+`user`          |          | User     | 1         | The user submitting the pull request
+`source`        |          | Topic    | 1         | The topic which is being merged
+`target`        |          | Topic    | 1         | The topic being merged into
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>pullRequests/1 HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/get_pull_request' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/get_pull_request_404' %>
+```

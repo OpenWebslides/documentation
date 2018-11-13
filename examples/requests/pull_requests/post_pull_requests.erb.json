@@ -1,0 +1,28 @@
+{
+  "data": {
+    "type": "pullRequests",
+    "attributes": {
+      "message": "Fixed some typos in the first chapter."
+    },
+    "relationships": {
+      "user": {
+        "data": {
+          "id": "1",
+          "type": "users"
+        }
+      },
+      "source": {
+        "data": {
+          "id": "2",
+          "type": "topics"
+        }
+      },
+      "target": {
+        "data": {
+          "id": "1",
+          "type": "topics"
+        }
+      }
+    }
+  }
+}

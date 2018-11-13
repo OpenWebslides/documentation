@@ -1,0 +1,14 @@
+{
+  "errors": [
+    {
+      "title": "can only have on open pull request",
+      "detail": "Source can only have on open pull request",
+      "id": "source#canOnlyHaveOnOpenPullRequest",
+      "code": "100",
+      "source": {
+        "pointer": "/data/relationships/source"
+      },
+      "status": "422"
+    }
+  ]
+}
