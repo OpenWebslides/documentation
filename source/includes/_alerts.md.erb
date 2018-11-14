@@ -8,7 +8,7 @@ This endpoint retrieves all alerts for a given user. Please note that it is only
 
 Attribute       |                 | Type    | Description
 --------------- | --------------- | ------- | -----------
-`alertType`     |                 | Enum    | Type of alert. Currently can only be `topic_updated`
+`alertType`     |                 | Enum    | Type of alert. See [alert types](#alert-types)
 `read`          |                 | Boolean | Whether or not the alert was read by the user. Currently always `false`, cannot be modified
 `count`         | <%= optional %> | Integer | Number of updates available on the topic (required when type is `topic_updated`)
 `createdAt`     |                 | Integer | Timestamp of the event. **This attribute is included in the `meta` section.**
@@ -19,9 +19,30 @@ Relationship    |                        | Type                     | Plurality 
 --------------- | ---------------------- | ------------------------ | --------- | -----------
 `user`          |                        | <code>User</code>        | 1         | User for which the alert was generated
 `topic`         | <%= optional %>        | <code>Topic</code>       | 1         | Topic for which updates are available (required when `alertType` is `topic_updated`)
+`subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/approved/rejected the pull request (required when `alertType` is `pr_submitted`, `pr_approved` or `pr_rejected`)
+`pullRequest`   | <%= optional %>        | <code>PullRequest</code> | 1         | Pull request the alert is referring to (required when `alertType` is `pr_submitted`, `pr_approved` or `pr_rejected`)
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+### Alert types
+
+There are currently four alert types requiring the user's attention.
+
+Alert type      | Description
+--------------- | -----------
+`topic_updated` | There are commits available on one of the user's topics' upstream
+`pr_submitted`  | A pull request was submitted on one of the topics the user has access to
+`pr_approved`   | A pull request submitted by the user was approved
+`pr_rejected`   | A pull request submitted by the user was rejected
+
+<aside class="info">
+  As mentioned in the response attributes and relationships tables, all alert types will return the <code>alertType</code>, <code>read</code> and <code>createdAt</code> attributes, and the <code>user</code> relationship.
+  <br />
+  Additionally, the <code>topic_updated</code> alert type will also return the <code>count</code> attribute, and the <code>topic</code> relationship.
+  <br />
+  The pull request alert types will return the <code>subject</code> and <code>pullRequest</code> relationships.
 </aside>
 
 > Request
