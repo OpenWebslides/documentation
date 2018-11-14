@@ -23,10 +23,62 @@
             "self": "<%= current_page.data.endpoint %>alerts/1/relationships/topic",
             "related": "<%= current_page.data.endpoint %>alerts/1/topic"
           }
+        },
+        "subject": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/1/relationships/subject",
+            "related": "<%= current_page.data.endpoint %>alerts/1/subject"
+          }
+        },
+        "pullRequest": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/1/relationships/pullRequest",
+            "related": "<%= current_page.data.endpoint %>alerts/1/pullRequest"
+          }
         }
       },
       "meta": {
         "createdAt": "1541668600"
+      }
+    },
+    {
+      "id": "2",
+      "type": "alerts",
+      "links": {
+        "self": "<%= current_page.data.endpoint %>alerts/2"
+      },
+      "attributes": {
+        "read": false,
+        "alertType": "pr_submitted"
+      },
+      "relationships": {
+        "user": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/2/relationships/user",
+            "related": "<%= current_page.data.endpoint %>alerts/2/user"
+          }
+        },
+        "topic": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/2/relationships/topic",
+            "related": "<%= current_page.data.endpoint %>alerts/2/topic"
+          }
+        },
+        "subject": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/2/relationships/subject",
+            "related": "<%= current_page.data.endpoint %>alerts/2/subject"
+          }
+        },
+        "pullRequest": {
+          "links": {
+            "self": "<%= current_page.data.endpoint %>alerts/2/relationships/pullRequest",
+            "related": "<%= current_page.data.endpoint %>alerts/2/pullRequest"
+          }
+        }
+      },
+      "meta": {
+        "createdAt": "1542186670"
       }
     }
   ],

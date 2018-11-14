@@ -19,8 +19,8 @@ Relationship    |                        | Type                     | Plurality 
 --------------- | ---------------------- | ------------------------ | --------- | -----------
 `user`          |                        | <code>User</code>        | 1         | User for which the alert was generated
 `topic`         | <%= optional %>        | <code>Topic</code>       | 1         | Topic for which updates are available (required when `alertType` is `topic_updated`)
-`subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/approved/rejected the pull request (required when `alertType` is `pr_submitted`, `pr_approved` or `pr_rejected`)
-`pullRequest`   | <%= optional %>        | <code>PullRequest</code> | 1         | Pull request the alert is referring to (required when `alertType` is `pr_submitted`, `pr_approved` or `pr_rejected`)
+`subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/accepted/rejected the pull request (required when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
+`pullRequest`   | <%= optional %>        | <code>PullRequest</code> | 1         | Pull request the alert is referring to (required when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
@@ -34,7 +34,7 @@ Alert type      | Description
 --------------- | -----------
 `topic_updated` | There are commits available on one of the user's topics' upstream
 `pr_submitted`  | A pull request was submitted on one of the topics the user has access to
-`pr_approved`   | A pull request submitted by the user was approved
+`pr_accepted`   | A pull request submitted by the user was accepted
 `pr_rejected`   | A pull request submitted by the user was rejected
 
 <aside class="info">
