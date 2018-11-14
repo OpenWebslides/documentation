@@ -607,7 +607,7 @@ Minor and patch release changelogs are available in the git tags and correspondi
 <li>Add pull request alert types
 
 <ul>
-<li><a href="#get-all-user-alerts"><code>GET /users/:id/alerts</code></a>: Add <code>pr_submitted</code>, <code>pr_approved</code> and <code>pr_rejected</code> alert types</li>
+<li><a href="#get-all-user-alerts"><code>GET /users/:id/alerts</code></a>: Add <code>pr_submitted</code>, <code>pr_accepted</code> and <code>pr_rejected</code> alert types</li>
 </ul></li>
 </ul>
 <h2 id='api-v5-2'>API v5.2</h2>
@@ -1368,14 +1368,14 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <td><span class="badge badge-info">optional</span></td>
 <td><code>User</code></td>
 <td>1</td>
-<td>User that submitted/approved/rejected the pull request (required when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_approved</code> or <code>pr_rejected</code>)</td>
+<td>User that submitted/accepted/rejected the pull request (required when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code> or <code>pr_rejected</code>)</td>
 </tr>
 <tr>
 <td><code>pullRequest</code></td>
 <td><span class="badge badge-info">optional</span></td>
 <td><code>PullRequest</code></td>
 <td>1</td>
-<td>Pull request the alert is referring to (required when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_approved</code> or <code>pr_rejected</code>)</td>
+<td>Pull request the alert is referring to (required when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code> or <code>pr_rejected</code>)</td>
 </tr>
 </tbody></table>
 
@@ -1400,8 +1400,8 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <td>A pull request was submitted on one of the topics the user has access to</td>
 </tr>
 <tr>
-<td><code>pr_approved</code></td>
-<td>A pull request submitted by the user was approved</td>
+<td><code>pr_accepted</code></td>
+<td>A pull request submitted by the user was accepted</td>
 </tr>
 <tr>
 <td><code>pr_rejected</code></td>
@@ -1454,10 +1454,62 @@ For protected endpoints, a <code>Authorization</code> header is also required in
             </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/1/relationships/topic"</span><span class="p">,</span><span class="w">
             </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/1/topic"</span><span class="w">
           </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/1/relationships/subject"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/1/subject"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"pullRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/1/relationships/pullRequest"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/1/pullRequest"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
         </span><span class="p">}</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1541668600"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"alerts"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"read"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="s2">"alertType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pr_submitted"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/relationships/user"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/user"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"topic"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/relationships/topic"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/topic"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"subject"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/relationships/subject"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/subject"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">},</span><span class="w">
+        </span><span class="s2">"pullRequest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+            </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/relationships/pullRequest"</span><span class="p">,</span><span class="w">
+            </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/alerts/2/pullRequest"</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542186670"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
