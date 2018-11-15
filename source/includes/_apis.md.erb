@@ -50,6 +50,20 @@ Content-Type: application/vnd.api+json
 Content-Length: 138
 ```
 
+### Development
+
+When running the API server in development mode, you can skip the token authentication and instead use user authentication instead.
+To do this, simply replace the `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...` by `User 1` in the `Authorization` header, where 1 is a unique user identifier.
+The server will detect this and handle the request like an authenticated request originating from user 1.
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>users/1/alerts HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Authorization: User 1
+```
+
 ## Versioning
 
 The API is semantically versioned.
