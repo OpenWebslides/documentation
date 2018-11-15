@@ -1350,7 +1350,7 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <td><code>count</code></td>
 <td><span class="badge badge-info">optional</span></td>
 <td>Integer</td>
-<td>Number of updates available on the topic (required when type is <code>topic_updated</code>)</td>
+<td>Number of updates available on the topic (only available when type is <code>topic_updated</code>)</td>
 </tr>
 <tr>
 <td><code>createdAt</code></td>
@@ -1383,21 +1383,21 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <td><span class="badge badge-info">optional</span></td>
 <td><code>Topic</code></td>
 <td>1</td>
-<td>Topic for which updates are available (required when <code>alertType</code> is <code>topic_updated</code>)</td>
+<td>Topic for which updates are available (only available when <code>alertType</code> is <code>topic_updated</code>)</td>
 </tr>
 <tr>
 <td><code>subject</code></td>
 <td><span class="badge badge-info">optional</span></td>
 <td><code>User</code></td>
 <td>1</td>
-<td>User that submitted/accepted/rejected the pull request (required when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code> or <code>pr_rejected</code>)</td>
+<td>User that submitted/accepted/rejected the pull request (only available when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code> or <code>pr_rejected</code>)</td>
 </tr>
 <tr>
 <td><code>pullRequest</code></td>
 <td><span class="badge badge-info">optional</span></td>
 <td><code>PullRequest</code></td>
 <td>1</td>
-<td>Pull request the alert is referring to (required when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code> or <code>pr_rejected</code>)</td>
+<td>Pull request the alert is referring to (only available when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code> or <code>pr_rejected</code>)</td>
 </tr>
 </tbody></table>
 
