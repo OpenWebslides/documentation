@@ -1016,6 +1016,17 @@ This new token should be used for subsequent API calls.</p>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Content-Length</span><span class="p">:</span> <span class="s">138</span>
+</code></pre><h3 id='development'>Development</h3>
+<p>When running the API server in development mode, you can skip the token authentication and instead use user authentication instead.
+To do this, simply replace the <code>Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...</code> by <code>User 1</code> in the <code>Authorization</code> header, where 1 is a unique user identifier.
+The server will detect this and handle the request like an authenticated request originating from user 1.</p>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/users/1/alerts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=5.3.0</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">User 1</span>
 </code></pre><h2 id='versioning'>Versioning</h2>
 <p>The API is semantically versioned.
 Every request has to include the API version of the client in the <code>Accept</code> header as shown below.
