@@ -10,7 +10,7 @@ Attribute       |                 | Type    | Description
 --------------- | --------------- | ------- | -----------
 `alertType`     |                 | Enum    | Type of alert. See [alert types](#alert-types)
 `read`          |                 | Boolean | Whether or not the alert was read by the user. Currently always `false`, cannot be modified
-`count`         | <%= optional %> | Integer | Number of updates available on the topic (required when type is `topic_updated`)
+`count`         | <%= optional %> | Integer | Number of updates available on the topic (only available when type is `topic_updated`)
 `createdAt`     |                 | Integer | Timestamp of the event. **This attribute is included in the `meta` section.**
 
 **Response relationships**
@@ -18,9 +18,9 @@ Attribute       |                 | Type    | Description
 Relationship    |                        | Type                     | Plurality | Description
 --------------- | ---------------------- | ------------------------ | --------- | -----------
 `user`          |                        | <code>User</code>        | 1         | User for which the alert was generated
-`topic`         | <%= optional %>        | <code>Topic</code>       | 1         | Topic for which updates are available (required when `alertType` is `topic_updated`)
-`subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/accepted/rejected the pull request (required when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
-`pullRequest`   | <%= optional %>        | <code>PullRequest</code> | 1         | Pull request the alert is referring to (required when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
+`topic`         | <%= optional %>        | <code>Topic</code>       | 1         | Topic for which updates are available (only available when `alertType` is `topic_updated`)
+`subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/accepted/rejected the pull request (only available when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
+`pullRequest`   | <%= optional %>        | <code>PullRequest</code> | 1         | Pull request the alert is referring to (only available when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
