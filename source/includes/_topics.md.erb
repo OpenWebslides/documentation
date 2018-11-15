@@ -309,9 +309,10 @@ This endpoint updates a topic's content structure.
 
 **Request attributes**
 
-Attribute       |     | Type | Description
---------------- | --- | ---- | -----------
-`content`       | <%= required %> | String | Topic content structure
+Attribute       |                 | Type   | Description
+--------------- | --------------- | ------ | -----------
+`content`       | <%= required %> | Array  | Topic content structure; array of denormalized content items
+`message`       | <%= required %> | String | Commit message
 
 <aside class="warning">
   Updating a topic's content structure replaces the entire contents. Partial updates are not yet implemented.
