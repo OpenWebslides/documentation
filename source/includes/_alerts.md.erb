@@ -18,12 +18,16 @@ Attribute       |                 | Type    | Description
 Relationship    |                        | Type                     | Plurality | Description
 --------------- | ---------------------- | ------------------------ | --------- | -----------
 `user`          |                        | <code>User</code>        | 1         | User for which the alert was generated
-`topic`         | <%= optional %>        | <code>Topic</code>       | 1         | Topic for which updates are available (only available when `alertType` is `topic_updated`)
+`topic`         |                        | <code>Topic</code>       | 1         | Topic for which the alert was generated
 `subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/accepted/rejected the pull request (only available when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
 `pullRequest`   | <%= optional %>        | <code>PullRequest</code> | 1         | Pull request the alert is referring to (only available when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+<aside class="info">
+  The <code>topic</code> relationship refers to the topic for which the alert was generated. In the case of <code>topic_updated</code> alert type, this is the fork for which the updates are available. In the case of <code>pr_*</code> alert types, this is the upstream topic for which a pull request has been submitted. It is equal to the pull request's <code>target</code> relationship.
 </aside>
 
 ### Alert types
