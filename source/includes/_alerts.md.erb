@@ -67,3 +67,53 @@ Content-Type: application/vnd.api+json
 ```json
 <%= api_response 'alerts/get_user_alerts' %>
 ```
+
+## Mark alert as read
+
+This endpoint marks an alert as read.
+
+**Request attributes**
+
+Attribute       |                 | Type    | Description
+--------------- | --------------- | ------- | -----------
+`read`          | <%= required %> | Boolean | Read status, must be `true`
+
+<aside class="warning">
+  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+
+> Request
+
+```http
+PATCH <%= current_page.data.endpoint %>alerts/1 HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_request 'alerts/patch_alert' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'alerts/patch_alert' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'alerts/patch_alert_422' %>
+```

@@ -1,0 +1,14 @@
+{
+  "errors": [
+    {
+      "title": "must be true",
+      "detail": "Read must be true",
+      "id": "read#mustBeTrue",
+      "code": "100",
+      "source": {
+        "pointer": "/data/attributes/read"
+      },
+      "status": "422"
+    }
+  ]
+}

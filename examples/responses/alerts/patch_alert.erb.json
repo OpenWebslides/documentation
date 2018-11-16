@@ -1,0 +1,43 @@
+{
+  "data": {
+    "id": "1",
+    "type": "alerts",
+    "links": {
+      "self": "<%= current_page.data.endpoint %>alerts/1"
+    },
+    "attributes": {
+      "read": true,
+      "alertType": "topic_updated",
+      "count": 1
+    },
+    "relationships": {
+      "user": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>alerts/1/relationships/user",
+          "related": "<%= current_page.data.endpoint %>alerts/1/user"
+        }
+      },
+      "topic": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>alerts/1/relationships/topic",
+          "related": "<%= current_page.data.endpoint %>alerts/1/topic"
+        }
+      },
+      "subject": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>alerts/1/relationships/subject",
+          "related": "<%= current_page.data.endpoint %>alerts/1/subject"
+        }
+      },
+      "pullRequest": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>alerts/1/relationships/pullRequest",
+          "related": "<%= current_page.data.endpoint %>alerts/1/pullRequest"
+        }
+      }
+    },
+    "meta": {
+      "createdAt": "1541668600"
+    }
+  }
+}

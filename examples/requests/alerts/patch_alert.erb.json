@@ -1,0 +1,9 @@
+{
+  "data": {
+    "type": "alerts",
+    "id": "1",
+    "attributes": {
+      "read": true
+    }
+  }
+}
