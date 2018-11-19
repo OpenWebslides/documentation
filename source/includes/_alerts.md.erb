@@ -53,7 +53,7 @@ Alert type      | Description
 
 ```http
 GET <%= current_page.data.endpoint %>users/1/alerts HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Authorization: Bearer TOKEN
 ```
 
@@ -87,7 +87,7 @@ Attribute       |                 | Type    | Description
 
 ```http
 PATCH <%= current_page.data.endpoint %>alerts/1 HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
 ```

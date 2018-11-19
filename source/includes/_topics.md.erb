@@ -16,7 +16,7 @@ See [Get a topic](#get-a-topic).
 
 ```http
 GET <%= current_page.data.endpoint %>topics HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 ```
 
 > Response
@@ -58,7 +58,7 @@ Attribute       |     | Type | Description
 
 ```http
 POST <%= current_page.data.endpoint %>topics HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
 ```
@@ -138,7 +138,7 @@ Relationship    |                        | Type                     | Plurality 
 
 ```http
 GET <%= current_page.data.endpoint %>topics/1 HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 ```
 
 > Success response
@@ -182,7 +182,7 @@ See [Create a topic](#create-a-topic).
 
 ```http
 PATCH <%= current_page.data.endpoint %>topics/1 HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
 ```
@@ -242,7 +242,7 @@ This endpoint deletes a user.
 
 ```http
 DELETE <%= current_page.data.endpoint %>topics/1 HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Authorization: Bearer TOKEN
 ```
 
@@ -278,7 +278,7 @@ Attribute       |     | Type | Description
 
 ```http
 GET <%= current_page.data.endpoint %>topics/1/content HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 ```
 
 > Success response
@@ -328,7 +328,7 @@ Attribute       |                 | Type   | Description
 
 ```http
 PATCH <%= current_page.data.endpoint %>topics/1/content HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
 ```
@@ -367,7 +367,7 @@ This endpoint creates a duplicate of the topic, **under the current user's accou
 
 ```http
 POST <%= current_page.data.endpoint %>topics/1/fork HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Authorization: Bearer TOKEN
 ```
 

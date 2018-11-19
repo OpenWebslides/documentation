@@ -38,7 +38,7 @@ This new token should be used for subsequent API calls.
 
 ```http
 GET <%= current_page.data.endpoint %>users HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Authorization: Bearer TOKEN
 ```
 
@@ -60,23 +60,39 @@ The server will detect this and handle the request like an authenticated request
 
 ```http
 GET <%= current_page.data.endpoint %>users/1/alerts HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Authorization: User 1
 ```
 
 ## Versioning
 
 The API is semantically versioned.
-Every request has to include the API version of the client in the `Accept` header as shown below.
+Every request has to include the required API version in the `Accept`.
 The server will then determine if the version is satisfiable and proceed as requested.
 If the version cannot be satisfied by the server, it will return a HTTP 406 Not Acceptable error.
-Every response by the server also includes a `Content-Type` header containing the server's version.
+Every response by the server also includes a `Content-Type` header containing the server's exact version.
 
 The `Accept` header has to contain two MIME types: the JSON API MIME type (`application/vnd.api+json`) and an Open Webslides MIME type (`application/vnd.openwebslides+json`) with a version parameter.
+The version parameter can contain semantic operators, such as `>=` and `~>`, the latter being Ruby's [pessimistic operator](https://guides.rubygems.org/patterns/#pessimistic-version-constraint).
+The recommended way to deal with versioned requests is to specify a range of acceptable versions.
+Some examples are noted below
+
+Version string | Resolves to              | When to use
+-------------- | ------------------------ | -----------
+`~>6`          | `>= 6.0.0, < 7.0.0`      | You require features that are already present in 6.0.0
+               |                          | You do not depend on any additional features added in a later 6.x release
+               |                          | **You receive minor (backwards compatible) updates and bug fixes**
+`~>6.2         | `>= 6.2.0, < 7.0.0`      | You require features that are already present in a specific release of 6.x
+               |                          | You do not depend on any additional features added in a later 6.x release
+               |                          | **You receive minor (backwards compatible) updates and bug fixes**
+`~>6.2.3       | `>= 6.2.3, < 6.3.0`      | You require features that are already present in a specific release of 6.x
+               |                          | You require a specific bug fix or patch to be present
+               |                          | You do not depend on any additional features added in a later 6.x release
+               |                          | **You receive only bug fixes**
 
 ```http
 GET <%= current_page.data.endpoint %>users HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Authorization: Bearer TOKEN
 ```
 
@@ -121,9 +137,9 @@ For protected endpoints, a `Authorization` header is also required in the correc
 
 ```http
 POST <%= current_page.data.endpoint %>topics HTTP/1.1
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Content-Type: application/vnd.api+json
-Accept: application/vnd.api+json, application/vnd.openwebslides+json; version=<%= current_page.data.version %>
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
 Token: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1YiI6MSwidmVyIjozfQ.1v_SvE8yQE-z9FiKoFhkWRXx9hJ4kQNRxz1uc8zXFjg
 ```
 
