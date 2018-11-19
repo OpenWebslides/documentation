@@ -6,6 +6,10 @@ The changelog contains a quick summary of changes made in a major API release.
 The change list should also include a list of endpoints that were modified.
 Minor and patch release changelogs are available in the git tags and corresponding commit messages.
 
+## API v7
+- Implement new versioning scheme
+  - [`Accept header in all requests`](#versioning)
+
 ## API v6.2
 
 - Add _mark as read_ to Alerts API
@@ -16,7 +20,7 @@ Minor and patch release changelogs are available in the git tags and correspondi
 - Enforce Alert topic relationship
   - [`GET /users/:id/alerts`](#get-all-user-alerts): `topic` relationship is now always present
 
-## API v6.0
+## API v6
 
 - Add required commit message
   - [`PATCH /topics/:id/content`](#update-topic-content): Add `message` attribute
