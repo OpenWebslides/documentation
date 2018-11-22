@@ -42,7 +42,8 @@ Attribute       |                 | Type   | Description
 `email`         | <%= required %> | String | Email, must not be already taken
 `name`          | <%= required %> | String | Full name
 `password`      | <%= required %> | String | Password, must be at least 6 characters
-`tosAccepted`   | <%= required %> | String | User has explicitly accepted terms of service, must be `true`
+`tosAccepted`   | <%= required %> | Boolean| User has explicitly accepted terms of service, must be `true`
+`alertEmails`   |                 | Boolean| Enable email notifications for important alerts, defaults to `true`
 
 > Request
 
@@ -87,12 +88,17 @@ This endpoint retrieves a user.
 Attribute       |                 | Type   | Description
 --------------- | --------------- | ------ | -----------
 `name`          |                 | String | Full name
-`email`         | <%= optional %> | String | Email (only visible when the request is authenticated by the user equal to the requested resource)
+`email`         | <%= optional %> | String | Email
 `gravatarHash`  |                 | String | MD5 hash for Gravatar service
-`locale`        | <%= optional %> | String | Locale (only visible when the request is authenticated by the user equal to the requested resource)
+`locale`        | <%= optional %> | String | Locale
+`alertEmails`   | <%= optional %> | Boolean| Email notifications for important alerts
 
 <aside class="notice">
-  This endpoint does not require authentication. However, authenticated requests might receive different data.
+  If the user has <code>alertEmails</code> set to false, no email notifications will be sent out when an alert is created.
+</aside>
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data. The <code>email</code>, <code>locale</code> and <code>alertEmails</code> attributes are only available when the user is authenticated, and only on the user's own resource (only for itself).
 </aside>
 
 > Request
@@ -135,6 +141,7 @@ Attribute       |                 | Type   | Description
 `name`          |                 | String | Full name
 `locale`        |                 | String | Locale
 `password`      |                 | String | Password, must be at least 6 characters
+`alertEmails`   |                 | Boolean| Email notifications for important alerts
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
