@@ -41,7 +41,7 @@ Attribute       |     | Type | Description
 `title`         | <%= required %> | String | Name of the topic, does not have to be unique
 `rootContentItemId` | <%= required %> | String | Root content item identifier
 `description`   | | String | Description of the topic
-`state`         | | String | Access level (See [Permission model](#permission-model)), defaults to `public_access`
+`access`        | | String | Access level (See [Permission model](#permission-model)), defaults to `public`
 
 <aside class="warning">
   Always include the <code>user</code> relationship, or you will get a HTTP 403 Forbidden response.

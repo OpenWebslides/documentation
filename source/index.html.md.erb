@@ -68,14 +68,14 @@ Depending on configuration, this includes an email provider and an identity (OAu
 
 ## Permission model
 
-A topic and its assets are protected by the `state` attribute.
+A topic and its assets are protected by the `access` attribute.
 This attribute determines in what context a topic is available and can have the following values:
 
-State | Description
------------|-----------
-`public_access` | Visible to everyone, signin **not required**
-`protected_access` | Visible to everyone, signin required
-`private_access` | Only visible to owner and collaborators
+State       | Description
+------------|------------
+`public`    | Visible to everyone, sign in **not required**
+`protected` | Visible to everyone, sign in required
+`private`   | Only visible to owner and collaborators
 
 **Permission table**
 
@@ -92,15 +92,15 @@ _Owner_ indicates the owner/creator of a deck.
 
 | Topic access level | User access level | Resulting permissions |
 | ------------------ | ----------------- | --------------------- |
-| `public_access`    | Guest             | read                  |
+| `public`           | Guest             | read                  |
 |                    | Member            | read                  |
 |                    | Collaborator      | read, write           |
 |                    | Owner             | read, write, admin    |
-| `protected_access` | Guest             |                       |
+| `protected`        | Guest             |                       |
 |                    | Member            | read                  |
 |                    | Collaborator      | read, write           |
 |                    | Owner             | read, write, admin    |
-| `private_access`   | Guest             |                       |
+| `private`          | Guest             |                       |
 |                    | Member            |                       |
 |                    | Collaborator      | read, write           |
 |                    | Owner             | read, write, admin    |
