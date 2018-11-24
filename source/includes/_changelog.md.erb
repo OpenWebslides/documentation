@@ -6,6 +6,13 @@ The changelog contains a quick summary of changes made in a major API release.
 The change list should also include a list of endpoints that were modified.
 Minor and patch release changelogs are available in the git tags and corresponding commit messages.
 
+## API v8
+
+- Migrate topic's `state` attribute to a `access` state machine
+  - [`GET /topics/:id`](#get-a-topic): remove `state`, add `access` attribute
+  - [`POST /topics/:id`](#create-a-topic): remove `state`, add `access` attribute
+  - [`PATCH /topics/:id`](#update-a-topic): remove `state`, add `access` attribute
+
 ## API v7.1
 
 - Add email notifications toggle to user
