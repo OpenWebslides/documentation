@@ -690,6 +690,11 @@ Minor and patch release changelogs are available in the git tags and correspondi
 <li><a href="#get-a-user"><code>GET /users/:id</code></a>: add <code>alertEmails</code> attribute</li>
 <li><a href="#create-a-user"><code>POST /users</code></a>: add <code>alertEmails</code> attribute</li>
 </ul></li>
+<li>Add <code>topic_forked</code> Alert type
+
+<ul>
+<li><a href="#get-all-user-alerts"><code>GET /users/:id/alerts</code></a>: add <code>topic_forked</code> alert type</li>
+</ul></li>
 </ul>
 <h2 id='api-v7'>API v7</h2>
 <ul>
@@ -1566,7 +1571,7 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <td><span class="badge badge-info">optional</span></td>
 <td><code>User</code></td>
 <td>1</td>
-<td>User that submitted/accepted/rejected the pull request (only available when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code> or <code>pr_rejected</code>)</td>
+<td>User that submitted/accepted/rejected the pull request/forked the topic (only available when <code>alertType</code> is <code>pr_submitted</code>, <code>pr_accepted</code>, <code>pr_rejected</code> or <code>topic_forked</code>)</td>
 </tr>
 <tr>
 <td><code>pullRequest</code></td>
@@ -1585,7 +1590,7 @@ For protected endpoints, a <code>Authorization</code> header is also required in
   The <code>topic</code> relationship refers to the topic for which the alert was generated. In the case of <code>topic_updated</code> alert type, this is the fork for which the updates are available. In the case of <code>pr_*</code> alert types, this is the upstream topic for which a pull request has been submitted. It is equal to the pull request's <code>target</code> relationship.
 </aside>
 <h3 id='alert-types'>Alert types</h3>
-<p>There are currently four alert types requiring the user&#39;s attention.</p>
+<p>There are currently five alert types requiring the user&#39;s attention.</p>
 
 <table><thead>
 <tr>
@@ -1608,6 +1613,10 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <tr>
 <td><code>pr_rejected</code></td>
 <td>A pull request submitted by the user was rejected</td>
+</tr>
+<tr>
+<td><code>topic_forked</code></td>
+<td>One of the user&#39;s topics was forked</td>
 </tr>
 </tbody></table>
 
