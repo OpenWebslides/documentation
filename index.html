@@ -226,6 +226,9 @@
                     <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
                   </li>
                   <li>
+                    <a href="#nomenclature" class="toc-h2 toc-link" data-title="Nomenclature">Nomenclature</a>
+                  </li>
+                  <li>
                     <a href="#application-architecture" class="toc-h2 toc-link" data-title="Application architecture">Application architecture</a>
                   </li>
                   <li>
@@ -492,6 +495,52 @@ Under certain conditions, the API deviates from the spec or adds its own impleme
 For more examples and technical documentation, refer to the <a href="http://jsonapi.org/format/1.0/">JSON-API specification</a> and the <a href="http://jsonapi-resources.com/v0.9/guide/index.html">implementation in use</a>.
 All API calls are subject to a predefined format, defined in the JSON-API spec.
 Part of these requirements is that all HTTP requests should use the <code>application/vnd.api+json</code> MIME type to exchange data.</p>
+<h2 id='nomenclature'>Nomenclature</h2>
+<p>The nomenclature in the API is different from the nomenclature that the user sees in the web application.</p>
+
+<table><thead>
+<tr>
+<th>User-friendly name</th>
+<th>Developer/API name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>Topic</td>
+<td></td>
+<td>Independent group of content (course, chapter, ...)</td>
+</tr>
+<tr>
+<td>Update</td>
+<td>Commit</td>
+<td>Change to the topic</td>
+</tr>
+<tr>
+<td>Slide View</td>
+<td></td>
+<td>Read-only view of the content in the form of slides</td>
+</tr>
+<tr>
+<td>Course View</td>
+<td></td>
+<td>Read-only view of the content in the form of full-text course</td>
+</tr>
+<tr>
+<td>Personal Copy</td>
+<td>Fork</td>
+<td>Duplicated, private topic</td>
+</tr>
+<tr>
+<td>Original topic</td>
+<td>Upstream</td>
+<td>Topic the personal copy was duplicated from</td>
+</tr>
+<tr>
+<td>Share updates</td>
+<td>Pull Request</td>
+<td>Send back changes to the original topic</td>
+</tr>
+</tbody></table>
 <h2 id='application-architecture'>Application architecture</h2>
 <p>The entire platform runtime is governed by Docker.
 All components are running in separate containers, from the web server to the database management system.
