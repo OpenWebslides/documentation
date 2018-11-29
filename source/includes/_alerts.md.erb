@@ -23,7 +23,7 @@ Relationship    |                        | Type                     | Plurality 
 --------------- | ---------------------- | ------------------------ | --------- | -----------
 `user`          |                        | <code>User</code>        | 1         | User for which the alert was generated
 `topic`         |                        | <code>Topic</code>       | 1         | Topic for which the alert was generated
-`subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/accepted/rejected the pull request (only available when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
+`subject`       | <%= optional %>        | <code>User</code>        | 1         | User that submitted/accepted/rejected the pull request/forked the topic (only available when `alertType` is `pr_submitted`, `pr_accepted`, `pr_rejected` or `topic_forked`)
 `pullRequest`   | <%= optional %>        | <code>PullRequest</code> | 1         | Pull request the alert is referring to (only available when `alertType` is `pr_submitted`, `pr_accepted` or `pr_rejected`)
 
 <aside class="warning">
@@ -36,7 +36,7 @@ Relationship    |                        | Type                     | Plurality 
 
 ### Alert types
 
-There are currently four alert types requiring the user's attention.
+There are currently five alert types requiring the user's attention.
 
 Alert type      | Description
 --------------- | -----------
@@ -44,6 +44,7 @@ Alert type      | Description
 `pr_submitted`  | A pull request was submitted on one of the topics the user has access to
 `pr_accepted`   | A pull request submitted by the user was accepted
 `pr_rejected`   | A pull request submitted by the user was rejected
+`topic_forked`  | One of the user's topics was forked
 
 <aside class="info">
   As mentioned in the response attributes and relationships tables, all alert types will return the <code>alertType</code>, <code>read</code> and <code>createdAt</code> attributes, and the <code>user</code> relationship.
