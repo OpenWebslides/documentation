@@ -44,6 +44,20 @@ For more examples and technical documentation, refer to the [JSON-API specificat
 All API calls are subject to a predefined format, defined in the JSON-API spec.
 Part of these requirements is that all HTTP requests should use the `application/vnd.api+json` MIME type to exchange data.
 
+## Nomenclature
+
+The nomenclature in the API is different from the nomenclature that the user sees in the web application.
+
+User-friendly name | Developer/API name | Description
+------------------ | ------------------ | -----------
+Topic              |                    | Independent group of content (course, chapter, ...)
+Update             | Commit             | Change to the topic
+Slide View         |                    | Read-only view of the content in the form of slides
+Course View        |                    | Read-only view of the content in the form of full-text course
+Personal Copy      | Fork               | Duplicated, private topic
+Original topic     | Upstream           | Topic the personal copy was duplicated from
+Share updates      | Pull Request       | Send back changes to the original topic
+
 ## Application architecture
 
 The entire platform runtime is governed by Docker.
