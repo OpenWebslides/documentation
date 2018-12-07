@@ -136,12 +136,17 @@ This endpoint updates a user.
 
 **Request attributes**
 
-Attribute       |                 | Type   | Description
---------------- | --------------- | ------ | -----------
-`name`          |                 | String | Full name
-`locale`        |                 | String | Locale
-`password`      |                 | String | Password, must be at least 6 characters
-`alertEmails`   |                 | Boolean| Email notifications for important alerts
+Attribute         |                 | Type   | Description
+----------------- | --------------- | ------ | -----------
+`name`            |                 | String | Full name
+`locale`          |                 | String | Locale
+`currentPassword` |                 | String | Current password, required when updating `password`
+`password`        |                 | String | New password, must be at least 6 characters
+`alertEmails`     |                 | Boolean| Email notifications for important alerts
+
+<aside class="info">
+  When changing the password, the <code>currentPassword</code> has to be specified as well. When updating other attributes such as <code>name</code>, the <code>currentPassword</code> does not have to be specified.
+</aside>
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.

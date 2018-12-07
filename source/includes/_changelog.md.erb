@@ -6,6 +6,11 @@ The changelog contains a quick summary of changes made in a major API release.
 The change list should also include a list of endpoints that were modified.
 Minor and patch release changelogs are available in the git tags and corresponding commit messages.
 
+## API v9
+
+- Require a user's current password when setting a new one
+  - [`PATCH /users/:id`](#update-a-user): add `current_password` attribute
+
 ## API v8
 
 - Migrate topic's `state` attribute to a `access` state machine

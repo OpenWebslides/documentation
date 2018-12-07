@@ -4,7 +4,8 @@
     "id": "1",
     "attributes": {
       "name": "Foo Bar",
-      "password": "P@ssword1"
+      "currentPassword": "P@ssword1",
+      "password": "P@ssword2"
     }
   }
 }
