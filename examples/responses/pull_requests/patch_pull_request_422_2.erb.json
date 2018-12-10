@@ -1,0 +1,11 @@
+{
+  "errors": [
+    {
+      "title": "can't be blank",
+      "detail": "Feedback can't be blank",
+      "id": "feedback#blank",
+      "code": "100",
+      "status": "422"
+    }
+  ]
+}

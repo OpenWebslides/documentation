@@ -8,7 +8,7 @@ This endpoint creates a pull request.
 
 Attribute       |                 | Type     | Description
 --------------- | --------------- | -------- | -----------
-`message`       | <%= required %> | String   | Message from the user submitting the pull request
+`message`       | <%= required %> | String   | Message FROM the user submitting the pull request
 
 **Request relationships**
 
@@ -135,3 +135,59 @@ Content-Type: application/vnd.api+json
 ```json
 <%= api_response 'pull_requests/get_pull_request_404' %>
 ```
+
+## Reject a pull request
+
+This endpoint rejects a pull request.
+
+**Request attributes**
+
+Attribute       |                 | Type     | Description
+--------------- | --------------- | -------- | -----------
+`stateEvent`    | <%= required %> | String   | Action to take (currently only `reject` is supported)
+`feedback`      | <%= required %> | String   | Message TO the user submitting the pull request
+
+> Request
+
+```http
+PATCH <%= current_page.data.endpoint %>pullRequests/1 HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_request 'pull_requests/patch_pull_request' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/patch_pull_request' %>
+```
+
+> Failure response (already rejected)
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/patch_pull_request_422_1' %>
+```
+
+> Failure response (no feedback)
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/patch_pull_request_422_1' %>

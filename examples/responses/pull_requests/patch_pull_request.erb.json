@@ -1,0 +1,37 @@
+{
+  "data": {
+    "id": "1",
+    "type": "pullRequests",
+    "links": {
+      "self": "<%= current_page.data.endpoint %>pullRequests/1"
+    },
+    "attributes": {
+      "message": "Fixed some typos in the first chapter.",
+      "feedback": "I cannot accept this PR.",
+      "state": "rejected"
+    },
+    "relationships": {
+      "user": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>pullRequests/1/relationships/user",
+          "related": "<%= current_page.data.endpoint %>pullRequests/1/user"
+        }
+      },
+      "source": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>pullRequests/1/relationships/source",
+          "related": "<%= current_page.data.endpoint %>pullRequests/1/source"
+        }
+      },
+      "target": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>pullRequests/1/relationships/target",
+          "related": "<%= current_page.data.endpoint %>pullRequests/1/target"
+        }
+      }
+    },
+    "meta": {
+      "createdAt": "1542044770"
+    }
+  }
+}

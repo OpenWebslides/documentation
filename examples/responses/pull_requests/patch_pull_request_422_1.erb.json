@@ -1,0 +1,14 @@
+{
+  "errors": [
+    {
+      "title": "cannot transition when rejected",
+      "detail": "State event cannot transition when rejected",
+      "id": "stateEvent#invalidEvent",
+      "code": "100",
+      "source": {
+        "pointer": "/data/attributes/stateEvent"
+      },
+      "status": "422"
+    }
+  ]
+}
