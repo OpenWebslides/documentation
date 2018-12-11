@@ -1065,7 +1065,22 @@ Usage of RVM is recommended to manage different Ruby versions and sets of gems.<
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:reset        <span class="c"># Drop and migrate database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:clear        <span class="c"># Delete all data in the database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:sample       <span class="c"># Generate random sample data</span>
-</code></pre><h2 id='frontend'>Frontend</h2>
+</code></pre><h3 id='making-a-release'>Making a release</h3>
+<p>A script is provided to make API releases consistent and easily.
+When you have finished making changes to your feature/patch, run the script in <code>bin/release</code> with one of the following parameters:</p>
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span><span class="c"># For major releases, resets the minor and patch version numbers to 0</span>
+<span class="gp">$ </span>bin/release --major
+<span class="gp">$ </span><span class="c"># For minor releases, resets the patch version number to 0</span>
+<span class="gp">$ </span>bin/release --minor
+<span class="gp">$ </span><span class="c"># For patch releases</span>
+<span class="gp">$ </span>bin/release --patch
+</code></pre>
+<p>Don&#39;t forget to update the <a href="https://openwebslides.github.io/documentation/">API documentation</a>.
+Increment the version number twice in <code>source/index.html.md.erb</code> and add an entry to the changelog.</p>
+
+<p>Push your feature/patch branch to Github and open a pull request.
+Don&#39;t forget to push your local tags as well: <code>git push --tags</code>.</p>
+<h2 id='frontend'>Frontend</h2>
 <p>Make sure your machine has a working installation of the Node version required by the project.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># STEPS FOR INITIAL INSTALLATION</span>
 <span class="c"># Clone the repository</span>
