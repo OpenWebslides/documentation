@@ -63,6 +63,26 @@ $ bundle exec rails db:clear        # Delete all data in the database
 $ bundle exec rails db:sample       # Generate random sample data
 ```
 
+### Making a release
+
+A script is provided to make API releases consistent and easily.
+When you have finished making changes to your feature/patch, run the script in `bin/release` with one of the following parameters:
+
+```shell
+$ # For major releases, resets the minor and patch version numbers to 0
+$ bin/release --major
+$ # For minor releases, resets the patch version number to 0
+$ bin/release --minor
+$ # For patch releases
+$ bin/release --patch
+```
+
+Don't forget to update the [API documentation](https://openwebslides.github.io/documentation/).
+Increment the version number twice in `source/index.html.md.erb` and add an entry to the changelog.
+
+Push your feature/patch branch to Github and open a pull request.
+Don't forget to push your local tags as well: `git push --tags`.
+
 ## Frontend
 
 Make sure your machine has a working installation of the Node version required by the project.
