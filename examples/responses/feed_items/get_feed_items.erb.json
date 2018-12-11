@@ -7,7 +7,7 @@
         "self": "<%= current_page.data.endpoint %>feedItems/1"
       },
       "attributes": {
-        "eventType": "topic_created",
+        "feedItemType": "topic_created",
         "userName": "Foo",
         "topicTitle": "My First Topic"
       },
