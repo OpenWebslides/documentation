@@ -59,9 +59,32 @@ $ bundle exec rails db:migrate      # Migrate database
 $ bundle exec rails db:drop         # Drop database
 $ bundle exec rails db:setup        # Create database and load schema
 $ bundle exec rails db:reset        # Drop and migrate database
+$ bundle exec rails db:schema:load  # Load database schema (use instead of db:migrate on empty databases)
 $ bundle exec rails db:clear        # Delete all data in the database
-$ bundle exec rails db:sample       # Generate random sample data
+$ bundle exec rails sidekiq:clear   # Clear Sidekiq queue
 ```
+
+### Sidekiq
+
+By default, asynchronous tasks such as manipulating the filesystem repositories are sent to a background queue, implemented using Sidekiq.
+Communication between the server and the Sidekiq instance require Redis to be present and configured.
+Background tasks are inlined automatically in the test environment, and on the specification of the `SIDEKIQ_INLINE` environment variable.
+
+```shell
+# Start Redis
+$ systemctl start redis
+
+# Start Sidekiq
+$ bundle exec sidekiq
+
+# Start server
+$ bundle exec rails server
+
+# Start server inlining all background jobs (no Redis/Sidekiq needed)
+$ SIDEKIQ_INLINE=true bundle exec rails server
+```
+
+In the development server, the Sidekiq Web UI is mounted under `/sidekiq`.
 
 ### Making a release
 

@@ -1,6 +1,14 @@
 # Infrastructure
 
-The current Open Webslides infrastructure consists of three environments (servers):
+A lot of tools are used in the development and deployment process.
+
+- [Github](https://github.com/OpenWebslides/): Storage of code. Issues, projects and wiki are not used for persistent information: new issues are to be converted into backlog items at the end of every sprint. Pull requests (and reviews) are the only feature actively used in the development process.
+- [Travis](https://travis-ci.org/OpenWebslides): Continuous integration. Tests the pushed code, and restricts pull requests only to code successfully tested and 100% covered.
+- [Slack](https://openwebslides.slack.com): Team communication.
+- [Docker Hub](https://cloud.docker.com/u/openwebslides/repository/docker/openwebslides/openwebslides): Automatically builds Docker images for every release.
+- [Bugsnag](https://app.bugsnag.com/open-webslides/open-webslides/errors): Error tracking of frontend and backend exceptions.
+
+The current Open Webslides server infrastructure consists of three environments (servers):
 
 ## owsdev
 
