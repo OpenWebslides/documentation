@@ -92,7 +92,7 @@ This endpoint retrieves a pull request.
 Attribute       |         | Type     | Description
 --------------- | ------- | -------- | -----------
 `message`       |         | String   | Message from user submitting the pull request
-`state`         |         | Enum     | Status of the pull request, can be `open`, `accepted` or `rejected`, defaults to `open`
+`state`         |         | Enum     | Status of the pull request (see below)
 `createdAt`     |         | Integer  | Timestamp of the event. **This attribute is included in the `meta` section.**
 
 **Response relationships**
@@ -105,6 +105,30 @@ Relationship    |          | Type     | Plurality | Description
 
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+</aside>
+
+### Pull Request state
+
+The `state` attribute can have one of the following values.
+The initial value set by the system is `pending`.
+Once the pull request has been checked and deemed compatible to merge, the state is set to `open`.
+If the pull request is not compatible, it is set to `incompatible`.
+
+A pull request is compatible to merge only if the source topic contains all of the target topic's commits, with some unique commits added.
+
+For example, a pull request merging [A -> B -> C] into [A -> B] is compatible, but a pull request merging [A -> B -> C] into [A -> D] is not.
+Neither is [A -> B] into [A -> B].
+
+State           | Description
+--------------- | -----------
+`pending`       | Queued for compatibility check [open]
+`open`          | Compatible, ready to be reviewed (accepted or rejected) [open]
+`incompatible`  | Incompatible, cannot be reviewed (accepted or rejected) [closed]
+`accepted`      | Reviewed and accepted [closed]
+`rejected`      | Reviewed and rejected [closed]
+
+<aside class="info">
+  Please note that the <code>pending</code> state is only temporary, and if the documentation refers to an 'open' pull request, this state is not considered. Likewise, a 'closed' pull request denotes a pull request in a <code>incompatible/accepted/rejected</code> state.
 </aside>
 
 > Request
