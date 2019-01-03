@@ -867,7 +867,9 @@ For patch release changelogs, see the git tags and commit messages.</p>
 <li>Initial release</li>
 </ul>
 <h1 id='setup-for-administrators'>Setup for administrators</h1><h2 id='installation'>Installation</h2>
-<p>The platform uses Docker and docker-compose to allow it to be installed and ran on any platform, independent of operating system or distribution.</p>
+<p>The platform uses Docker and docker-compose to allow it to be installed and ran on any platform, independent of operating system or distribution.
+The backend application code itself only has support for Linux.
+Installing it on a Windows operating system is on your own risk!</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/openwebslides-backend.git
 <span class="gp">$ </span><span class="nb">cd </span>openwebslides-backend
 </code></pre>
@@ -943,7 +945,17 @@ In order to enable this, deploy the application with <code>docker-compose</code>
 Using this file will include the <code>nginx/sites-prod</code> directory for site configuration, instead of <code>nginx/sites</code>.</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
 </code></pre><h1 id='infrastructure'>Infrastructure</h1>
-<p>The current Open Webslides infrastructure consists of three environments (servers):</p>
+<p>A lot of tools are used in the development and deployment process.</p>
+
+<ul>
+<li><a href="https://github.com/OpenWebslides/">Github</a>: Storage of code. Issues, projects and wiki are not used for persistent information: new issues are to be converted into backlog items at the end of every sprint. Pull requests (and reviews) are the only feature actively used in the development process.</li>
+<li><a href="https://travis-ci.org/OpenWebslides">Travis</a>: Continuous integration. Tests the pushed code, and restricts pull requests only to code successfully tested and 100% covered.</li>
+<li><a href="https://openwebslides.slack.com">Slack</a>: Team communication.</li>
+<li><a href="https://cloud.docker.com/u/openwebslides/repository/docker/openwebslides/openwebslides">Docker Hub</a>: Automatically builds Docker images for every release.</li>
+<li><a href="https://app.bugsnag.com/open-webslides/open-webslides/errors">Bugsnag</a>: Error tracking of frontend and backend exceptions.</li>
+</ul>
+
+<p>The current Open Webslides server infrastructure consists of three environments (servers):</p>
 <h2 id='owsdev'>owsdev</h2>
 <p>This is the development server. Use this server when developing features and fixes. The version of the platform and stability thereof are not guaranteed. The database and repositories may be wiped at any time.</p>
 
@@ -1074,9 +1086,27 @@ Usage of RVM is recommended to manage different Ruby versions and sets of gems.<
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:drop         <span class="c"># Drop database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:setup        <span class="c"># Create database and load schema</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:reset        <span class="c"># Drop and migrate database</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:schema:load  <span class="c"># Load database schema (use instead of db:migrate on empty databases)</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:clear        <span class="c"># Delete all data in the database</span>
-<span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:sample       <span class="c"># Generate random sample data</span>
-</code></pre><h3 id='making-a-release'>Making a release</h3>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails sidekiq:clear   <span class="c"># Clear Sidekiq queue</span>
+</code></pre><h3 id='sidekiq'>Sidekiq</h3>
+<p>By default, asynchronous tasks such as manipulating the filesystem repositories are sent to a background queue, implemented using Sidekiq.
+Communication between the server and the Sidekiq instance require Redis to be present and configured.
+Background tasks are inlined automatically in the test environment, and on the specification of the <code>SIDEKIQ_INLINE</code> environment variable.</p>
+<pre class="highlight shell tab-shell"><code><span class="c"># Start Redis</span>
+<span class="gp">$ </span>systemctl start redis
+
+<span class="c"># Start Sidekiq</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>sidekiq
+
+<span class="c"># Start server</span>
+<span class="gp">$ </span>bundle <span class="nb">exec </span>rails server
+
+<span class="c"># Start server inlining all background jobs (no Redis/Sidekiq needed)</span>
+<span class="gp">$ </span><span class="nv">SIDEKIQ_INLINE</span><span class="o">=</span><span class="nb">true </span>bundle <span class="nb">exec </span>rails server
+</code></pre>
+<p>In the development server, the Sidekiq Web UI is mounted under <code>/sidekiq</code>.</p>
+<h3 id='making-a-release'>Making a release</h3>
 <p>A script is provided to make API releases consistent and easily.
 When you have finished making changes to your feature/patch, run the script in <code>bin/release</code> with one of the following parameters:</p>
 <pre class="highlight shell tab-shell"><code><span class="gp">$ </span><span class="c"># For major releases, resets the minor and patch version numbers to 0</span>
