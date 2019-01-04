@@ -212,7 +212,7 @@
     <div class="toc-wrapper">
       <img src="images/logo.png" class="logo" alt="Logo" />
       <div class="toc-link" style="text-align: center;">
-        <h2>API version: 10.0.0</h2>
+        <h2>API version: 11.0.0</h2>
       </div>
         <div class="search">
           <input type="text" class="search" id="input-search" placeholder="Search">
@@ -242,6 +242,9 @@
           <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
+                  <li>
+                    <a href="#api-v11" class="toc-h2 toc-link" data-title="API v11">API v11</a>
+                  </li>
                   <li>
                     <a href="#api-v10" class="toc-h2 toc-link" data-title="API v10">API v10</a>
                   </li>
@@ -684,6 +687,14 @@ This attribute determines in what context a topic is available and can have the 
 <p>The changelog contains a summary of changes made in a major/minor API release.
 It should also include a list of endpoints that were modified.
 For patch release changelogs, see the git tags and commit messages.</p>
+<h2 id='api-v11'>API v11</h2>
+<ul>
+<li>Add <code>pending</code> and <code>incompatible</code> states to PullRequest
+
+<ul>
+<li><a href="#get-a-pull-request"><code>GET /pullRequests/:id</code></a>: modify <code>state</code> attribute</li>
+</ul></li>
+</ul>
 <h2 id='api-v10'>API v10</h2>
 <ul>
 <li>Rename <code>eventType</code> to <code>feedItemType</code>
@@ -1090,9 +1101,10 @@ Usage of RVM is recommended to manage different Ruby versions and sets of gems.<
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails db:clear        <span class="c"># Delete all data in the database</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails sidekiq:clear   <span class="c"># Clear Sidekiq queue</span>
 </code></pre><h3 id='sidekiq'>Sidekiq</h3>
-<p>By default, asynchronous tasks such as manipulating the filesystem repositories are sent to a background queue, implemented using Sidekiq.
+<p>In production environment, asynchronous tasks such as manipulating the filesystem repositories are sent to a background queue, implemented using Sidekiq.
 Communication between the server and the Sidekiq instance require Redis to be present and configured.
-Background tasks are inlined automatically in the test environment, and on the specification of the <code>SIDEKIQ_INLINE</code> environment variable.</p>
+Background tasks are inlined automatically in the dev and test environment.
+The asynchronous behaviour can be enabled by specifying the <code>SIDEKIQ_ASYNC</code> environment variable.</p>
 <pre class="highlight shell tab-shell"><code><span class="c"># Start Redis</span>
 <span class="gp">$ </span>systemctl start redis
 
@@ -1102,8 +1114,8 @@ Background tasks are inlined automatically in the test environment, and on the s
 <span class="c"># Start server</span>
 <span class="gp">$ </span>bundle <span class="nb">exec </span>rails server
 
-<span class="c"># Start server inlining all background jobs (no Redis/Sidekiq needed)</span>
-<span class="gp">$ </span><span class="nv">SIDEKIQ_INLINE</span><span class="o">=</span><span class="nb">true </span>bundle <span class="nb">exec </span>rails server
+<span class="c"># Start server with asynchronous processing</span>
+<span class="gp">$ </span><span class="nv">SIDEKIQ_ASYNC</span><span class="o">=</span><span class="nb">true </span>bundle <span class="nb">exec </span>rails server
 </code></pre>
 <p>In the development server, the Sidekiq Web UI is mounted under <code>/sidekiq</code>.</p>
 <h3 id='making-a-release'>Making a release</h3>
@@ -1214,7 +1226,7 @@ This new token should be used for subsequent API calls.</p>
   You must replace the JWT in the examples with a JWT obtained from the <a href="#token-api">Token API</a>.
 </aside>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
@@ -1232,7 +1244,7 @@ The server will detect this and handle the request like an authenticated request
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/users/1/alerts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">User 1</span>
 </code></pre><h2 id='versioning'>Versioning</h2>
 <p>The API is semantically versioned.
@@ -1305,26 +1317,26 @@ Some examples are noted below</p>
 </tr>
 </tbody></table>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=10.0.0</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=11.0.0</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="err">...</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <blockquote>
 <p>Failure response</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">406</span> <span class="ne">Not Acceptable</span>
-<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=10.0.0</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version=11.0.0</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Unacceptable version"</span><span class="p">,</span><span class="w">
-      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request cannot be fulfilled due to mismatching API version. The API version is '10.0.0'. This request specified 'some version'."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The request cannot be fulfilled due to mismatching API version. The API version is '11.0.0'. This request specified 'some version'."</span><span class="p">,</span><span class="w">
       </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"406"</span><span class="p">,</span><span class="w">
       </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"406"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1337,9 +1349,9 @@ This means that for all requests, the <code>Accept</code> header should be set t
 and for all requests sending data the <code>Content-Type</code> header should be set to this value.
 For protected endpoints, a <code>Authorization</code> header is also required in the correct format as <a href="#authentication">described above</a>.</p>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Token</span><span class="p">:</span> <span class="s">Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MDU3MjU4NzMsInN1YiI6MSwidmVyIjozfQ.1v_SvE8yQE-z9FiKoFhkWRXx9hJ4kQNRxz1uc8zXFjg</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -1713,7 +1725,7 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/users/1/alerts</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
@@ -1840,7 +1852,7 @@ For protected endpoints, a <code>Authorization</code> header is also required in
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/alerts/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -1962,7 +1974,7 @@ An email containing a link to confirm the account is sent to the user.</p>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/confirmation</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2008,7 +2020,7 @@ After a success response, the user can sign in.</p>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/confirmation</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2139,7 +2151,7 @@ After a success response, the user can sign in.</p>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/feedItems</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -2223,7 +2235,7 @@ An email containing a link to reset the account password is sent to the user.</p
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/password</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2274,7 +2286,7 @@ An email containing a link to reset the account password is sent to the user.</p
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/password</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2429,7 +2441,7 @@ An email containing a link to reset the account password is sent to the user.</p
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/pullRequests</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2589,7 +2601,7 @@ An email containing a link to reset the account password is sent to the user.</p
 <td><code>state</code></td>
 <td></td>
 <td>Enum</td>
-<td>Status of the pull request, can be <code>open</code>, <code>accepted</code> or <code>rejected</code>, defaults to <code>open</code></td>
+<td>Status of the pull request (see below)</td>
 </tr>
 <tr>
 <td><code>createdAt</code></td>
@@ -2636,12 +2648,54 @@ An email containing a link to reset the account password is sent to the user.</p
 <aside class="warning">
   This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
 </aside>
+<h3 id='pull-request-state'>Pull Request state</h3>
+<p>The <code>state</code> attribute can have one of the following values.
+The initial value set by the system is <code>pending</code>.
+Once the pull request has been checked and deemed compatible to merge, the state is set to <code>open</code>.
+If the pull request is not compatible, it is set to <code>incompatible</code>.</p>
+
+<p>A pull request is compatible to merge only if the source topic contains all of the target topic&#39;s commits, with some unique commits added.</p>
+
+<p>For example, a pull request merging [A -&gt; B -&gt; C] into [A -&gt; B] is compatible, but a pull request merging [A -&gt; B -&gt; C] into [A -&gt; D] is not.
+Neither is [A -&gt; B] into [A -&gt; B].</p>
+
+<table><thead>
+<tr>
+<th>State</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>pending</code></td>
+<td>Queued for compatibility check [open]</td>
+</tr>
+<tr>
+<td><code>open</code></td>
+<td>Compatible, ready to be reviewed (accepted or rejected) [open]</td>
+</tr>
+<tr>
+<td><code>incompatible</code></td>
+<td>Incompatible, cannot be reviewed (accepted or rejected) [closed]</td>
+</tr>
+<tr>
+<td><code>accepted</code></td>
+<td>Reviewed and accepted [closed]</td>
+</tr>
+<tr>
+<td><code>rejected</code></td>
+<td>Reviewed and rejected [closed]</td>
+</tr>
+</tbody></table>
+
+<aside class="info">
+  Please note that the <code>pending</code> state is only temporary, and if the documentation refers to an 'open' pull request, this state is not considered. Likewise, a 'closed' pull request denotes a pull request in a <code>incompatible/accepted/rejected</code> state.
+</aside>
 
 <blockquote>
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/pullRequests/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -2733,7 +2787,7 @@ An email containing a link to reset the account password is sent to the user.</p
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/pullRequests/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -2869,7 +2923,7 @@ The token is returned in the <code>Authorization</code> header in the bearer tok
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -2962,7 +3016,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://openwebslid.es/api/token</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
@@ -3001,7 +3055,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 </code></pre>
 <blockquote>
 <p>Response</p>
@@ -3130,7 +3184,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/topics</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3352,7 +3406,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>JSON Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -3455,7 +3509,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>JSON Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3588,7 +3642,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://openwebslid.es/api/topics/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
@@ -3638,7 +3692,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>JSON Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/topics/1/content</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -3759,7 +3813,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/topics/1/content</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -3847,7 +3901,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/topics/1/fork</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
@@ -3948,7 +4002,7 @@ After a success response, all previously issued tokens for the current user are 
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
@@ -4078,7 +4132,7 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">POST</span> <span class="nn">https://openwebslid.es/api/users</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -4218,7 +4272,7 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">GET</span> <span class="nn">https://openwebslid.es/api/users/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 </code></pre>
 <blockquote>
 <p>Success response</p>
@@ -4333,7 +4387,7 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/users/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
@@ -4436,7 +4490,7 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <p>Request</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="nf">DELETE</span> <span class="nn">https://openwebslid.es/api/users/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;10"</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
 <span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
 </code></pre>
 <blockquote>
