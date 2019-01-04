@@ -122,14 +122,11 @@ Neither is [A -> B] into [A -> B].
 State           | Description
 --------------- | -----------
 `pending`       | Queued for compatibility check [open]
-`open`          | Compatible, ready to be reviewed (accepted or rejected) [open]
-`incompatible`  | Incompatible, cannot be reviewed (accepted or rejected) [closed]
+`open`          | Compatible, ready to be reviewed [open]
+`incompatible`  | Incompatible, cannot be reviewed [closed]
+`working`       | Working, processing review [closed]
 `accepted`      | Reviewed and accepted [closed]
 `rejected`      | Reviewed and rejected [closed]
-
-<aside class="info">
-  Please note that the <code>pending</code> state is only temporary, and if the documentation refers to an 'open' pull request, this state is not considered. Likewise, a 'closed' pull request denotes a pull request in a <code>incompatible/accepted/rejected</code> state.
-</aside>
 
 > Request
 
