@@ -1,0 +1,10 @@
+{
+  "data": {
+    "type": "pullRequests",
+    "id": "1",
+    "attributes": {
+      "stateEvent": "accept",
+      "feedback": "Thank you for your contributions."
+    }
+  }
+}

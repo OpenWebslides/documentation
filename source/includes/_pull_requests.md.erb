@@ -91,7 +91,7 @@ This endpoint retrieves a pull request.
 
 Attribute       |         | Type     | Description
 --------------- | ------- | -------- | -----------
-`message`       |         | String   | Message from user submitting the pull request
+`message`       |         | String   | Message **from** user submitting the pull request
 `state`         |         | Enum     | Status of the pull request (see below)
 `createdAt`     |         | Integer  | Timestamp of the event. **This attribute is included in the `meta` section.**
 
@@ -165,8 +165,8 @@ This endpoint rejects a pull request.
 
 Attribute       |                 | Type     | Description
 --------------- | --------------- | -------- | -----------
-`stateEvent`    | <%= required %> | String   | Action to take (currently only `reject` is supported)
-`feedback`      | <%= required %> | String   | Message TO the user submitting the pull request
+`stateEvent`    | <%= required %> | String   | Action to take (`reject` or [`accept`](#accept-a-pull-request))
+`feedback`      | <%= required %> | String   | Message **to** the user submitting the pull request
 
 > Request
 
@@ -178,7 +178,7 @@ Authorization: Bearer TOKEN
 ```
 
 ```json
-<%= api_request 'pull_requests/patch_pull_request' %>
+<%= api_request 'pull_requests/patch_pull_request_reject' %>
 ```
 
 > Success response
@@ -189,7 +189,7 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'pull_requests/patch_pull_request' %>
+<%= api_response 'pull_requests/patch_pull_request_reject' %>
 ```
 
 > Failure response (already rejected)
@@ -211,4 +211,52 @@ Content-Type: application/vnd.api+json
 ```
 
 ```json
+<%= api_response 'pull_requests/patch_pull_request_422_2' %>
+```
+
+
+## Accept a pull request
+
+This endpoint accepts a pull request and merges the forked topic into the upstream topic, creating a merge commit.
+
+**Request attributes**
+
+Attribute       |                 | Type     | Description
+--------------- | --------------- | -------- | -----------
+`stateEvent`    | <%= required %> | String   | Action to take (`accept` or [`reject`](#reject-a-pull-request))
+`feedback`      |                 | String   | Message **to** the user submitting the pull request
+
+> Request
+
+```http
+PATCH <%= current_page.data.endpoint %>pullRequests/1 HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_request 'pull_requests/patch_pull_request_accept' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'pull_requests/patch_pull_request_accept' %>
+```
+
+> Failure response (already rejected)
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
 <%= api_response 'pull_requests/patch_pull_request_422_1' %>
+```
