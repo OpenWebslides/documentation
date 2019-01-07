@@ -428,6 +428,9 @@
                   <li>
                     <a href="#reject-a-pull-request" class="toc-h2 toc-link" data-title="Reject a pull request">Reject a pull request</a>
                   </li>
+                  <li>
+                    <a href="#accept-a-pull-request" class="toc-h2 toc-link" data-title="Accept a pull request">Accept a pull request</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -689,10 +692,15 @@ It should also include a list of endpoints that were modified.
 For patch release changelogs, see the git tags and commit messages.</p>
 <h2 id='api-v11'>API v11</h2>
 <ul>
-<li>Add <code>pending</code> and <code>incompatible</code> states to PullRequest
+<li>Add <code>pending</code>, <code>incompatible</code> and <code>working</code> states to PullRequest
 
 <ul>
 <li><a href="#get-a-pull-request"><code>GET /pullRequests/:id</code></a>: modify <code>state</code> attribute</li>
+</ul></li>
+<li>Add functionality to accept pull requests
+
+<ul>
+<li><a href="#accept-a-pull-request"><code>PATCH /pullRequests/:id</code></a>: add <code>accept</code> value for <code>stateEvent</code> attribute</li>
 </ul></li>
 </ul>
 <h2 id='api-v10'>API v10</h2>
@@ -2595,7 +2603,7 @@ An email containing a link to reset the account password is sent to the user.</p
 <td><code>message</code></td>
 <td></td>
 <td>String</td>
-<td>Message from user submitting the pull request</td>
+<td>Message <strong>from</strong> user submitting the pull request</td>
 </tr>
 <tr>
 <td><code>state</code></td>
@@ -2671,11 +2679,15 @@ Neither is [A -&gt; B] into [A -&gt; B].</p>
 </tr>
 <tr>
 <td><code>open</code></td>
-<td>Compatible, ready to be reviewed (accepted or rejected) [open]</td>
+<td>Compatible, ready to be reviewed [open]</td>
 </tr>
 <tr>
 <td><code>incompatible</code></td>
-<td>Incompatible, cannot be reviewed (accepted or rejected) [closed]</td>
+<td>Incompatible, cannot be reviewed [closed]</td>
+</tr>
+<tr>
+<td><code>working</code></td>
+<td>Working, processing review [closed]</td>
 </tr>
 <tr>
 <td><code>accepted</code></td>
@@ -2686,10 +2698,6 @@ Neither is [A -&gt; B] into [A -&gt; B].</p>
 <td>Reviewed and rejected [closed]</td>
 </tr>
 </tbody></table>
-
-<aside class="info">
-  Please note that the <code>pending</code> state is only temporary, and if the documentation refers to an 'open' pull request, this state is not considered. Likewise, a 'closed' pull request denotes a pull request in a <code>incompatible/accepted/rejected</code> state.
-</aside>
 
 <blockquote>
 <p>Request</p>
@@ -2773,13 +2781,13 @@ Neither is [A -&gt; B] into [A -&gt; B].</p>
 <td><code>stateEvent</code></td>
 <td><span class="badge badge-danger">required</span></td>
 <td>String</td>
-<td>Action to take (currently only <code>reject</code> is supported)</td>
+<td>Action to take (<code>reject</code> or <a href="#accept-a-pull-request"><code>accept</code></a>)</td>
 </tr>
 <tr>
 <td><code>feedback</code></td>
 <td><span class="badge badge-danger">required</span></td>
 <td>String</td>
-<td>Message TO the user submitting the pull request</td>
+<td>Message <strong>to</strong> the user submitting the pull request</td>
 </tr>
 </tbody></table>
 
@@ -2869,6 +2877,113 @@ Neither is [A -&gt; B] into [A -&gt; B].</p>
 </span></code></pre>
 <blockquote>
 <p>Failure response (no feedback)</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"errors"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"can't be blank"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"detail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Feedback can't be blank"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"feedback#blank"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"100"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"422"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre><h2 id='accept-a-pull-request'>Accept a pull request</h2>
+<p>This endpoint accepts a pull request and merges the forked topic into the upstream topic, creating a merge commit.</p>
+
+<p><strong>Request attributes</strong></p>
+
+<table><thead>
+<tr>
+<th>Attribute</th>
+<th></th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>stateEvent</code></td>
+<td><span class="badge badge-danger">required</span></td>
+<td>String</td>
+<td>Action to take (<code>accept</code> or <a href="#reject-a-pull-request"><code>reject</code></a>)</td>
+</tr>
+<tr>
+<td><code>feedback</code></td>
+<td></td>
+<td>String</td>
+<td>Message <strong>to</strong> the user submitting the pull request</td>
+</tr>
+</tbody></table>
+
+<blockquote>
+<p>Request</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="nf">PATCH</span> <span class="nn">https://openwebslid.es/api/pullRequests/1</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<span class="na">Accept</span><span class="p">:</span> <span class="s">application/vnd.api+json, application/vnd.openwebslides+json; version="~&gt;11"</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+<span class="na">Authorization</span><span class="p">:</span> <span class="s">Bearer TOKEN</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pullRequests"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"stateEvent"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accept"</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feedback"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank you for your contributions."</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Success response</p>
+</blockquote>
+<pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
+<span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pullRequests"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/pullRequests/1"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"attributes"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fixed some typos in the first chapter."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"feedback"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Thank you for your contributions."</span><span class="p">,</span><span class="w">
+      </span><span class="s2">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"accepted"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"relationships"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/pullRequests/1/relationships/user"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/pullRequests/1/user"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"source"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/pullRequests/1/relationships/source"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/pullRequests/1/source"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="s2">"target"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="s2">"links"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+          </span><span class="s2">"self"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/pullRequests/1/relationships/target"</span><span class="p">,</span><span class="w">
+          </span><span class="s2">"related"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://openwebslid.es/api/pullRequests/1/target"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="s2">"meta"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="s2">"createdAt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1542044770"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+<blockquote>
+<p>Failure response (already rejected)</p>
 </blockquote>
 <pre class="highlight http tab-http"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">422</span> <span class="ne">Unprocessable Entity</span>
 <span class="na">Content-Type</span><span class="p">:</span> <span class="s">application/vnd.api+json</span>
