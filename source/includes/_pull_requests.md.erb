@@ -119,6 +119,9 @@ A pull request is compatible to merge only if the source topic contains all of t
 For example, a pull request merging [A -> B -> C] into [A -> B] is compatible, but a pull request merging [A -> B -> C] into [A -> D] is not.
 Neither is [A -> B] into [A -> B].
 
+Once a topic owner or one of the collaborators reviews the topic, the state is set to `working` by the system.
+When the system has merged the topic (or not), the state is set to `accepted` (or `rejected` respectively).
+
 State           | Description
 --------------- | -----------
 `pending`       | Queued for compatibility check [open]
