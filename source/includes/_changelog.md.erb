@@ -10,6 +10,8 @@ For patch release changelogs, see the git tags and commit messages.
 
 - Add `pending`, `incompatible` and `working` states to PullRequest
   - [`GET /pullRequests/:id`](#get-a-pull-request): modify `state` attribute
+- Rename `open` to `working` state in PullRequest
+  - [`GET /pullRequests/:id`](#get-a-pull-request): modify `state` attribute
 - Add functionality to accept pull requests
   - [`PATCH /pullRequests/:id`](#accept-a-pull-request): add `accept` value for `stateEvent` attribute
 
