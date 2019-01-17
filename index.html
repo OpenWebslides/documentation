@@ -554,9 +554,14 @@ Part of these requirements is that all HTTP requests should use the <code>applic
 <td>Topic the personal copy was duplicated from</td>
 </tr>
 <tr>
-<td>Share updates</td>
-<td>Pull Request</td>
+<td>Send updates</td>
+<td></td>
 <td>Send back changes to the original topic</td>
+</tr>
+<tr>
+<td>Contribution</td>
+<td>Pull Request</td>
+<td>Changes sent back to the original topic</td>
 </tr>
 </tbody></table>
 <h2 id='application-architecture'>Application architecture</h2>
@@ -693,6 +698,11 @@ For patch release changelogs, see the git tags and commit messages.</p>
 <h2 id='api-v11'>API v11</h2>
 <ul>
 <li>Add <code>pending</code>, <code>incompatible</code> and <code>working</code> states to PullRequest
+
+<ul>
+<li><a href="#get-a-pull-request"><code>GET /pullRequests/:id</code></a>: modify <code>state</code> attribute</li>
+</ul></li>
+<li>Rename <code>open</code> to <code>working</code> state in PullRequest
 
 <ul>
 <li><a href="#get-a-pull-request"><code>GET /pullRequests/:id</code></a>: modify <code>state</code> attribute</li>
@@ -2665,7 +2675,7 @@ An email containing a link to reset the account password is sent to the user.</p
 <h3 id='pull-request-state'>Pull Request state</h3>
 <p>The <code>state</code> attribute can have one of the following values.
 The initial value set by the system is <code>pending</code>.
-Once the pull request has been checked and deemed compatible to merge, the state is set to <code>open</code>.
+Once the pull request has been checked and deemed compatible to merge, the state is set to <code>ready</code>.
 If the pull request is not compatible, it is set to <code>incompatible</code>.</p>
 
 <p>A pull request is compatible to merge only if the source topic contains all of the target topic&#39;s commits, with some unique commits added.</p>
@@ -2687,7 +2697,7 @@ When the system has merged the topic (or not), the state is set to <code>accepte
 <td>Queued for compatibility check [open]</td>
 </tr>
 <tr>
-<td><code>open</code></td>
+<td><code>ready</code></td>
 <td>Compatible, ready to be reviewed [open]</td>
 </tr>
 <tr>
