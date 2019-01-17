@@ -112,7 +112,7 @@ Relationship    |          | Type     | Plurality | Description
 
 The `state` attribute can have one of the following values.
 The initial value set by the system is `pending`.
-Once the pull request has been checked and deemed compatible to merge, the state is set to `open`.
+Once the pull request has been checked and deemed compatible to merge, the state is set to `ready`.
 If the pull request is not compatible, it is set to `incompatible`.
 
 A pull request is compatible to merge only if the source topic contains all of the target topic's commits, with some unique commits added.
@@ -126,7 +126,7 @@ When the system has merged the topic (or not), the state is set to `accepted` (o
 State           | Description
 --------------- | -----------
 `pending`       | Queued for compatibility check [open]
-`open`          | Compatible, ready to be reviewed [open]
+`ready`         | Compatible, ready to be reviewed [open]
 `incompatible`  | Incompatible, cannot be reviewed [closed]
 `working`       | Working, processing review [closed]
 `accepted`      | Reviewed and accepted [closed]
