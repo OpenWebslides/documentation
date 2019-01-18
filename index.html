@@ -237,6 +237,9 @@
                   <li>
                     <a href="#permission-model" class="toc-h2 toc-link" data-title="Permission model">Permission model</a>
                   </li>
+                  <li>
+                    <a href="#cocos" class="toc-h2 toc-link" data-title="CoCOS">CoCOS</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -689,6 +692,10 @@ This attribute determines in what context a topic is available and can have the 
 <td>read, write, admin</td>
 </tr>
 </tbody></table>
+<h2 id='cocos'>CoCOS</h2>
+<p>On certain versions of the platform, additional endpoints and attributes are added to allow for statistics collection and analysis.
+The version numbers of these platforms are suffixed by <code>-cocos</code>, eg. <code>11.0.0-cocos</code>.
+Where a <code>-cocos</code> enabled API server is required in the documentation, the endpoints and attributes are marked by a <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a> badge.</p>
 <h1 id='changelog'>Changelog</h1>
 <!-- When updating the changelog, don't forget to update the API version number in `index.html.erb` as well -->
 
@@ -711,6 +718,13 @@ For patch release changelogs, see the git tags and commit messages.</p>
 
 <ul>
 <li><a href="#accept-a-pull-request"><code>PATCH /pullRequests/:id</code></a>: add <code>accept</code> value for <code>stateEvent</code> attribute</li>
+</ul></li>
+<li>Add <code>age</code>, <code>country</code>, <code>gender</code> and <code>role</code> attributes to user <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a>
+
+<ul>
+<li><a href="#create-a-user"><code>POST /users</code></a>: add <code>age</code>, <code>country</code>, <code>gender</code> and <code>role</code> attributes</li>
+<li><a href="#get-a-user"><code>GET /users/:id</code></a>: add <code>age</code>, <code>country</code>, <code>gender</code> and <code>role</code> attributes</li>
+<li><a href="#update-a-user"><code>PATCH /users/:id</code></a>: add <code>age</code>, <code>country</code>, <code>gender</code> and <code>role</code> attributes</li>
 </ul></li>
 </ul>
 <h2 id='api-v10'>API v10</h2>
@@ -4260,6 +4274,30 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <td>Boolean</td>
 <td>Enable email notifications for important alerts, defaults to <code>true</code></td>
 </tr>
+<tr>
+<td><code>age</code></td>
+<td><span class="badge badge-danger">required</span> <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>Integer</td>
+<td>Age</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><span class="badge badge-danger">required</span> <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>2-digit country code</td>
+</tr>
+<tr>
+<td><code>gender</code></td>
+<td><span class="badge badge-danger">required</span> <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>Gender, can be <code>male</code>, <code>female</code> or <code>other</code></td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td><span class="badge badge-danger">required</span> <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>Role, can be <code>learner</code>, <code>teacher</code> or <code>coteacher</code></td>
+</tr>
 </tbody></table>
 
 <blockquote>
@@ -4392,6 +4430,30 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <td>Boolean</td>
 <td>Email notifications for important alerts</td>
 </tr>
+<tr>
+<td><code>age</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>Integer</td>
+<td>Age</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>2-digit country code</td>
+</tr>
+<tr>
+<td><code>gender</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>Gender, can be <code>male</code>, <code>female</code> or <code>other</code></td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>Role, can be <code>learner</code>, <code>teacher</code> or <code>coteacher</code></td>
+</tr>
 </tbody></table>
 
 <aside class="notice">
@@ -4506,6 +4568,30 @@ An account has to be confirmed using the <a href="#confirmation-api">Confirmatio
 <td></td>
 <td>Boolean</td>
 <td>Email notifications for important alerts</td>
+</tr>
+<tr>
+<td><code>age</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>Integer</td>
+<td>Age</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>2-digit country code</td>
+</tr>
+<tr>
+<td><code>gender</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>Gender, can be <code>male</code>, <code>female</code> or <code>other</code></td>
+</tr>
+<tr>
+<td><code>role</code></td>
+<td><a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a></td>
+<td>String</td>
+<td>Role, can be <code>learner</code>, <code>teacher</code> or <code>coteacher</code></td>
 </tr>
 </tbody></table>
 
