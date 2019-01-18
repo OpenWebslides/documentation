@@ -79,3 +79,11 @@ a.badge:focus, a.badge:hover {
 .badge-danger[href]:focus, .badge-danger[href]:hover {
   background-color: #c9302c;
 }
+
+.badge-cocos {
+  background: linear-gradient(135deg, #3e2153 0%, #d60b52 100%);
+}
+
+.badge-cocos[href]:focus, .badge-cocos[href]:hover {
+  background: linear-gradient(135deg, #221830 0%, #b60b4f 100%);
+}

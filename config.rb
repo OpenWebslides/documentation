@@ -71,4 +71,8 @@ helpers do
   def required
     '<span class="badge badge-danger">required</span>'
   end
+
+  def cocos
+    '<a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a>'
+  end
 end
