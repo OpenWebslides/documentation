@@ -44,6 +44,10 @@ Attribute       |                 | Type   | Description
 `password`      | <%= required %> | String | Password, must be at least 6 characters
 `tosAccepted`   | <%= required %> | Boolean| User has explicitly accepted terms of service, must be `true`
 `alertEmails`   |                 | Boolean| Enable email notifications for important alerts, defaults to `true`
+`age`           | <%= required %> <%= cocos %> | Integer| Age
+`country`       | <%= required %> <%= cocos %> | String | 2-digit country code
+`gender`        | <%= required %> <%= cocos %> | String | Gender, can be `male`, `female` or `other`
+`role`          | <%= required %> <%= cocos %> | String | Role, can be `learner`, `teacher` or `coteacher`
 
 > Request
 
@@ -92,6 +96,10 @@ Attribute       |                 | Type   | Description
 `gravatarHash`  |                 | String | MD5 hash for Gravatar service
 `locale`        | <%= optional %> | String | Locale
 `alertEmails`   | <%= optional %> | Boolean| Email notifications for important alerts
+`age`           | <%= cocos %>    | Integer| Age
+`country`       | <%= cocos %>    | String | 2-digit country code
+`gender`        | <%= cocos %>    | String | Gender, can be `male`, `female` or `other`
+`role`          | <%= cocos %>    | String | Role, can be `learner`, `teacher` or `coteacher`
 
 <aside class="notice">
   If the user has <code>alertEmails</code> set to false, no email notifications will be sent out when an alert is created.
@@ -143,6 +151,10 @@ Attribute         |                 | Type   | Description
 `currentPassword` |                 | String | Current password, required when updating `password`
 `password`        |                 | String | New password, must be at least 6 characters
 `alertEmails`     |                 | Boolean| Email notifications for important alerts
+`age`             | <%= cocos %>    | Integer| Age
+`country`         | <%= cocos %>    | String | 2-digit country code
+`gender`          | <%= cocos %>    | String | Gender, can be `male`, `female` or `other`
+`role`            | <%= cocos %>    | String | Role, can be `learner`, `teacher` or `coteacher`
 
 <aside class="info">
   When changing the password, the <code>currentPassword</code> has to be specified as well. When updating other attributes such as <code>name</code>, the <code>currentPassword</code> does not have to be specified.
