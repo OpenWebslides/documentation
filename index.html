@@ -328,6 +328,9 @@
                     <a href="#owsprod" class="toc-h2 toc-link" data-title="owsprod">owsprod</a>
                   </li>
                   <li>
+                    <a href="#cocos" class="toc-h2 toc-link" data-title="cocos">cocos</a>
+                  </li>
+                  <li>
                     <a href="#deploying-on-owsdev-owsqas" class="toc-h2 toc-link" data-title="Deploying on owsdev/owsqas">Deploying on owsdev/owsqas</a>
                   </li>
                   <li>
@@ -1000,6 +1003,11 @@ Using this file will include the <code>nginx/sites-prod</code> directory for sit
 
 <p>The current Open Webslides server infrastructure consists of three environments (servers):</p>
 <h2 id='owsdev'>owsdev</h2>
+<p>IP address: 157.193.230.127
+Host: owsdev.ugent.be
+URL: (http://owsdev.ugent.be/)[http://owsdev.ugent.be/]
+Responsible contact: Florian Dejonckheere</p>
+
 <p>This is the development server. Use this server when developing features and fixes. The version of the platform and stability thereof are not guaranteed. The database and repositories may be wiped at any time.</p>
 
 <p><strong>UGent CAS</strong>: The server should run a version <strong>without</strong> the UGent CAS-functionality, allowing local clients to manipulate the API.</p>
@@ -1010,6 +1018,11 @@ Using this file will include the <code>nginx/sites-prod</code> directory for sit
   Do not store any important data on this server, as it may be wiped at any moment (usually not without notice)
 </aside>
 <h2 id='owsqas'>owsqas</h2>
+<p>IP address: 157.193.231.202
+Host: owsqas.ugent.be
+URL: (https://owsqas.ugent.be/)[https://owsqas.ugent.be/]
+Responsible contact: Florian Dejonckheere</p>
+
 <p>This is the testing/QA server. Deploy to this server when testing releases before merging. The server should run a stable version.</p>
 
 <p><strong>UGent CAS</strong>: The server should run a version <strong>with</strong> the UGent CAS-functionality, in order to mirror the production environment.</p>
@@ -1020,6 +1033,14 @@ Using this file will include the <code>nginx/sites-prod</code> directory for sit
   Do not store any important data on this server, as it will be wiped before testing new releases
 </aside>
 <h2 id='owsprod'>owsprod</h2>
+<p>IP address: 157.193.231.203
+Host: owsprod.ugent.be
+URL: (https://owsprod.ugent.be/)[https://owsprod.ugent.be/]
+URL: (https://openwebslid.es/)[https://openwebslid.es/]
+URL: (https://openwebslides.ugent.be/)[https://openwebslides.ugent.be/]
+Responsible contact: Florian Dejonckheere
+Responsible for openwebslid.es: Ruben Verborgh</p>
+
 <p>This is the production server. Only deploy stable, fully tested releases to this server, and only from the <code>master</code>-branch.</p>
 
 <p><strong>UGent CAS</strong>: The server runs a version <strong>with</strong> the UGent CAS-functionality.</p>
@@ -1029,6 +1050,16 @@ Using this file will include the <code>nginx/sites-prod</code> directory for sit
 <aside class="notice">
   Do not use this server for development purposes. Queries to manipulate data manually will be ignored
 </aside>
+<h2 id='cocos'>cocos</h2>
+<p>IP address: 157.193.215.95
+Host: cocos.atlantis.ugent.be
+URL: (https://cocos.education/)[https://cocos.education/]
+URL: (https://my.cocos.education/)[https://my.cocos.education/]
+URL: (https://publications.cocos.education/)[https://publications.cocos.education/]
+URL: (https://cocos.digital/)[https://cocos.digital/]
+Responsible contact: Florian Dejonckheere</p>
+
+<p>This is the server for the CoCOS project. It hosts two WordPress installation on (https://cocos.education/)[https://cocos.education/] and (https://publications.cocos.education/)[https://publications.cocos.education/], and one Moodle installation on (https://my.cocos.education/)[https://my.cocos.education/].</p>
 <h2 id='deploying-on-owsdev-owsqas'>Deploying on owsdev/owsqas</h2><pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
 <span class="gp">$ </span>ssh openwebslides@owsdev.ugent.be -i /path/to/keyfile
 
