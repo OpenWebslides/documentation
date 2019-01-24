@@ -11,7 +11,7 @@ Attribute       |                 | Type    | Description
 `feedItemType`  |                 | Enum    | Type of event. Can be one of `topic_created`, `topic_updated`, `topic_forked`
 `userName`      |                 | String  | Name of the user that was involved in the event
 `topicTitle`    |                 | String  | Name of the topic that was involved in the event
-`createdAt`     |                 | Integer | Timestamp of the event. **This attribute is included in the `meta` section.**
+`createdAt`     |                 | Integer | Timestamp of creation **This attribute is included in the `meta` section.**
 
 <aside class="info">
   Note that when the <code>feedItemType</code> is set to <code>topic_forked</code>, the <em>user</em>relationship refers to the user forking the topic, and the <em>topic</em> relationship refers to the topic being forked (upstream).

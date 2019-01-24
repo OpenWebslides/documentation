@@ -55,6 +55,10 @@
             "related": "<%= current_page.data.endpoint %>topics/1/conversations"
           }
         }
+      },
+      "meta": {
+        "createdAt": "1541668600",
+        "updatedAt": "1541668600"
       }
     }
   ],
