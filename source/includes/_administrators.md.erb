@@ -1,7 +1,7 @@
 
 # Setup for administrators
 
-## Installation
+## Installation and configuration
 
 The platform uses Docker and docker-compose to allow it to be installed and ran on any platform, independent of operating system or distribution.
 The backend application code itself only has support for Linux.
@@ -10,69 +10,43 @@ Installing it on a Windows operating system is on your own risk!
 ```shell
 $ git clone https://github.com/OpenWebslides/openwebslides-backend.git openwebslides
 $ cd openwebslides
-```
-
-The frontend code is stored as a git submodule in `web/`. Initialize and update it to the latest stable version
-
-```shell
+$
+$ # The frontend code is stored as a git submodule in `web/`.
+$ # Initialize and update it to the latest stable version
 $ git submodule init
 $ git submodule update
 $ (cd web && git pull origin master)
-```
-
-Configure environment variables
-
-```
+$
+$ # Configure environment variables
 $ cp openwebslides.env.example openwebslides.env
 $ nano openwebslides.env
-```
-
-Configure the NGINX server
-
-```
+$
+$ # Configure the NGINX server by editing the files in nginx/sites-available/
 $ cd nginx/sites-enabled/
-$ ln -s ../sites-available/my-site.conf .
-```
-
-Bring up the platform
-
-```shell
+$ ln -s ../sites-available/my.domain.com.conf .
+$
+$ # Bring up the platform
 $ docker build -t openwebslides/openwebslides:latest .
 $ docker-compose up -d
-```
-
-The Postgres user and database are not automatically created
-
-```shell
+$
+$ # The Postgres user and database are not automatically created
 $ docker-compose exec postgres psql -U postgres -c \
   "CREATE ROLE openwebslides WITH ENCRYPTED PASSWORD 'openwebslides' LOGIN;"
-```
-
-```shell
 $ docker-compose exec postgres psql -U postgres -c \
   "CREATE DATABASE openwebslides OWNER openwebslides;"
-```
-
-Restart the application container to run database migrations.
-Migrations are automatically ran on every application container start.
-
-```shell
+$
+$ # Restart the application container to run database migrations.
+$ # Migrations are automatically ran on every application container start.
 $ docker-compose restart
-```
-
-After bringing up the HTTP server, run the CertBot container to request and retrieve certificates from Let's Encrypt
-
-```shell
+$
+$ # After bringing up the HTTP server, run the CertBot container to request and
+$ # retrieve certificates from Let's Encrypt
 $ ./certbot.sh my.domain.com
-```
-
-Add this command to a monthly crontab to ensure the certificates (valid for 3 months) will be refreshed in time
-
-```shell
+$
+$ # Add this command to a monthly crontab to ensure the certificates
+$ # (valid for 3 months) will be refreshed in a timely fashion
 $ /app/openwebslides-backend/certbot.sh my.domain.com
 ```
-
-Configure the web server by editing the files in `nginx/sites-available`, and symlinking the sites that are enabled on the machine from `nginx/sites-enabled`
 
 A small script to make subsequent deployments easier is provided in `deploy.sh`.
 
@@ -91,13 +65,3 @@ Volume    | Description
 Only the first two volumes contain critical data and should be backed up.
 The `public` volume is used by the nginx container to serve the static assets.
 The `upload` volume is used by the application container to store temporary uploaded data.
-
-### TLS
-
-The setup optionally supports using secured communication over TLS.
-In order to enable this, deploy the application with `docker-compose` including the `docker-compose.prod.yml` override file.
-Using this file will include the `nginx/sites-prod` directory for site configuration, instead of `nginx/sites`.
-
-```shell
-$ docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
-```
