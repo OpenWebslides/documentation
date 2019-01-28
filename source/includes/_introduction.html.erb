@@ -1,0 +1,97 @@
+# Introduction
+
+Welcome to the Open Webslides documentation! This website aggregates the documentation for developers and administrators.
+
+## Overview
+
+The Open Webslides platform is split into two components: frontend and backend.
+The frontend is built in React and uses Redux to store application state.
+The backend is built in Ruby on Rails and exposes a REST API to the client.
+
+The REST API is based on the JSON-API specification version 1.0.
+Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files.
+For more examples and technical documentation, refer to the [JSON-API specification](http://jsonapi.org/format/1.0/) and the [implementation in use](http://jsonapi-resources.com/v0.9/guide/index.html).
+All API calls are subject to a predefined format, defined in the JSON-API spec.
+Part of these requirements is that all HTTP requests should use the `application/vnd.api+json` MIME type to exchange data.
+
+## Nomenclature
+
+The nomenclature in the API is different from the nomenclature that the user sees in the web application.
+
+User-friendly name | Developer/API name | Description
+------------------ | ------------------ | -----------
+Topic              |                    | Independent group of content (course, chapter, ...)
+Update             | Commit             | Change to the topic
+Slide View         |                    | Read-only view of the content in the form of slides
+Course View        |                    | Read-only view of the content in the form of full-text course
+Personal Copy      | Fork               | Duplicated, private topic
+Original topic     | Upstream           | Topic the personal copy was duplicated from
+Send updates       |                    | Send back changes to the original topic
+Contribution       | Pull Request       | Changes sent back to the original topic
+
+## Application architecture
+
+The entire platform runtime is governed by Docker.
+All components are running in separate containers, from the web server to the database management system.
+The following components are present in a fully configured and running system:
+
+- Web server (NGINX)
+- Application runtime (API server)
+- Application runtime (configurable amount of instances, used for asynchronous processing of tasks)
+- Database (PostgreSQL)
+- Block storage
+- Key-value store (Redis, communication between application runtimes)
+
+Various external services are also linked into the platform.
+Depending on configuration, this includes an email provider and an identity (OAuth) provider.
+
+<%= image_tag 'architecture.png' %>
+
+## Data model
+
+<%= image_tag 'data_model.png' %>
+
+## Permission model
+
+A topic and its assets are protected by the `access` attribute.
+This attribute determines in what context a topic is available and can have the following values:
+
+State       | Description
+------------|------------
+`public`    | Visible to everyone, sign in **not required**
+`protected` | Visible to everyone, sign in required
+`private`   | Only visible to owner and collaborators
+
+**Permission table**
+
+This table demonstrates the permissions given in each context, depending on the access level.
+_Guest_ indicates a user that is not signed in.
+_Member_ indicates a user that is signed in.
+_Collaborator_ indicates a user that is added to the collaborator's list on the topic.
+_Contributor_ indicates a user that has contributed to the topic. This is not related to the permission level.
+_Owner_ indicates the owner/creator of a deck.
+
+`read` indicates read-only access to the topic.
+`write` indicates write access to the topic **content**.
+`admin` indicates admin-level access to the topic **metadata**.
+
+| Topic access level | User access level | Resulting permissions |
+| ------------------ | ----------------- | --------------------- |
+| `public`           | Guest             | read                  |
+|                    | Member            | read                  |
+|                    | Collaborator      | read, write           |
+|                    | Owner             | read, write, admin    |
+| `protected`        | Guest             |                       |
+|                    | Member            | read                  |
+|                    | Collaborator      | read, write           |
+|                    | Owner             | read, write, admin    |
+| `private`          | Guest             |                       |
+|                    | Member            |                       |
+|                    | Collaborator      | read, write           |
+|                    | Owner             | read, write, admin    |
+
+## CoCOS Project
+
+On certain versions of the platform, additional endpoints and attributes are added to allow for statistics collection and analysis.
+The version numbers of these platforms are suffixed by `-cocos`, eg. `11.0.0-cocos`.
+Where a `-cocos` enabled API server is required in the documentation, the endpoints and attributes are marked by a <%= cocos %> badge.
