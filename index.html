@@ -220,29 +220,6 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
-              <ul class="toc-list-h2">
-                  <li>
-                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
-                  </li>
-                  <li>
-                    <a href="#nomenclature" class="toc-h2 toc-link" data-title="Nomenclature">Nomenclature</a>
-                  </li>
-                  <li>
-                    <a href="#application-architecture" class="toc-h2 toc-link" data-title="Application architecture">Application architecture</a>
-                  </li>
-                  <li>
-                    <a href="#data-model" class="toc-h2 toc-link" data-title="Data model">Data model</a>
-                  </li>
-                  <li>
-                    <a href="#permission-model" class="toc-h2 toc-link" data-title="Permission model">Permission model</a>
-                  </li>
-                  <li>
-                    <a href="#cocos" class="toc-h2 toc-link" data-title="CoCOS">CoCOS</a>
-                  </li>
-              </ul>
-          </li>
-          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
               <ul class="toc-list-h2">
                   <li>
@@ -311,7 +288,7 @@
             <a href="#setup-for-administrators" class="toc-h1 toc-link" data-title="Setup for administrators">Setup for administrators</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#installation" class="toc-h2 toc-link" data-title="Installation">Installation</a>
+                    <a href="#installation-and-configuration" class="toc-h2 toc-link" data-title="Installation and configuration">Installation and configuration</a>
                   </li>
                   <li>
                     <a href="#data-storage" class="toc-h2 toc-link" data-title="Data storage">Data storage</a>
@@ -510,198 +487,103 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Open Webslides documentation! This website aggregates the documentation for developers and administrators.</p>
-<h2 id='overview'>Overview</h2>
-<p>The Open Webslides platform is split into two components: frontend and backend.
+        # Introduction
+
+Welcome to the Open Webslides documentation! This website aggregates the documentation for developers and administrators.
+
+## Overview
+
+The Open Webslides platform is split into two components: frontend and backend.
 The frontend is built in React and uses Redux to store application state.
-The backend is built in Ruby on Rails and exposes a REST API to the client.</p>
+The backend is built in Ruby on Rails and exposes a REST API to the client.
 
-<p>The REST API is based on the JSON-API specification version 1.0.
+The REST API is based on the JSON-API specification version 1.0.
 Under certain conditions, the API deviates from the spec or adds its own implementation when a procedure is not described in the specification, such as uploading binary files.
-For more examples and technical documentation, refer to the <a href="http://jsonapi.org/format/1.0/">JSON-API specification</a> and the <a href="http://jsonapi-resources.com/v0.9/guide/index.html">implementation in use</a>.
+For more examples and technical documentation, refer to the [JSON-API specification](http://jsonapi.org/format/1.0/) and the [implementation in use](http://jsonapi-resources.com/v0.9/guide/index.html).
 All API calls are subject to a predefined format, defined in the JSON-API spec.
-Part of these requirements is that all HTTP requests should use the <code>application/vnd.api+json</code> MIME type to exchange data.</p>
-<h2 id='nomenclature'>Nomenclature</h2>
-<p>The nomenclature in the API is different from the nomenclature that the user sees in the web application.</p>
+Part of these requirements is that all HTTP requests should use the `application/vnd.api+json` MIME type to exchange data.
 
-<table><thead>
-<tr>
-<th>User-friendly name</th>
-<th>Developer/API name</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>Topic</td>
-<td></td>
-<td>Independent group of content (course, chapter, ...)</td>
-</tr>
-<tr>
-<td>Update</td>
-<td>Commit</td>
-<td>Change to the topic</td>
-</tr>
-<tr>
-<td>Slide View</td>
-<td></td>
-<td>Read-only view of the content in the form of slides</td>
-</tr>
-<tr>
-<td>Course View</td>
-<td></td>
-<td>Read-only view of the content in the form of full-text course</td>
-</tr>
-<tr>
-<td>Personal Copy</td>
-<td>Fork</td>
-<td>Duplicated, private topic</td>
-</tr>
-<tr>
-<td>Original topic</td>
-<td>Upstream</td>
-<td>Topic the personal copy was duplicated from</td>
-</tr>
-<tr>
-<td>Send updates</td>
-<td></td>
-<td>Send back changes to the original topic</td>
-</tr>
-<tr>
-<td>Contribution</td>
-<td>Pull Request</td>
-<td>Changes sent back to the original topic</td>
-</tr>
-</tbody></table>
-<h2 id='application-architecture'>Application architecture</h2>
-<p>The entire platform runtime is governed by Docker.
+## Nomenclature
+
+The nomenclature in the API is different from the nomenclature that the user sees in the web application.
+
+User-friendly name | Developer/API name | Description
+------------------ | ------------------ | -----------
+Topic              |                    | Independent group of content (course, chapter, ...)
+Update             | Commit             | Change to the topic
+Slide View         |                    | Read-only view of the content in the form of slides
+Course View        |                    | Read-only view of the content in the form of full-text course
+Personal Copy      | Fork               | Duplicated, private topic
+Original topic     | Upstream           | Topic the personal copy was duplicated from
+Send updates       |                    | Send back changes to the original topic
+Contribution       | Pull Request       | Changes sent back to the original topic
+
+## Application architecture
+
+The entire platform runtime is governed by Docker.
 All components are running in separate containers, from the web server to the database management system.
-The following components are present in a fully configured and running system:</p>
+The following components are present in a fully configured and running system:
 
-<ul>
-<li>Web server (NGINX)</li>
-<li>Application runtime (API server)</li>
-<li>Application runtime (configurable amount of instances, used for asynchronous processing of tasks)</li>
-<li>Database (PostgreSQL)</li>
-<li>Block storage</li>
-<li>Key-value store (Redis, communication between application runtimes)</li>
-</ul>
+- Web server (NGINX)
+- Application runtime (API server)
+- Application runtime (configurable amount of instances, used for asynchronous processing of tasks)
+- Database (PostgreSQL)
+- Block storage
+- Key-value store (Redis, communication between application runtimes)
 
-<p>Various external services are also linked into the platform.
-Depending on configuration, this includes an email provider and an identity (OAuth) provider.</p>
+Various external services are also linked into the platform.
+Depending on configuration, this includes an email provider and an identity (OAuth) provider.
 
-<p><img src="images/architecture.png" alt="Architecture" /></p>
-<h2 id='data-model'>Data model</h2>
-<p><img src="images/data_model.png" alt="Data model" /></p>
-<h2 id='permission-model'>Permission model</h2>
-<p>A topic and its assets are protected by the <code>access</code> attribute.
-This attribute determines in what context a topic is available and can have the following values:</p>
+<img src="images/architecture.png" alt="Architecture" />
 
-<table><thead>
-<tr>
-<th>State</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>public</code></td>
-<td>Visible to everyone, sign in <strong>not required</strong></td>
-</tr>
-<tr>
-<td><code>protected</code></td>
-<td>Visible to everyone, sign in required</td>
-</tr>
-<tr>
-<td><code>private</code></td>
-<td>Only visible to owner and collaborators</td>
-</tr>
-</tbody></table>
+## Data model
 
-<p><strong>Permission table</strong></p>
+<img src="images/data_model.png" alt="Data model" />
 
-<p>This table demonstrates the permissions given in each context, depending on the access level.
-<em>Guest</em> indicates a user that is not signed in.
-<em>Member</em> indicates a user that is signed in.
-<em>Collaborator</em> indicates a user that is added to the collaborator&#39;s list on the topic.
-<em>Contributor</em> indicates a user that has contributed to the topic. This is not related to the permission level.
-<em>Owner</em> indicates the owner/creator of a deck.</p>
+## Permission model
 
-<p><code>read</code> indicates read-only access to the topic.
-<code>write</code> indicates write access to the topic <strong>content</strong>.
-<code>admin</code> indicates admin-level access to the topic <strong>metadata</strong>.</p>
+A topic and its assets are protected by the `access` attribute.
+This attribute determines in what context a topic is available and can have the following values:
 
-<table><thead>
-<tr>
-<th>Topic access level</th>
-<th>User access level</th>
-<th>Resulting permissions</th>
-</tr>
-</thead><tbody>
-<tr>
-<td><code>public</code></td>
-<td>Guest</td>
-<td>read</td>
-</tr>
-<tr>
-<td></td>
-<td>Member</td>
-<td>read</td>
-</tr>
-<tr>
-<td></td>
-<td>Collaborator</td>
-<td>read, write</td>
-</tr>
-<tr>
-<td></td>
-<td>Owner</td>
-<td>read, write, admin</td>
-</tr>
-<tr>
-<td><code>protected</code></td>
-<td>Guest</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>Member</td>
-<td>read</td>
-</tr>
-<tr>
-<td></td>
-<td>Collaborator</td>
-<td>read, write</td>
-</tr>
-<tr>
-<td></td>
-<td>Owner</td>
-<td>read, write, admin</td>
-</tr>
-<tr>
-<td><code>private</code></td>
-<td>Guest</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>Member</td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td>Collaborator</td>
-<td>read, write</td>
-</tr>
-<tr>
-<td></td>
-<td>Owner</td>
-<td>read, write, admin</td>
-</tr>
-</tbody></table>
-<h2 id='cocos'>CoCOS</h2>
-<p>On certain versions of the platform, additional endpoints and attributes are added to allow for statistics collection and analysis.
-The version numbers of these platforms are suffixed by <code>-cocos</code>, eg. <code>11.0.0-cocos</code>.
-Where a <code>-cocos</code> enabled API server is required in the documentation, the endpoints and attributes are marked by a <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a> badge.</p>
+State       | Description
+------------|------------
+`public`    | Visible to everyone, sign in **not required**
+`protected` | Visible to everyone, sign in required
+`private`   | Only visible to owner and collaborators
+
+**Permission table**
+
+This table demonstrates the permissions given in each context, depending on the access level.
+_Guest_ indicates a user that is not signed in.
+_Member_ indicates a user that is signed in.
+_Collaborator_ indicates a user that is added to the collaborator's list on the topic.
+_Contributor_ indicates a user that has contributed to the topic. This is not related to the permission level.
+_Owner_ indicates the owner/creator of a deck.
+
+`read` indicates read-only access to the topic.
+`write` indicates write access to the topic **content**.
+`admin` indicates admin-level access to the topic **metadata**.
+
+| Topic access level | User access level | Resulting permissions |
+| ------------------ | ----------------- | --------------------- |
+| `public`           | Guest             | read                  |
+|                    | Member            | read                  |
+|                    | Collaborator      | read, write           |
+|                    | Owner             | read, write, admin    |
+| `protected`        | Guest             |                       |
+|                    | Member            | read                  |
+|                    | Collaborator      | read, write           |
+|                    | Owner             | read, write, admin    |
+| `private`          | Guest             |                       |
+|                    | Member            |                       |
+|                    | Collaborator      | read, write           |
+|                    | Owner             | read, write, admin    |
+
+## CoCOS Project
+
+On certain versions of the platform, additional endpoints and attributes are added to allow for statistics collection and analysis.
+The version numbers of these platforms are suffixed by `-cocos`, eg. `11.0.0-cocos`.
+Where a `-cocos` enabled API server is required in the documentation, the endpoints and attributes are marked by a <a href="#cocos"><span class="badge badge-cocos">CoCOS</span></a> badge.
 <h1 id='changelog'>Changelog</h1>
 <!-- When updating the changelog, don't forget to update the API version number in `index.html.erb` as well -->
 
@@ -923,46 +805,53 @@ For patch release changelogs, see the git tags and commit messages.</p>
 <ul>
 <li>Initial release</li>
 </ul>
-<h1 id='setup-for-administrators'>Setup for administrators</h1><h2 id='installation'>Installation</h2>
+<h1 id='setup-for-administrators'>Setup for administrators</h1><h2 id='installation-and-configuration'>Installation and configuration</h2>
 <p>The platform uses Docker and docker-compose to allow it to be installed and ran on any platform, independent of operating system or distribution.
 The backend application code itself only has support for Linux.
 Installing it on a Windows operating system is on your own risk!</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/openwebslides-backend.git
-<span class="gp">$ </span><span class="nb">cd </span>openwebslides-backend
-</code></pre>
-<p>The frontend code is stored as a git submodule in <code>web/</code>. Initialize and update it to the latest stable version</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git submodule init
+<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>git clone https://github.com/OpenWebslides/openwebslides-backend.git openwebslides
+<span class="gp">$ </span><span class="nb">cd </span>openwebslides
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># The frontend code is stored as a git submodule in `web/`.</span>
+<span class="gp">$ </span><span class="c"># Initialize and update it to the latest stable version</span>
+<span class="gp">$ </span>git submodule init
 <span class="gp">$ </span>git submodule update
-<span class="gp">$ </span><span class="nb">cd </span>web <span class="o">&amp;&amp;</span> git pull origin master
-</code></pre>
-<p>Configure environment variables</p>
-<pre class="highlight plaintext"><code>$ cp openwebslides.env.example openwebslides.env
-$ nano openwebslides.env
-</code></pre>
-<p>Bring up the platform</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker build -t openwebslides/openwebslides:latest .
+<span class="gp">$ </span><span class="o">(</span><span class="nb">cd </span>web <span class="o">&amp;&amp;</span> git pull origin master<span class="o">)</span>
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># Configure environment variables</span>
+<span class="gp">$ </span>cp openwebslides.env.example openwebslides.env
+<span class="gp">$ </span>nano openwebslides.env
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># Configure the NGINX server by generating DH params</span>
+<span class="gp">$ </span>openssl dhparam -out nginx/dhparams.pem 2048
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># Configure the server(s) in nginx/sites-available/</span>
+<span class="gp">$ </span><span class="c"># Enable the server(s)</span>
+<span class="gp">$ </span><span class="nb">cd </span>nginx/sites-enabled/
+<span class="gp">$ </span>ln -s ../sites-available/my.domain.com.conf .
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># Bring up the platform</span>
+<span class="gp">$ </span>docker build -t openwebslides/openwebslides:latest .
 <span class="gp">$ </span>docker-compose up -d
-</code></pre>
-<p>The Postgres user and database are not automatically created</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># The Postgres user and database are not automatically created</span>
+<span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
   <span class="s2">"CREATE ROLE openwebslides WITH ENCRYPTED PASSWORD 'openwebslides' LOGIN;"</span>
-</code></pre><pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
+<span class="gp">$ </span>docker-compose <span class="nb">exec </span>postgres psql -U postgres -c <span class="se">\</span>
   <span class="s2">"CREATE DATABASE openwebslides OWNER openwebslides;"</span>
-</code></pre>
-<p>Restart the application container to run database migrations.
-Migrations are automatically ran on every application container start.</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose restart
-</code></pre>
-<p>After bringing up the HTTP server, run the CertBot container to request and retrieve certificates from Let&#39;s Encrypt</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>./certbot.sh my.domain.com
-</code></pre>
-<p>Add this command to a monthly crontab to ensure the certificates (valid for 3 months) will be refreshed in time</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>/app/openwebslides-backend/certbot.sh my.domain.com
-</code></pre>
-<p>Configure the web server by editing the files in <code>nginx/sites-available</code>, and symlinking the sites that are enabled on the machine from <code>nginx/sites-enabled</code></p>
-
-<p>A small script to make subsequent deployments easier is provided in <code>deploy.sh</code>.</p>
-<h2 id='data-storage'>Data storage</h2>
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># Restart the application container to run database migrations.</span>
+<span class="gp">$ </span><span class="c"># Migrations are automatically ran on every application container start.</span>
+<span class="gp">$ </span>docker-compose restart
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># After bringing up the HTTP server, run the CertBot container to request and</span>
+<span class="gp">$ </span><span class="c"># retrieve certificates from Let's Encrypt</span>
+<span class="gp">$ </span>./certbot.sh my.domain.com
+<span class="err">$</span>
+<span class="gp">$ </span><span class="c"># Add this command to a monthly crontab to ensure the certificates</span>
+<span class="gp">$ </span><span class="c"># (valid for 3 months) will be refreshed in a timely fashion</span>
+<span class="gp">$ </span>/path/to/openwebslides/certbot.sh my.domain.com
+</code></pre><h2 id='data-storage'>Data storage</h2>
 <p>The machine-specific data is stored on several Docker volumes, mounted in the relevant containers.</p>
 
 <table><thead>
@@ -996,12 +885,7 @@ Migrations are automatically ran on every application container start.</p>
 <p>Only the first two volumes contain critical data and should be backed up.
 The <code>public</code> volume is used by the nginx container to serve the static assets.
 The <code>upload</code> volume is used by the application container to store temporary uploaded data.</p>
-<h3 id='tls'>TLS</h3>
-<p>The setup optionally supports using secured communication over TLS.
-In order to enable this, deploy the application with <code>docker-compose</code> including the <code>docker-compose.prod.yml</code> override file.
-Using this file will include the <code>nginx/sites-prod</code> directory for site configuration, instead of <code>nginx/sites</code>.</p>
-<pre class="highlight shell tab-shell"><code><span class="gp">$ </span>docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
-</code></pre><h1 id='infrastructure'>Infrastructure</h1>
+<h1 id='infrastructure'>Infrastructure</h1>
 <p>A lot of tools are used in the development and deployment process.</p>
 
 <ul>
@@ -1014,10 +898,13 @@ Using this file will include the <code>nginx/sites-prod</code> directory for sit
 
 <p>The current Open Webslides server infrastructure consists of three environments (servers):</p>
 <h2 id='owsdev'>owsdev</h2>
-<p>IP address: 157.193.230.127
-Host: owsdev.ugent.be
-URL: (http://owsdev.ugent.be/)[http://owsdev.ugent.be/]
-Responsible contact: Florian Dejonckheere</p>
+<p>IP address: 157.193.230.127</p>
+
+<p>Host: owsdev.ugent.be</p>
+
+<p>URL: <a href="http://owsdev.ugent.be/">http://owsdev.ugent.be/</a></p>
+
+<p>Responsible contact: Florian Dejonckheere</p>
 
 <p>This is the development server. Use this server when developing features and fixes. The version of the platform and stability thereof are not guaranteed. The database and repositories may be wiped at any time.</p>
 
@@ -1029,10 +916,13 @@ Responsible contact: Florian Dejonckheere</p>
   Do not store any important data on this server, as it may be wiped at any moment (usually not without notice)
 </aside>
 <h2 id='owsqas'>owsqas</h2>
-<p>IP address: 157.193.231.202
-Host: owsqas.ugent.be
-URL: (https://owsqas.ugent.be/)[https://owsqas.ugent.be/]
-Responsible contact: Florian Dejonckheere</p>
+<p>IP address: 157.193.231.202</p>
+
+<p>Host: owsqas.ugent.be</p>
+
+<p>URL: <a href="https://owsqas.ugent.be/">https://owsqas.ugent.be/</a></p>
+
+<p>Responsible contact: Florian Dejonckheere</p>
 
 <p>This is the testing/QA server. Deploy to this server when testing releases before merging. The server should run a stable version.</p>
 
@@ -1044,13 +934,19 @@ Responsible contact: Florian Dejonckheere</p>
   Do not store any important data on this server, as it will be wiped before testing new releases
 </aside>
 <h2 id='owsprod'>owsprod</h2>
-<p>IP address: 157.193.231.203
-Host: owsprod.ugent.be
-URL: (https://owsprod.ugent.be/)[https://owsprod.ugent.be/]
-URL: (https://openwebslid.es/)[https://openwebslid.es/]
-URL: (https://openwebslides.ugent.be/)[https://openwebslides.ugent.be/]
-Responsible contact: Florian Dejonckheere
-Responsible for openwebslid.es: Ruben Verborgh</p>
+<p>IP address: 157.193.231.203</p>
+
+<p>Host: owsprod.ugent.be</p>
+
+<p>URL: <a href="https://owsprod.ugent.be/">https://owsprod.ugent.be/</a></p>
+
+<p>URL: <a href="https://openwebslid.es/">https://openwebslid.es/</a></p>
+
+<p>URL: <a href="https://openwebslides.ugent.be/">https://openwebslides.ugent.be/</a></p>
+
+<p>Responsible contact: Florian Dejonckheere</p>
+
+<p>Responsible for openwebslid.es: Ruben Verborgh</p>
 
 <p>This is the production server. Only deploy stable, fully tested releases to this server, and only from the <code>master</code>-branch.</p>
 
@@ -1062,15 +958,21 @@ Responsible for openwebslid.es: Ruben Verborgh</p>
   Do not use this server for development purposes. Queries to manipulate data manually will be ignored
 </aside>
 <h2 id='cocos'>cocos</h2>
-<p>IP address: 157.193.215.95
-Host: cocos.atlantis.ugent.be
-URL: (https://cocos.education/)[https://cocos.education/]
-URL: (https://my.cocos.education/)[https://my.cocos.education/]
-URL: (https://publications.cocos.education/)[https://publications.cocos.education/]
-URL: (https://cocos.digital/)[https://cocos.digital/]
-Responsible contact: Florian Dejonckheere</p>
+<p>IP address: 157.193.215.95</p>
 
-<p>This is the server for the CoCOS project. It hosts two WordPress installation on (https://cocos.education/)[https://cocos.education/] and (https://publications.cocos.education/)[https://publications.cocos.education/], and one Moodle installation on (https://my.cocos.education/)[https://my.cocos.education/].</p>
+<p>Host: cocos.atlantis.ugent.be</p>
+
+<p>URL: <a href="https://cocos.education/">https://cocos.education/</a></p>
+
+<p>URL: <a href="https://my.cocos.education/">https://my.cocos.education/</a></p>
+
+<p>URL: <a href="https://publications.cocos.education/">https://publications.cocos.education/</a></p>
+
+<p>URL: <a href="https://cocos.digital/">https://cocos.digital/</a></p>
+
+<p>Responsible contact: Florian Dejonckheere</p>
+
+<p>This is the server for the CoCOS project. It hosts two WordPress installation on <a href="https://cocos.education/">https://cocos.education/</a> and <a href="https://publications.cocos.education/">https://publications.cocos.education/</a>, and one Moodle installation on <a href="https://my.cocos.education/">https://my.cocos.education/</a>.</p>
 <h2 id='deploying-on-owsdev-owsqas'>Deploying on owsdev/owsqas</h2><pre class="highlight shell tab-shell"><code><span class="c"># SSH into the server</span>
 <span class="gp">$ </span>ssh openwebslides@owsdev.ugent.be -i /path/to/keyfile
 
