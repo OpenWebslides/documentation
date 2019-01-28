@@ -21,7 +21,11 @@ $ # Configure environment variables
 $ cp openwebslides.env.example openwebslides.env
 $ nano openwebslides.env
 $
-$ # Configure the NGINX server by editing the files in nginx/sites-available/
+$ # Configure the NGINX server by generating DH params
+$ openssl dhparam -out nginx/dhparams.pem 2048
+$
+$ # Configure the server(s) in nginx/sites-available/
+$ # Enable the server(s)
 $ cd nginx/sites-enabled/
 $ ln -s ../sites-available/my.domain.com.conf .
 $
