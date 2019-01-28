@@ -8,8 +8,8 @@ The backend application code itself only has support for Linux.
 Installing it on a Windows operating system is on your own risk!
 
 ```shell
-$ git clone https://github.com/OpenWebslides/openwebslides-backend.git
-$ cd openwebslides-backend
+$ git clone https://github.com/OpenWebslides/openwebslides-backend.git openwebslides
+$ cd openwebslides
 ```
 
 The frontend code is stored as a git submodule in `web/`. Initialize and update it to the latest stable version
@@ -17,7 +17,7 @@ The frontend code is stored as a git submodule in `web/`. Initialize and update 
 ```shell
 $ git submodule init
 $ git submodule update
-$ cd web && git pull origin master
+$ (cd web && git pull origin master)
 ```
 
 Configure environment variables
@@ -25,6 +25,13 @@ Configure environment variables
 ```
 $ cp openwebslides.env.example openwebslides.env
 $ nano openwebslides.env
+```
+
+Configure the NGINX server
+
+```
+$ cd nginx/sites-enabled/
+$ ln -s ../sites-available/my-site.conf .
 ```
 
 Bring up the platform
