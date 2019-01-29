@@ -44,10 +44,10 @@ Attribute       |                 | Type   | Description
 `password`      | <%= required %> | String | Password, must be at least 6 characters
 `tosAccepted`   | <%= required %> | Boolean| User has explicitly accepted terms of service, must be `true`
 `alertEmails`   |                 | Boolean| Enable email notifications for important alerts, defaults to `true`
-`age`           | <%= required %> <%= cocos %> | Integer| Age
-`country`       | <%= required %> <%= cocos %> | String | 2-digit country code
-`gender`        | <%= required %> <%= cocos %> | String | Gender, can be `male`, `female` or `other`
-`role`          | <%= required %> <%= cocos %> | String | Role, can be `learner`, `teacher` or `coteacher`
+`age`           | <%= cocos %>    | Integer| Age
+`country`       | <%= cocos %>    | String | 2-digit country code
+`gender`        | <%= cocos %>    | String | Gender, can be `male`, `female` or `other`
+`role`          | <%= cocos %>    | String | Role, can be `learner`, `teacher` or `coteacher`
 
 > Request
 
@@ -96,10 +96,10 @@ Attribute       |                 | Type   | Description
 `gravatarHash`  |                 | String | MD5 hash for Gravatar service
 `locale`        | <%= optional %> | String | Locale
 `alertEmails`   | <%= optional %> | Boolean| Email notifications for important alerts
-`age`           | <%= cocos %>    | Integer| Age
-`country`       | <%= cocos %>    | String | 2-digit country code
-`gender`        | <%= cocos %>    | String | Gender, can be `male`, `female` or `other`
-`role`          | <%= cocos %>    | String | Role, can be `learner`, `teacher` or `coteacher`
+`age`           | <%= optional %> <%= cocos %> | Integer| Age
+`country`       | <%= optional %> <%= cocos %> | String | 2-digit country code
+`gender`        | <%= optional %> <%= cocos %> | String | Gender, can be `male`, `female` or `other`
+`role`          | <%= optional %> <%= cocos %> | String | Role, can be `learner`, `teacher` or `coteacher`
 
 <aside class="notice">
   If the user has <code>alertEmails</code> set to false, no email notifications will be sent out when an alert is created.
