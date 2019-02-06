@@ -9,7 +9,8 @@
       "title": "My Second Topic",
       "state": "public_access",
       "description": "This is my second topic.",
-      "rootContentItemId": "qyrgv0bcd6"
+      "rootContentItemId": "qyrgv0bcd6",
+      "hasOpenPullRequest": false
     },
     "relationships": {
       "user": {

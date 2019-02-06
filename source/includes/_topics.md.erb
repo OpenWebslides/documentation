@@ -38,7 +38,7 @@ This endpoint creates a topic.
 
 Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
-`title`         | <%= required %> | String | Name of the topic, does not have to be unique
+`title`         | <%= required %> | String | Name of the topic, does not have to be unique (max 100 characters)
 `rootContentItemId` | <%= required %> | String | Root content item identifier
 `description`   | | String | Description of the topic
 `access`        | | String | Access level (See [Permission model](#permission-model)), defaults to `public`
@@ -114,6 +114,7 @@ Attribute       |                 | Type   | Description
 `description`   | <%= optional %> | String | Topic description
 `createdAt`     |                 | Integer| Timestamp of creation **This attribute is included in the `meta` section.**
 `updatedAt`     |                 | Integer| Timestamp of last change **This attribute is included in the `meta` section.**
+`hasOpenPullRequest` |            | Boolean| Whether or not there is an open outgoing pull request
 
 **Response relationships**
 
