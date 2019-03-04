@@ -1,8 +1,59 @@
 # Token API
 
-## Create a token (sign in)
+Open Webslides uses a two-token authentication mechanism.
+When the client authenticates against the application, a long-lived token is generated (refresh token).
+This token is stored by the client for future use.
+Using the refresh token, a short-lived token can be obtained.
+This short-lived token (access token) can then be used to manipulate the API.
 
-This endpoint creates a token (sign in a user).
+Refresh tokens are typically valid for long periods (months or years), and access tokens for very short periods (hours).
+
+When at a later moment an HTTP 401 error is encountered by the client during normal operation, the following steps should be undertaken:
+1. Discard the expired access token
+2. Obtain a new access token using the stored refresh token
+3. Repeat the failed request using the new access token
+
+```
+     +--------+                               +---------------+
+     |        |---- Authentication Request -->|      POST     |
+     |        |                               |     /token    |
+     |        |<--------- Refresh Token ------|               |
+     |        |                               +---------------+
+     |        |
+     |        |                               +---------------+
+     |        |--------- Refresh Token ------>|     PATCH     |
+     | Client |                               |     /token    |
+     |        |<--------- Access Token -------|               |
+     |        |                               +---------------+
+     |        |
+     |        |                               +---------------+
+     |        |---------- Access Token ------>|      API      |
+     |        |                               |    Endpoint   |
+     |        |<------- Protected Resource ---|               |
+     +--------+                               +---------------+
+```
+
+Tokens are [JWT-encoded](https://www.jwt.io/) strings, that carry information about the user.
+This information is signed by the API server, but the payload is decodable by the client as well.
+A typical JWT in Open Webslides will look as following:
+
+`eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1NTE3MDg4NTUsInN1YiI6MSwidmVyIjoxLCJ0eXAiOiJhY2Nlc3MifQ.-8r5_UYSISIFFH3M5JtYnu5Fl15GS1gc18L9PL91Ru8`
+
+Which decodes to the following payload:
+
+`{ "iat": 1551708855, "sub": 1, "ver": 1, "typ": "access" }`
+
+The information in this token tells us the following information:
+
+- When it was issued (`iat`, issued at)
+- The unique identifier of the user for whom this token was issued (`sub`, subject)
+- The token version of the user at the time of issuance (`ver`, version), used for invalidating existing tokens
+- That this is an access token (`typ` is `access`)
+
+## Request refresh token (sign in)
+
+This endpoint obtains a refresh token (signs in a user).
+This refresh token can only be used to (i) [request an access token](#request-access-token) and (ii) [invalidate all tokens](#invalidate-token-sign-out) (sign out a user).
 The token is returned in the `Authorization` header in the bearer token format.
 
 **Request attributes**
@@ -40,7 +91,7 @@ Authorization: Bearer TOKEN
 <%= api_response 'token/post_token' %>
 ```
 
-> Failure response (incorrect email or password)
+> Failure response (incorrect credentials, unconfirmed account)
 
 ```http
 HTTP/1.1 401 Unauthorized
@@ -51,24 +102,58 @@ Content-Type: application/vnd.api+json
 <%= api_response 'token/post_token_401' %>
 ```
 
-> Failure response (unconfirmed account)
+## Request access token
+
+This endpoint obtains an access token.
+This access token can only be used to perform actions on other API endpoints.
+The token is returned in the `Authorization` header in the bearer token format.
+
+<aside class="warning">
+  This is a protected endpoint. Unlike other protected endpoints, a valid <strong>refresh</strong> token (as opposed to an access token) is required to be present in the <code>Authorization</code> header.
+</aside>
+
+> Request
 
 ```http
-HTTP/1.1 403 Forbidden
+PATCH <%= current_page.data.endpoint %>token HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_request 'token/patch_token' %>
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+Authorization: Bearer TOKEN
+```
+
+```json
+<%= api_response 'token/patch_token' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 401 Unauthorized
 Content-Type: application/vnd.api+json
 ```
 
 ```json
-<%= api_response 'token/post_token_403' %>
+<%= api_response 'token/patch_token_401' %>
 ```
 
-## Delete a token (sign out)
+## Invalidate token (sign out)
 
 This endpoint deletes a token (sign out a user).
 After a success response, all previously issued tokens for the current user are no longer valid, effectively signing the user out of all sessions.
 
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. Unlike other protected endpoints, a valid <strong>refresh</strong> token (as opposed to an access token) is required to be present in the <code>Authorization</code> header.
 </aside>
 
 > Request

@@ -1,0 +1,10 @@
+{
+  "errors": [
+    {
+      "title": "Update unauthorized",
+      "detail": "You don't have permission to update this token.",
+      "code": "401",
+      "status": "401"
+    }
+  ]
+}

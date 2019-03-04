@@ -47,7 +47,7 @@ Attribute       |     | Type | Description
   Always include the <code>user</code> relationship, or you will get a HTTP 403 Forbidden response.
 </aside>
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. A valid access token should be present in the <code>Authorization</code> header.
 </aside>
 <aside class="notice">
   The <code>rootContentItemId</code> has to be provided upon creation. This attribute cannot be changed later. Every time a topic
@@ -175,7 +175,7 @@ This endpoint updates a topic.
 See [Create a topic](#create-a-topic).
 
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. A valid access token should be present in the <code>Authorization</code> header.
 </aside>
 <aside class="notice">
   The <code>rootContentItemId</code> is immutable and cannot be updated.
@@ -238,7 +238,7 @@ HTTP/1.1 204 No Content
 This endpoint deletes a user.
 
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. A valid access token should be present in the <code>Authorization</code> header.
 </aside>
 
 > Request
@@ -321,7 +321,7 @@ Attribute       |                 | Type   | Description
   Updating a topic's content structure replaces the entire contents. Partial updates are not yet implemented.
 </aside>
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. A valid access token should be present in the <code>Authorization</code> header.
 </aside>
 <aside class="notice">
   The root content item's identifier has to match the <code>rootContentItemId</code> in the database, provided when <a href="#create-a-topic">creating a topic</a>.
@@ -363,7 +363,7 @@ Content-Type: application/vnd.api+json
 This endpoint creates a duplicate of the topic, **under the current user's account**
 
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. A valid access token should be present in the <code>Authorization</code> header.
 </aside>
 
 > Request

@@ -152,16 +152,17 @@ Attribute         |                 | Type   | Description
 `password`        |                 | String | New password, must be at least 6 characters
 `alertEmails`     |                 | Boolean| Email notifications for important alerts
 `age`             | <%= cocos %>    | Integer| Age
-`country`         | <%= cocos %>    | String | 2-digit country code
+`country`         | <%= cocos %>    | String | 2-digit country code (uppercase)
 `gender`          | <%= cocos %>    | String | Gender, can be `male`, `female` or `other`
 `role`            | <%= cocos %>    | String | Role, can be `learner`, `teacher` or `coteacher`
+`device_type`     | <%= cocos %>    | String | Device type, can be `desktop`, `phone` or `tablet`
 
 <aside class="info">
   When changing the password, the <code>currentPassword</code> has to be specified as well. When updating other attributes such as <code>name</code>, the <code>currentPassword</code> does not have to be specified.
 </aside>
 
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. A valid access token should be present in the <code>Authorization</code> header.
 </aside>
 
 > Request
@@ -215,7 +216,7 @@ Content-Type: application/vnd.api+json
 This endpoint deletes a user.
 
 <aside class="warning">
-  This is a protected endpoint. A valid API token should be present in the <code>Authorization</code> header.
+  This is a protected endpoint. A valid access token should be present in the <code>Authorization</code> header.
 </aside>
 
 > Request
