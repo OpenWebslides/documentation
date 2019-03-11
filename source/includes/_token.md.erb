@@ -63,10 +63,6 @@ Attribute       |                 | Type   | Description
 `email`         | <%= required %> | String | Account email address
 `password`      | <%= required %> | String | Account password
 
-**Response attributes**
-
-See [Get a user](#get-a-user).
-
 > Request
 
 ```http
@@ -82,13 +78,9 @@ Content-Type: application/vnd.api+json
 > Success response
 
 ```http
-HTTP/1.1 201 Created
+HTTP/1.1 204 No Content
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
-```
-
-```json
-<%= api_response 'token/post_token' %>
 ```
 
 > Failure response (incorrect credentials, unconfirmed account)
@@ -112,6 +104,10 @@ The token is returned in the `Authorization` header in the bearer token format.
   This is a protected endpoint. Unlike other protected endpoints, a valid <strong>refresh</strong> token (as opposed to an access token) is required to be present in the <code>Authorization</code> header.
 </aside>
 
+<aside class="warning">
+  This endpoint deviates from the JSON API v1.0 specification, which requires that a PATCH request must include a resource object as primary data.
+</aside>
+
 > Request
 
 ```http
@@ -120,20 +116,12 @@ Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<
 Authorization: Bearer TOKEN
 ```
 
-```json
-<%= api_request 'token/patch_token' %>
-```
-
 > Success response
 
 ```http
-HTTP/1.1 200 OK
+HTTP/1.1 204 No Content
 Content-Type: application/vnd.api+json
 Authorization: Bearer TOKEN
-```
-
-```json
-<%= api_response 'token/patch_token' %>
 ```
 
 > Failure response
