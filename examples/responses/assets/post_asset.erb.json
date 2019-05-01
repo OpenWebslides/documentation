@@ -1,0 +1,24 @@
+{
+  "data": {
+    "id": "1",
+    "type": "assets",
+    "links": {
+      "self": "<%= current_page.data.endpoint %>assets/1"
+    },
+    "attributes": {
+      "filename": "my_asset.png"
+    },
+    "relationships": {
+      "topic": {
+        "links": {
+          "self": "<%= current_page.data.endpoint %>assets/1/relationships/topic",
+          "related": "<%= current_page.data.endpoint %>assets/1/topic"
+        }
+      }
+    }
+  },
+  "links": {
+    "first": "<%= current_page.data.endpoint %>assets?page%5Blimit%5D=10&page%5Boffset%5D=0",
+    "last": "<%= current_page.data.endpoint %>assets?page%5Blimit%5D=10&page%5Boffset%5D=0"
+  }
+}

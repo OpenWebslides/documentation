@@ -1,5 +1,154 @@
 # Assets API
 
-<aside class="warning">
-  This API is currently not available.
+## Get all topic assets
+
+This endpoint retrieves all assets for a given topic.
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
+
+**Response attributes**
+
+See [Get an asset](#get-an asset).
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>topics/1/assets HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
+```
+
+> Response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'assets/get_assets' %>
+```
+
+## Create an asset
+
+This endpoint creates an asset for a given topic.
+
+**Request attributes**
+
+Attribute       |     | Type | Description
+--------------- | --- | ---- | -----------
+`filename`      | <%= required %> | String | Filename, has to be unique within the topic
+
+<aside class="warning">
+  This endpoint does not accept JSON data, instead the binary file should be included in the request. The <code>Content-Disposition</code> header should be set to include the filename, and the <code>Content-Type</code> to the correct media type (see example).
+</aside>
+
+> Request
+
+```http
+POST <%= current_page.data.endpoint %>topics/1/assets HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
+Content-Type: image/png
+Content-Disposition: attachment; filename="asset2.png"
+Authorization: Bearer TOKEN
+
+< binary file >
+```
+
+> Success response
+
+```http
+HTTP/1.1 201 Created
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'assets/post_asset' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 422 Unprocessable Entity
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'topics/post_topics_422' %>
+```
+
+## Get an asset
+
+This endpoint retrieves an asset.
+
+**Response attributes**
+
+
+Attribute       |                 | Type   | Description
+--------------- | --------------- | ------ | -----------
+`filename`      |                 | String | Filename
+
+**Response relationships**
+
+Relationship    |                        | Type                     | Plurality | Description
+--------------- | ---------------------- | ------------------------ | --------- | -----------
+`topic   `      | <%= optional %>        | <code>Topic</code>       | 1      | Upstream (original) topic
+
+<aside class="notice">
+  This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
+</aside>
+
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>assets/1 HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
+```
+
+> Success response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'assets/get_asset' %>
+```
+
+> Failure response
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/vnd.api+json
+```
+
+```json
+<%= api_response 'assets/get_asset_404' %>
+```
+
+## Fetch an asset
+
+This endpoint retrieves the binary asset.
+
+<aside class="notice">
+  This endpoint does not require authentication. If a client has knowledge of the topic id and the filename of the asset, it can be embedded directly into the HTML document.
+</aside>
+
+> Request
+
+```http
+GET <%= current_page.data.endpoint %>topics/1/assets/my_asset.png HTTP/1.1
+Accept: application/vnd.api+json, application/vnd.openwebslides+json; version="<%= current_page.data.request_version %>"
+```
+
+> Response
+
+```http
+HTTP/1.1 200 OK
+Content-Type: image/png
+Content-Disposition: attachment; filename="asset2.png"
+< binary file >
+```

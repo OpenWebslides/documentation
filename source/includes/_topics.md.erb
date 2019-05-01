@@ -137,7 +137,7 @@ Relationship    |                        | Type                     | Plurality 
   This endpoint does not require authentication. However, authenticated requests might receive different data. See <a href="#permission-model">Permission model</a> for more information on topic visibility.
 </aside>
 
-> JSON Request
+> Request
 
 ```http
 GET <%= current_page.data.endpoint %>topics/1 HTTP/1.1
@@ -181,7 +181,7 @@ See [Create a topic](#create-a-topic).
   The <code>rootContentItemId</code> is immutable and cannot be updated.
 </aside>
 
-> JSON Request
+> Request
 
 ```http
 PATCH <%= current_page.data.endpoint %>topics/1 HTTP/1.1
@@ -277,7 +277,7 @@ Attribute       |     | Type | Description
 --------------- | --- | ---- | -----------
 `content`       |     | String | Topic content structure
 
-> JSON Request
+> Request
 
 ```http
 GET <%= current_page.data.endpoint %>topics/1/content HTTP/1.1
